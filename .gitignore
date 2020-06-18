@@ -4,6 +4,7 @@ package-lock.json
 .vscode/
 dist/
 .firebase/
+src/helpers/apiKeys.json
 
 # dependencies
 /node_modules
