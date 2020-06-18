@@ -1,0 +1,18 @@
+{
+  "party1": {
+    "name": "All",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/universal-access.svg"
+  },
+  "party2": {
+    "name": "Couple",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/user-friends.svg"
+  },
+  "party3": {
+    "name": "Family",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/users.svg"
+  },
+  "party4": {
+    "name": "Solo",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/user-alt.svg"
+  }
+}

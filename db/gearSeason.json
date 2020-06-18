@@ -1,0 +1,462 @@
+{
+  "gearSeason1": {
+    "gearId": "gear1",
+    "seasonId": "season1"
+  },
+    "gearSeason2": {
+    "gearId": "gear2",
+    "seasonId": "season1"
+  },
+  "gearSeason3": {
+    "gearId": "gear3",
+    "seasonId": "season1"
+  },
+  "gearSeason4": {
+    "gearId": "gear4",
+    "seasonId": "season5"
+  },
+  "gearSeason5": {
+    "gearId": "gear5",
+    "seasonId": "season1"
+  },
+  "gearSeason6": {
+    "gearId": "gear6",
+    "seasonId": "season2"
+  },
+  "gearSeason7": {
+    "gearId": "gear6",
+    "seasonId": "season3"
+  },
+  "gearSeason8": {
+    "gearId": "gear6",
+    "seasonId": "season4"
+  },
+  "gearSeason9": {
+    "gearId": "gear7",
+    "seasonId": "season1"
+  },
+  "gearSeason10": {
+    "gearId": "gear8",
+    "seasonId": "season1"
+  },
+  "gearSeason11": {
+    "gearId": "gear9",
+    "seasonId": "season1"
+  },
+  "gearSeason12": {
+    "gearId": "gear10",
+    "seasonId": "season3"
+  },
+  "gearSeason13": {
+    "gearId": "gear11",
+    "seasonId": "season1"
+  },
+  "gearSeason14": {
+    "gearId": "gear12",
+    "seasonId": "season1"
+  },
+  "gearSeason15": {
+    "gearId": "gear13",
+    "seasonId": "season1"
+  },
+  "gearSeason16": {
+    "gearId": "gear14",
+    "seasonId": "season1"
+  },
+  "gearSeason17": {
+    "gearId": "gear15",
+    "seasonId": "season1"
+  },
+  "gearSeason18": {
+    "gearId": "gear16",
+    "seasonId": "season2"
+  },
+  "gearSeason19": {
+    "gearId": "gear16",
+    "seasonId": "season3"
+  },
+  "gearSeason20": {
+    "gearId": "gear16",
+    "seasonId": "season4"
+  },
+  "gearSeason21": {
+    "gearId": "gear17",
+    "seasonId": "season2"
+  },
+  "gearSeason22": {
+    "gearId": "gear17",
+    "seasonId": "season3"
+  },
+  "gearSeason23": {
+    "gearId": "gear17",
+    "seasonId": "season4"
+  },
+  "gearSeason24": {
+    "gearId": "gear18",
+    "seasonId": "season5"
+  },
+  "gearSeason25": {
+    "gearId": "gear19",
+    "seasonId": "season2"
+  },
+  "gearSeason26": {
+    "gearId": "gear19",
+    "seasonId": "season3"
+  },
+  "gearSeason27": {
+    "gearId": "gear19",
+    "seasonId": "season4"
+  },
+  "gearSeason28": {
+    "gearId": "gear20",
+    "seasonId": "season1"
+  },
+  "gearSeason29": {
+    "gearId": "gear21",
+    "seasonId": "season1"
+  },
+  "gearSeason30": {
+    "gearId": "gear22",
+    "seasonId": "season1"
+  },
+  "gearSeason31": {
+    "gearId": "gear23",
+    "seasonId": "season1"
+  },
+  "gearSeason32": {
+    "gearId": "gear24",
+    "seasonId": "season1"
+  },
+  "gearSeason33": {
+    "gearId": "gear25",
+    "seasonId": "season1"
+  },
+  "gearSeason34": {
+    "gearId": "gear26",
+    "seasonId": "season3"
+  },
+  "gearSeason35": {
+    "gearId": "gear27",
+    "seasonId": "season1"
+  },
+ "gearSeason36": {
+    "gearId": "gear28",
+    "seasonId": "season3"
+  },
+  "gearSeason37": {
+    "gearId": "gear29",
+    "seasonId": "season2"
+  },
+  "gearSeason38": {
+    "gearId": "gear29",
+    "seasonId": "season3"
+  },
+  "gearSeason39": {
+    "gearId": "gear29",
+    "seasonId": "season4"
+  },
+  "gearSeason40": {
+    "gearId": "gear30",
+    "seasonId": "season2"
+  },
+  "gearSeason41": {
+    "gearId": "gear30",
+    "seasonId": "season3"
+  },
+  "gearSeason42": {
+    "gearId": "gear30",
+    "seasonId": "season4"
+  },
+  "gearSeason43": {
+    "gearId": "gear31",
+    "seasonId": "season1"
+  },
+  "gearSeason44": {
+    "gearId": "gear32",
+    "seasonId": "season1"
+  },
+  "gearSeason45": {
+    "gearId": "gear33",
+    "seasonId": "season1"
+  },
+  "gearSeason46": {
+    "gearId": "gear34",
+    "seasonId": "season1"
+  },
+  "gearSeason47": {
+    "gearId": "gear35",
+    "seasonId": "season1"
+  },
+  "gearSeason48": {
+    "gearId": "gear36",
+    "seasonId": "season1"
+  },
+  "gearSeason49": {
+    "gearId": "gear37",
+    "seasonId": "season1"
+  },
+  "gearSeason50": {
+    "gearId": "gear38",
+    "seasonId": "season1"
+  },
+  "gearSeason51": {
+    "gearId": "gear39",
+    "seasonId": "season1"
+  },
+  "gearSeason52": {
+    "gearId": "gear40",
+    "seasonId": "season1"
+  },
+  "gearSeason53": {
+    "gearId": "gear41",
+    "seasonId": "season1"
+  },
+  "gearSeason54": {
+    "gearId": "gear42",
+    "seasonId": "season2"
+  },
+  "gearSeason55": {
+    "gearId": "gear42",
+    "seasonId": "season3"
+  },
+  "gearSeason56": {
+    "gearId": "gear42",
+    "seasonId": "season4"
+  },
+  "gearSeason57": {
+    "gearId": "gear43",
+    "seasonId": "season1"
+  },
+  "gearSeason58": {
+    "gearId": "gear44",
+    "seasonId": "season1"
+  },
+  "gearSeason59": {
+    "gearId": "gear45",
+    "seasonId": "season1"
+  },
+ "gearSeason60": {
+    "gearId": "gear46",
+    "seasonId": "season1"
+  },
+  "gearSeason61": {
+    "gearId": "gear47",
+    "seasonId": "season1"
+  },
+  "gearSeason62": {
+    "gearId": "gear48",
+    "seasonId": "season1"
+  },
+  "gearSeason63": {
+    "gearId": "gear49",
+    "seasonId": "season1"
+  },
+  "gearSeason64": {
+    "gearId": "gear50",
+    "seasonId": "season1"
+  },
+  "gearSeason65": {
+    "gearId": "gear51",
+    "seasonId": "season1"
+  },
+  "gearSeason66": {
+    "gearId": "gear52",
+    "seasonId": "season1"
+  },
+  "gearSeason67": {
+    "gearId": "gear53",
+    "seasonId": "season1"
+  },
+  "gearSeason68": {
+    "gearId": "gear54",
+    "seasonId": "season1"
+  },
+  "gearSeason69": {
+    "gearId": "gear55",
+    "seasonId": "season1"
+  },
+  "gearSeason70": {
+    "gearId": "gear56",
+    "seasonId": "season1"
+  },
+  "gearSeason71": {
+    "gearId": "gear57",
+    "seasonId": "season1"
+  },
+  "gearSeason72": {
+    "gearId": "gear58",
+    "seasonId": "season1"
+  },
+  "gearSeason73": {
+    "gearId": "gear59",
+    "seasonId": "season1"
+  },
+  "gearSeason74": {
+    "gearId": "gear60",
+    "seasonId": "season1"
+  },
+  "gearSeason75": {
+    "gearId": "gear61",
+    "seasonId": "season1"
+  },
+  "gearSeason76": {
+    "gearId": "gear62",
+    "seasonId": "season1"
+  },
+  "gearSeason77": {
+    "gearId": "gear63",
+    "seasonId": "season1"
+  },
+  "gearSeason78": {
+    "gearId": "gear64",
+    "seasonId": "season3"
+  },
+  "gearSeason79": {
+    "gearId": "gear65",
+    "seasonId": "season1"
+  },
+  "gearSeason80": {
+    "gearId": "gear66",
+    "seasonId": "season3"
+  },
+  "gearSeason81": {
+    "gearId": "gear67",
+    "seasonId": "season1"
+  },
+  "gearSeason82": {
+    "gearId": "gear68",
+    "seasonId": "season1"
+  },
+  "gearSeason83": {
+    "gearId": "gear69",
+    "seasonId": "season1"
+  },
+  "gearSeason84": {
+    "gearId": "gear70",
+    "seasonId": "season1"
+  },
+  "gearSeason85": {
+    "gearId": "gear71",
+    "seasonId": "season1"
+  },
+  "gearSeason86": {
+    "gearId": "gear72",
+    "seasonId": "season1"
+  },
+  "gearSeason87": {
+    "gearId": "gear73",
+    "seasonId": "season1"
+  },
+  "gearSeason88": {
+    "gearId": "gear74",
+    "seasonId": "season1"
+  },
+  "gearSeason89": {
+    "gearId": "gear75",
+    "seasonId": "season1"
+  },
+  "gearSeason90": {
+    "gearId": "gear76",
+    "seasonId": "season1"
+  },
+  "gearSeason91": {
+    "gearId": "gear77",
+    "seasonId": "season1"
+  },
+  "gearSeason92": {
+    "gearId": "gear78",
+    "seasonId": "season3"
+  },
+  "gearSeason93": {
+    "gearId": "gear79",
+    "seasonId": "season5"
+  },
+  "gearSeason94": {
+    "gearId": "gear80",
+    "seasonId": "season2"
+  },
+  "gearSeason95": {
+    "gearId": "gear80",
+    "seasonId": "season3"
+  },
+  "gearSeason96": {
+    "gearId": "gear80",
+    "seasonId": "season4"
+  },
+  "gearSeason97": {
+    "gearId": "gear81",
+    "seasonId": "season3"
+  },
+  "gearSeason98": {
+    "gearId": "gear82",
+    "seasonId": "season1"
+  },
+  "gearSeason99": {
+    "gearId": "gear83",
+    "seasonId": "season1"
+  },
+  "gearSeason100": {
+    "gearId": "gear84",
+    "seasonId": "season1"
+  },
+  "gearSeason101": {
+    "gearId": "gear85",
+    "seasonId": "season2"
+  },
+  "gearSeason102": {
+    "gearId": "gear85",
+    "seasonId": "season4"
+  },
+  "gearSeason103": {
+    "gearId": "gear86",
+    "seasonId": "season5"
+  },
+  "gearSeason104": {
+    "gearId": "gear87",
+    "seasonId": "season1"
+  },
+  "gearSeason105": {
+    "gearId": "gear88",
+    "seasonId": "season2"
+  },
+  "gearSeason106": {
+    "gearId": "gear88",
+    "seasonId": "season3"
+  },
+  "gearSeason107": {
+    "gearId": "gear88",
+    "seasonId": "season4"
+  },
+  "gearSeason108": {
+    "gearId": "gear89",
+    "seasonId": "season5"
+  },
+  "gearSeason109": {
+    "gearId": "gear90",
+    "seasonId": "season1"
+  },
+  "gearSeason110": {
+    "gearId": "gear91",
+    "seasonId": "season1"
+  },
+   "gearSeason111": {
+    "gearId": "gear91",
+    "seasonId": "season1"
+  },
+   "gearSeason112": {
+    "gearId": "gear92",
+    "seasonId": "season1"
+  },
+   "gearSeason113": {
+    "gearId": "gear93",
+    "seasonId": "season1"
+  },
+   "gearSeason114": {
+    "gearId": "gear94",
+    "seasonId": "season1"
+  },
+   "gearSeason115": {
+    "gearId": "gear95",
+    "seasonId": "season5"
+  }
+}

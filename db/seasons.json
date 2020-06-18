@@ -1,0 +1,22 @@
+{
+  "season1": {
+    "name": "All",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/universal-access.svg"
+  },
+  "season2": {
+    "name": "Spring",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/seedling.svg"
+  },
+  "season3": {
+    "name": "Summer",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/umbrella-beach.svg"
+  },
+  "season4": {
+    "name": "Fall",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/leaf.svg"
+  },
+ "season5": {
+    "name": "Winter",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/sleigh.svg"
+  }
+}

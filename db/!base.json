@@ -1,0 +1,9 @@
+{
+  "functions": "val",
+  "gear": "val",
+  "gearParty": "val",
+  "gearSeason": "val",
+  "party": "val",
+  "seasons": "val",
+  "weather": "val"
+}

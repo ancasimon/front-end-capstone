@@ -1,0 +1,22 @@
+{
+  "weather1": {
+    "name": "All",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/universal-access.svg"
+  },
+  "weather2": {
+    "name": "Rainy",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/cloud-rain.svg"
+  },
+  "weather3": {
+    "name": "Snowy",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/snowflake.svg"
+  },
+  "weather4": {
+    "name": "Warm",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/sun.svg"
+  },
+  "weather5": {
+    "name": "Windy",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/wind.svg"
+  }
+}
