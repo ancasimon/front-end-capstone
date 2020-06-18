@@ -1,0 +1,398 @@
+{
+  "gearParty1": {
+    "gearId": "gear1",
+    "partyId": "party3"
+  },
+  "gearParty2": {
+  "gearId": "gear2",
+  "partyId": "party1"
+  },
+  "gearParty3": {
+    "gearId": "gear3",
+    "partyId": "party4"
+  },
+  "gearParty4": {
+    "gearId": "gear4",
+    "partyId": "party2"
+  },
+  "gearParty5": {
+    "gearId": "gear4",
+    "partyId": "party4"
+  },
+  "gearParty6": {
+    "gearId": "gear5",
+    "partyId": "party1"
+    },
+  "gearParty7": {
+    "gearId": "gear6",
+    "partyId": "party1"
+  },
+  "gearParty8": {
+    "gearId": "gear7",
+    "partyId": "party1"
+  },
+  "gearParty9": {
+    "gearId": "gear8",
+    "partyId": "party1"
+  },
+  "gearParty10": {
+    "gearId": "gear9",
+    "partyId": "party1"
+  },
+  "gearParty11": {
+    "gearId": "gear10",
+    "partyId": "party1"
+  },
+  "gearParty12": {
+    "gearId": "gear11",
+    "partyId": "party1"
+  },
+  "gearParty13": {
+    "gearId": "gear12",
+    "partyId": "party1"
+  },
+  "gearParty14": {
+    "gearId": "gear13",
+    "partyId": "party1"
+  },
+  "gearParty15": {
+    "gearId": "gear14",
+    "partyId": "party1"
+  },
+  "gearParty16": {
+    "gearId": "gear15",
+    "partyId": "party1"
+  },
+  "gearParty17": {
+    "gearId": "gear16",
+    "partyId": "party1"
+  },
+  "gearParty18": {
+    "gearId": "gear17",
+    "partyId": "party1"
+  },
+  "gearParty19": {
+    "gearId": "gear18",
+    "partyId": "party1"
+  },
+  "gearParty20": {
+    "gearId": "gear19",
+    "partyId": "party1"
+  },
+  "gearParty21": {
+    "gearId": "gear20",
+    "partyId": "party1"
+  },
+  "gearParty22": {
+    "gearId": "gear21",
+    "partyId": "party1"
+  },
+  "gearParty23": {
+    "gearId": "gear22",
+    "partyId": "party1"
+  },
+  "gearParty24": {
+    "gearId": "gear23",
+    "partyId": "party1"
+  },
+  "gearParty25": {
+    "gearId": "gear24",
+    "partyId": "party1"
+  },
+  "gearParty26": {
+    "gearId": "gear25",
+    "partyId": "party1"
+  },
+  "gearParty27": {
+    "gearId": "gear26",
+    "partyId": "party3"
+  },
+  "gearParty28": {
+    "gearId": "gear27",
+    "partyId": "party1"
+  },
+  "gearParty29": {
+    "gearId": "gear28",
+    "partyId": "party3"
+  },
+  "gearParty30": {
+    "gearId": "gear29",
+    "partyId": "party1"
+  },
+  "gearParty31": {
+    "gearId": "gear30",
+    "partyId": "party1"
+  },
+  "gearParty32": {
+    "gearId": "gear31",
+    "partyId": "party1"
+  },
+  "gearParty33": {
+    "gearId": "gear32",
+    "partyId": "party1"
+  },
+  "gearParty34": {
+    "gearId": "gear33",
+    "partyId": "party1"
+  },
+  "gearParty35": {
+    "gearId": "gear34",
+    "partyId": "party1"
+  },
+  "gearParty36": {
+    "gearId": "gear35",
+    "partyId": "party1"
+  },
+  "gearParty37": {
+    "gearId": "gear36",
+    "partyId": "party1"
+  },
+  "gearParty38": {
+    "gearId": "gear37",
+    "partyId": "party1"
+  },
+  "gearParty39": {
+    "gearId": "gear38",
+    "partyId": "party1"
+  },
+  "gearParty40": {
+    "gearId": "gear39",
+    "partyId": "party1"
+  },
+  "gearParty41": {
+    "gearId": "gear40",
+    "partyId": "party1"
+  },
+  "gearParty42": {
+    "gearId": "gear41",
+    "partyId": "party3"
+  },
+  "gearParty43": {
+    "gearId": "gear42",
+    "partyId": "party2"
+  },
+  "gearParty44": {
+    "gearId": "gear42",
+    "partyId": "party4"
+  },
+  "gearParty45": {
+    "gearId": "gear43",
+    "partyId": "party2"
+  },
+  "gearParty46": {
+    "gearId": "gear43",
+    "partyId": "party3"
+  },
+  "gearParty47": {
+    "gearId": "gear44",
+    "partyId": "party1"
+  },
+  "gearParty48": {
+    "gearId": "gear45",
+    "partyId": "party1"
+  },
+  "gearParty49": {
+    "gearId": "gear46",
+    "partyId": "party1"
+  },
+  "gearParty50": {
+    "gearId": "gear47",
+    "partyId": "party1"
+  },
+  "gearParty51": {
+    "gearId": "gear48",
+    "partyId": "party1"
+  },
+  "gearParty52": {
+    "gearId": "gear49",
+    "partyId": "party3"
+  },
+  "gearParty53": {
+    "gearId": "gear50",
+    "partyId": "party3"
+  },
+"gearParty54": {
+    "gearId": "gear51",
+    "partyId": "party1"
+  },
+  "gearParty55": {
+    "gearId": "gear52",
+    "partyId": "party1"
+  },
+  "gearParty56": {
+    "gearId": "gear53",
+    "partyId": "party1"
+  },
+  "gearParty57": {
+    "gearId": "gear55",
+    "partyId": "party1"
+  },
+  "gearParty58": {
+    "gearId": "gear56",
+    "partyId": "party1"
+  },
+  "gearParty59": {
+    "gearId": "gear57",
+    "partyId": "party3"
+  },
+  "gearParty60": {
+    "gearId": "gear58",
+    "partyId": "party3"
+  },
+  "gearParty61": {
+    "gearId": "gear59",
+    "partyId": "party1"
+  },
+  "gearParty62": {
+    "gearId": "gear60",
+    "partyId": "party1"
+  },
+  "gearParty63": {
+    "gearId": "gear61",
+    "partyId": "party1"
+  },
+  "gearParty64": {
+    "gearId": "gear62",
+    "partyId": "party1"
+  },
+  "gearParty65": {
+    "gearId": "gear63",
+    "partyId": "party1"
+  },
+  "gearParty66": {
+    "gearId": "gear64",
+    "partyId": "party3"
+  },
+  "gearParty67": {
+    "gearId": "gear65",
+    "partyId": "party3"
+  },
+  "gearParty68": {
+    "gearId": "gear66",
+    "partyId": "party1"
+  },
+  "gearParty69": {
+    "gearId": "gear67",
+    "partyId": "party1"
+  },
+  "gearParty70": {
+    "gearId": "gear68",
+    "partyId": "party1"
+  },
+  "gearParty71": {
+    "gearId": "gear69",
+    "partyId": "party1"
+  },
+  "gearParty72": {
+    "gearId": "gear70",
+    "partyId": "party1"
+  },
+  "gearParty73": {
+    "gearId": "gear71",
+    "partyId": "party1"
+  },
+  "gearParty74": {
+    "gearId": "gear72",
+    "partyId": "party1"
+  },
+  "gearParty75": {
+    "gearId": "gear73",
+    "partyId": "party1"
+  },
+  "gearParty76": {
+    "gearId": "gear74",
+    "partyId": "party1"
+  },
+  "gearParty77": {
+    "gearId": "gear75",
+    "partyId": "party1"
+  },
+  "gearParty78": {
+    "gearId": "gear76",
+    "partyId": "party1"
+  },
+  "gearParty79": {
+    "gearId": "gear77",
+    "partyId": "party1"
+  },
+  "gearParty80": {
+    "gearId": "gear78",
+    "partyId": "party4"
+  },
+  "gearParty81": {
+    "gearId": "gear79",
+    "partyId": "party2"
+  },
+   "gearParty82": {
+    "gearId": "gear80",
+    "partyId": "party3"
+  },
+   "gearParty83": {
+    "gearId": "gear81",
+    "partyId": "party4"
+  },
+   "gearParty84": {
+    "gearId": "gear82",
+    "partyId": "party1"
+  },
+   "gearParty85": {
+    "gearId": "gear83",
+    "partyId": "party3"
+  },
+   "gearParty86": {
+    "gearId": "gear84",
+    "partyId": "party3"
+  },
+   "gearParty87": {
+    "gearId": "gear85",
+    "partyId": "party4"
+  },
+   "gearParty88": {
+    "gearId": "gear86",
+    "partyId": "party4"
+  },
+   "gearParty89": {
+    "gearId": "gear87",
+    "partyId": "party3"
+  },
+   "gearParty90": {
+    "gearId": "gear88",
+    "partyId": "party4"
+  },
+   "gearParty91": {
+    "gearId": "gear89",
+    "partyId": "party4"
+  },
+   "gearParty92": {
+    "gearId": "gear90",
+    "partyId": "party1"
+  },
+   "gearParty93": {
+    "gearId": "gear91",
+    "partyId": "party2"
+  },
+   "gearParty94": {
+    "gearId": "gear91",
+    "partyId": "party4"
+  },
+   "gearParty95": {
+    "gearId": "gear92",
+    "partyId": "party1"
+  },
+  "gearParty96": {
+    "gearId": "gear93",
+    "partyId": "party3"
+  },
+  "gearParty97": {
+    "gearId": "gear94",
+    "partyId": "party3"
+  },
+  "gearParty98": {
+    "gearId": "gear95",
+    "partyId": "party2"
+  },
+  "gearParty99": {
+    "gearId": "gear95",
+    "partyId": "party4"
+  }
+}

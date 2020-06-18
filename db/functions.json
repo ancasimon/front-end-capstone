@@ -1,0 +1,50 @@
+{
+  "function1": {
+    "name": "Backpack",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/hiking.svg"
+    },
+  "function2": {
+    "name": "Clothing",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/tshirt.svg"
+    },
+  "function3": {
+    "name": "Cooking",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/utensils.svg"
+    },
+  "function4": {
+    "name": "Entertainment",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/dice.svg"
+    },
+  "function5": {
+    "name": "First Aid",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/briefcase-medical.svg"
+    },
+  "function6": {
+    "name": "Food",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/hotdog.svg"
+    },
+  "function7": {
+    "name": "Hygiene",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/toilet-paper.svg"
+    },
+  "function8": {
+    "name": "Navigation",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/map.svg"
+    },
+  "function9": {
+    "name": "Shelter",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/campground.svg"
+    },
+  "function10": {
+    "name": "Sleep System",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/bed.svg"
+    },
+  "function11": {
+    "name": "Walking",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/shoe-prints.svg"
+    },
+  "function12": {
+    "name": "Water",
+    "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/tint.svg"
+    }
+}
