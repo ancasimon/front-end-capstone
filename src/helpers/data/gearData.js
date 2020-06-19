@@ -1,0 +1,22 @@
+import axios from 'axios';
+import firebaseConfig from '../apiKeys.json';
+
+const baseUrl = firebaseConfig.firebaseKeys.databaseURL;
+
+const getGearByUid = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/gear.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      const fbGear = response.data;
+      const gear = [];
+      if (fbGear) {
+        Object.keys(fbGear).forEach((gearItemId) => {
+          fbGear[gearItemId].id = gearItemId;
+          gear.push(fbGear[gearItemId]);
+        });
+      }
+      resolve(gear);
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getGearByUid };
