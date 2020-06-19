@@ -40,10 +40,12 @@ class Gear extends React.Component {
               <th>Image</th>
               <th>Brand</th>
               <th>Model</th>
-              <th>Exp. Yr.</th>
               <th>Function</th>
+              <th>Seasons</th>
               <th>Weather</th>
+              <th>Party</th>
               <th>Available?</th>
+              <th>Exp. Yr.</th>
               <th>Actions</th>
             </tr>
           </thead>

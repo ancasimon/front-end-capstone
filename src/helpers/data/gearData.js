@@ -19,4 +19,6 @@ const getGearByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getGearByUid };
+const getSingleGear = (gearId) => axios.get(`${baseUrl}/gear/${gearId}.json`);
+
+export default { getGearByUid, getSingleGear };
