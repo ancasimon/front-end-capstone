@@ -41,7 +41,7 @@ class Gear extends React.Component {
               <th>Brand</th>
               <th>Model</th>
               <th>Function</th>
-              {/* <th>Seasons</th> */}
+              <th>Seasons</th>
               <th>Weather</th>
               <th>Party</th>
               <th>Available?</th>

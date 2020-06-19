@@ -440,22 +440,18 @@
     "seasonId": "season1"
   },
    "gearSeason111": {
-    "gearId": "gear91",
-    "seasonId": "season1"
-  },
-   "gearSeason112": {
     "gearId": "gear92",
     "seasonId": "season1"
   },
-   "gearSeason113": {
+   "gearSeason112": {
     "gearId": "gear93",
     "seasonId": "season1"
   },
-   "gearSeason114": {
+   "gearSeason113": {
     "gearId": "gear94",
     "seasonId": "season1"
   },
-   "gearSeason115": {
+   "gearSeason114": {
     "gearId": "gear95",
     "seasonId": "season5"
   }

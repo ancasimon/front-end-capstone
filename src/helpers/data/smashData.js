@@ -1,5 +1,7 @@
 import functionsData from './functionsData';
 import gearData from './gearData';
+import gearSeasonData from './gearSeasonData';
+import seasonsData from './seasonsData';
 import weatherData from './weatherData';
 
 const getGearProperties = (gearId) => new Promise((resolve, reject) => {
@@ -12,10 +14,22 @@ const getGearProperties = (gearId) => new Promise((resolve, reject) => {
             .then((allWeatherValues) => {
               const gearMetadata = {};
               const selectedWeather = allWeatherValues.find((y) => y.id === singleGearResponse.data.weatherId);
-              gearMetadata.function = selectedFunction;
-              gearMetadata.weather = selectedWeather;
-              resolve(gearMetadata);
-              console.log('gear metadata', gearMetadata);
+              gearSeasonData.getGearSeasonsByGearId(gearId)
+                .then((gearSeasons) => {
+                  seasonsData.getSeasons()
+                    .then((allSeasons) => {
+                      const selectedGearSeasons = [];
+                      gearSeasons.forEach((gearSeasonObject) => {
+                        const foundGearSeason = allSeasons.find((seasonValue) => seasonValue.id === gearSeasonObject.seasonId);
+                        selectedGearSeasons.push(foundGearSeason);
+                      });
+                      gearMetadata.function = selectedFunction;
+                      gearMetadata.weather = selectedWeather;
+                      gearMetadata.seasons = selectedGearSeasons;
+                      resolve(gearMetadata);
+                      console.log('gear metadata', gearMetadata);
+                    });
+                });
             });
         });
     })

@@ -4,7 +4,7 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getGearSeasonsByGearId = (gearId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/gearSeasons.json?orderBy="gearId"&equalTo="${gearId}"`)
+  axios.get(`${baseUrl}/gearSeason.json?orderBy="gearId"&equalTo="${gearId}"`)
     .then((response) => {
       const fbGearSeasons = response.data;
       const gearSeasons = [];

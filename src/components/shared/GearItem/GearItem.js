@@ -11,6 +11,7 @@ class GearItem extends React.Component {
   state = {
     gearFunction: {},
     gearWeather: {},
+    gearSeasons: [],
   }
 
   static propTypes = {
@@ -21,7 +22,11 @@ class GearItem extends React.Component {
     const { gearItem } = this.props;
     smashData.getGearProperties(gearItem.id)
       .then((gearWithProperties) => {
-        this.setState({ gearFunction: gearWithProperties.function, gearWeather: gearWithProperties.weather });
+        this.setState({
+          gearFunction: gearWithProperties.function,
+          gearWeather: gearWithProperties.weather,
+          gearSeasons: gearWithProperties.seasons,
+        });
       })
       .catch((err) => console.error('unable to get additional properties of gear item', err));
   }
@@ -32,8 +37,7 @@ class GearItem extends React.Component {
 
   render() {
     const { gearItem } = this.props;
-    const { gearFunction } = this.state;
-    const { gearWeather } = this.state;
+    const { gearFunction, gearWeather, gearSeasons } = this.state;
 
     return (
       <tbody>
@@ -43,7 +47,13 @@ class GearItem extends React.Component {
           <td>{gearItem.brand}</td>
           <td>{gearItem.model}</td>
           <td><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
-          {/* <td>{gearItem.season}</td> */}
+
+          {
+            gearSeasons
+              ? <td>{gearSeasons.map((item) => <img className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              : <td>N/A</td>
+          }
+
           <td><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
           <td>{gearItem.party}</td>
           { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
