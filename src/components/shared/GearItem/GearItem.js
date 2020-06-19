@@ -10,30 +10,30 @@ import './GearItem.scss';
 class GearItem extends React.Component {
   state = {
     gearFunction: {},
+    gearWeather: {},
   }
 
   static propTypes = {
     gearItem: gearShape.gearShape,
   }
 
-  getFunctions = () => {
+  getAdditionalGearProperties = () => {
     const { gearItem } = this.props;
-    console.log('gearItem id in gearitem file', gearItem.id);
-    smashData.getFunctionForGear(gearItem.id)
-      .then((selectedFunction) => {
-        console.log('sel function passed to gearitem file', selectedFunction);
-        this.setState({ gearFunction: selectedFunction });
+    smashData.getGearProperties(gearItem.id)
+      .then((gearWithProperties) => {
+        this.setState({ gearFunction: gearWithProperties.function, gearWeather: gearWithProperties.weather });
       })
-      .catch((err) => console.error('unable to get functions for gear', err));
+      .catch((err) => console.error('unable to get additional properties of gear item', err));
   }
 
   componentDidMount() {
-    this.getFunctions();
+    this.getAdditionalGearProperties();
   }
 
   render() {
     const { gearItem } = this.props;
     const { gearFunction } = this.state;
+    const { gearWeather } = this.state;
 
     return (
       <tbody>
@@ -43,8 +43,8 @@ class GearItem extends React.Component {
           <td>{gearItem.brand}</td>
           <td>{gearItem.model}</td>
           <td><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
-          <td>{gearItem.season}</td>
-          <td>{gearItem.weatherId}</td>
+          {/* <td>{gearItem.season}</td> */}
+          <td><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
           <td>{gearItem.party}</td>
           { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
           <td>{gearItem.expirationYear}</td>
