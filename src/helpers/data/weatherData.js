@@ -8,7 +8,7 @@ const getWeatherValues = () => new Promise((resolve, reject) => {
     .then((response) => {
       const fbWeatherValues = response.data;
       const weatherObjects = [];
-      if (weatherObjects) {
+      if (fbWeatherValues) {
         Object.keys(fbWeatherValues).forEach((weatherId) => {
           fbWeatherValues[weatherId].id = weatherId;
           weatherObjects.push(fbWeatherValues[weatherId]);

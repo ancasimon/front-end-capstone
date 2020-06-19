@@ -12,6 +12,7 @@ class GearItem extends React.Component {
     gearFunction: {},
     gearWeather: {},
     gearSeasons: [],
+    gearParties: [],
   }
 
   static propTypes = {
@@ -26,6 +27,7 @@ class GearItem extends React.Component {
           gearFunction: gearWithProperties.function,
           gearWeather: gearWithProperties.weather,
           gearSeasons: gearWithProperties.seasons,
+          gearParties: gearWithProperties.parties,
         });
       })
       .catch((err) => console.error('unable to get additional properties of gear item', err));
@@ -37,7 +39,12 @@ class GearItem extends React.Component {
 
   render() {
     const { gearItem } = this.props;
-    const { gearFunction, gearWeather, gearSeasons } = this.state;
+    const {
+      gearFunction,
+      gearWeather,
+      gearSeasons,
+      gearParties,
+    } = this.state;
 
     return (
       <tbody>
@@ -55,7 +62,12 @@ class GearItem extends React.Component {
           }
 
           <td><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
-          <td>{gearItem.party}</td>
+          {
+            gearParties
+              ? <td>{gearParties.map((item) => <img className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              : <td>N/A</td>
+          }
+
           { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
           <td>{gearItem.expirationYear}</td>
           <td>

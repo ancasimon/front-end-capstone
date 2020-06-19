@@ -8,7 +8,7 @@ const getSeasons = () => new Promise((resolve, reject) => {
     .then((response) => {
       const fbSeasons = response.data;
       const seasons = [];
-      if (seasons) {
+      if (fbSeasons) {
         Object.keys(fbSeasons).forEach((seasonId) => {
           fbSeasons[seasonId].id = seasonId;
           seasons.push(fbSeasons[seasonId]);

@@ -1,6 +1,8 @@
 import functionsData from './functionsData';
 import gearData from './gearData';
+import gearPartyData from './gearPartyData';
 import gearSeasonData from './gearSeasonData';
+import partyData from './partyData';
 import seasonsData from './seasonsData';
 import weatherData from './weatherData';
 
@@ -22,12 +24,23 @@ const getGearProperties = (gearId) => new Promise((resolve, reject) => {
                       gearSeasons.forEach((gearSeasonObject) => {
                         const foundGearSeason = allSeasons.find((seasonValue) => seasonValue.id === gearSeasonObject.seasonId);
                         selectedGearSeasons.push(foundGearSeason);
+                        gearPartyData.getGearPartiesByGearId(gearId)
+                          .then((gearParties) => {
+                            partyData.getPartyValues()
+                              .then((allPartyValues) => {
+                                const selectedGearParties = [];
+                                gearParties.forEach((gearPartyObject) => {
+                                  const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
+                                  selectedGearParties.push(foundGearParty);
+                                  gearMetadata.function = selectedFunction;
+                                  gearMetadata.weather = selectedWeather;
+                                  gearMetadata.seasons = selectedGearSeasons;
+                                  gearMetadata.parties = selectedGearParties;
+                                  resolve(gearMetadata);
+                                });
+                              });
+                          });
                       });
-                      gearMetadata.function = selectedFunction;
-                      gearMetadata.weather = selectedWeather;
-                      gearMetadata.seasons = selectedGearSeasons;
-                      resolve(gearMetadata);
-                      console.log('gear metadata', gearMetadata);
                     });
                 });
             });
