@@ -2,6 +2,14 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
 
-body {
-  background-color: $darkgreen;
+table {
+  overflow-y: auto;
+  height: 50vh;    /* !!!  HEIGHT MUST BE IN [ vh ] !!! */
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: grey;
+  
 }

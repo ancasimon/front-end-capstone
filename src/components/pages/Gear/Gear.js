@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Table } from 'reactstrap';
 
 import GearItem from '../../shared/GearItem/GearItem';
 
@@ -30,14 +30,25 @@ class Gear extends React.Component {
       <GearItem key={gearItem.id} gearItem={gearItem} />
     ));
     return (
-      <div className="Gear">
+      <div className="Gear col-12">
         <h1>Gear List Page</h1>
-        <Link to='gear/:gearItemId'>View</Link>
-        <Link to='gear/new'>Add</Link>
-        <Link to='gear/edit/:gearItemId'>Edit</Link>
-        <div>
-          {buildGearGrid}
-        </div>
+
+        <Table hover>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Image</th>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Exp. Yr.</th>
+              <th>Function</th>
+              <th>Weather</th>
+              <th>Available?</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+            {buildGearGrid}
+        </Table>
       </div>
     );
   }
