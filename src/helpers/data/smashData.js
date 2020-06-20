@@ -28,7 +28,7 @@ const getGearProperties = (gearId) => new Promise((resolve, reject) => {
                         // make a copy of the season record
                         // add a new isChecked property to the season record, set to false initially
                         // push the copies season record into the seasons array on the gear record
-                        // 
+                        //
                         selectedGearSeasons.push(foundGearSeason);
                         gearPartyData.getGearPartiesByGearId(gearId)
                           .then((gearParties) => {
