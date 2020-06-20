@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 
 import GearItem from '../../shared/GearItem/GearItem';
@@ -30,9 +31,11 @@ class Gear extends React.Component {
       <GearItem key={gearItem.id} gearItem={gearItem} />
     ));
     return (
-      <div className="Gear col-12">
+      <div className="Gear col-12 pt-0">
         <h1>Gear List Page</h1>
-
+        <div className="p-3">
+          <Link to='gear/new' className="mt-5">Did you buy some new gear? Add it to your list!</Link>
+        </div>
         <Table hover>
           <thead>
             <tr>

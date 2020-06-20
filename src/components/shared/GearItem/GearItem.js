@@ -72,8 +72,8 @@ class GearItem extends React.Component {
           <td>{gearItem.expirationYear}</td>
           <td>
             <Link to='gear/:gearItemId'>View</Link>
-            <Link to='gear/new'>Add</Link>
             <Link to='gear/edit/:gearItemId'>Edit</Link>
+            <button className="btn">Delete</button>
           </td>
         </tr>
       </tbody>
