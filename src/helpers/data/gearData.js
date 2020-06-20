@@ -21,4 +21,6 @@ const getGearByUid = (uid) => new Promise((resolve, reject) => {
 
 const getSingleGear = (gearId) => axios.get(`${baseUrl}/gear/${gearId}.json`);
 
-export default { getGearByUid, getSingleGear };
+const postGear = (newGear) => axios.post(`${baseUrl}/gear.json`, newGear);
+
+export default { getGearByUid, getSingleGear, postGear };

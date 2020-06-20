@@ -54,26 +54,27 @@ class GearItem extends React.Component {
           <td>{gearItem.brand}</td>
           <td>{gearItem.model}</td>
           <td><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
+          {/* { console.log('func value', gearFunction.id) } */}
 
           {
             gearSeasons
-              ? <td>{gearSeasons.map((item) => <img className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              ? <td>{gearSeasons.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
 
           <td><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
           {
             gearParties
-              ? <td>{gearParties.map((item) => <img className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              ? <td>{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
-
+          <td>{gearItem.weightInGrams * 1 }</td>
           { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
           <td>{gearItem.expirationYear}</td>
           <td>
             <Link to='gear/:gearItemId'>View</Link>
-            <Link to='gear/new'>Add</Link>
             <Link to='gear/edit/:gearItemId'>Edit</Link>
+            <button className="btn">Delete</button>
           </td>
         </tr>
       </tbody>
