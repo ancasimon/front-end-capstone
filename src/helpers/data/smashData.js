@@ -7,7 +7,6 @@ import seasonsData from './seasonsData';
 import weatherData from './weatherData';
 
 const getGearProperties = (gearId) => new Promise((resolve, reject) => {
-  console.log('running smash function', gearId);
   gearData.getSingleGear(gearId)
     .then((singleGearResponse) => {
       functionsData.getFunctions()
@@ -43,7 +42,6 @@ const getGearProperties = (gearId) => new Promise((resolve, reject) => {
                                   gearMetadata.weather = selectedWeather;
                                   gearMetadata.seasons = selectedGearSeasons;
                                   gearMetadata.parties = selectedGearParties;
-                                  console.log('gear item after smash', gearId, gearMetadata);
                                   resolve(gearMetadata);
                                 });
                               });
