@@ -5,6 +5,7 @@ import smashData from '../../../helpers/data/smashData';
 
 import gearShape from '../../../helpers/propz/gearShape';
 
+import '../../../styles/index.scss';
 import './GearItem.scss';
 
 class GearItem extends React.Component {
@@ -46,6 +47,9 @@ class GearItem extends React.Component {
       gearParties,
     } = this.state;
 
+    const singleLink = `/gear/${gearItem.id}`;
+    const editLink = `/gear/edit/${gearItem.id}`;
+
     return (
       <tbody>
         <tr>
@@ -71,10 +75,10 @@ class GearItem extends React.Component {
           <td>{gearItem.weightInGrams * 1 }</td>
           { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
           <td>{gearItem.expirationYear}</td>
-          <td>
-            <Link to='gear/:gearItemId'>View</Link>
-            <Link to='gear/edit/:gearItemId'>Edit</Link>
-            <button className="btn">Delete</button>
+          <td className="row">
+            <Link to={singleLink} className="btn p-1"><i className="fas fa-eye"></i></Link>
+            <Link to={editLink} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <button className="btn pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
           </td>
         </tr>
       </tbody>

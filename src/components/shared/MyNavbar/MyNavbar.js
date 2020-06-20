@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import '../../../styles/index.scss';
 import './MyNavbar.scss';
 
 class MyNavbar extends React.Component {
