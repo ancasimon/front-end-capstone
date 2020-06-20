@@ -10,7 +10,9 @@ table {
 thead th {
   position: sticky;
   top: 0;
-  background-color: lightgreen
-  ;
-  
+  background-color: lightgreen;
+}
+
+.pointerHand {
+  cursor: pointer;
 }
