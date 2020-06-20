@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import authData from '../../../helpers/data/authData';
 import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
+import gearSeasonData from '../../../helpers/data/gearSeasonData';
+import partyData from '../../../helpers/data/partyData';
+import seasonsData from '../../../helpers/data/seasonsData';
 import weatherData from '../../../helpers/data/weatherData';
 
 import './NewGear.scss';
@@ -24,6 +27,8 @@ class NewGear extends React.Component {
     gearImageUrl: '',
     functionsList: [],
     weatherList: [],
+    seasonsList: [],
+    partyList: [],
   }
 
   getFunctionsList = () => {
@@ -38,10 +43,40 @@ class NewGear extends React.Component {
       .catch((err) => console.error('unable to get list of weather values', err));
   }
 
+  getSeasonsList = () => {
+    seasonsData.getSeasons()
+      .then((seasonsList) => this.setState({ seasonsList }))
+      .catch((err) => console.error('unable to get list of seasons', err));
+  }
+
+  getPartyList = () => {
+    partyData.getPartyValues()
+      .then((partyList) => this.setState({ partyList }))
+      .catch((err) => console.error('unabel to get list of parties', err));
+  }
+
   componentDidMount() {
     this.getFunctionsList();
     this.getWeatherList();
+    this.getSeasonsList();
+    this.getPartyList();
   }
+
+  // createGearSeasonRecord = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.dataset);
+  //   console.log(e.target.checked);
+  //   // if (e.target.checked) {
+  //   //   const newGearSeason = {
+  //   //     gearId: e.target.dataset,
+  //   //     seasonId: e.target.checked,
+  //   //   };
+  //     // console.log('new gearseason', newGearSeason);
+  //     // gearSeasonData.postGearSeason(newGearSeason)
+  //     //   .then(() => console.log('created new gearseason'))
+  //     //   .catch((err) => console.error('unable to create a new gearSeason record', err));
+  //   // }
+  // }
 
   changeGearItem = (e) => {
     e.preventDefault();
@@ -134,8 +169,11 @@ class NewGear extends React.Component {
       imageUrl: gearImageUrl,
     };
     gearData.postGear(newGear)
-      .then(() => this.props.history.push('/gear'))
-      .catch((err) => console.error('unabel to save new gear', err));
+      .then(() => {
+        // this.createGearSeasonRecord();
+        this.props.history.push('/gear');
+      })
+      .catch((err) => console.error('unable to save new gear', err));
   }
 
   render() {
@@ -154,14 +192,34 @@ class NewGear extends React.Component {
       gearImageUrl,
       functionsList,
       weatherList,
+      seasonsList,
+      partyList,
     } = this.state;
 
     const buildFunctionsList = () => functionsList.map((functionValue) => (
-        <option key={functionValue.id} value={functionValue.id}>{functionValue.name}</option>
+      <option key={functionValue.id} value={functionValue.id}>{functionValue.name}</option>
     ));
 
     const buildWeatherList = () => weatherList.map((weatherValue) => (
-        <option key={weatherValue.id} value={weatherValue.id}>{weatherValue.name}</option>
+      <option key={weatherValue.id} value={weatherValue.id}>{weatherValue.name}</option>
+    ));
+
+    const buildSeasonsList = () => seasonsList.map((seasonValue) => (
+      <div className="form-check col-2" key={seasonValue.id}>
+        <input className="form-check-input gearSeasonCheckbox" type="checkbox" name="gearSeason" id={seasonValue.id} value={seasonValue.id} />
+        <label className="form-check-label" htmlFor={seasonValue.id}>
+          {seasonValue.name}
+        </label>
+      </div>
+    ));
+
+    const buildPartyList = () => partyList.map((partyValue) => (
+      <div className="form-check col-2" key={partyValue.id}>
+        <input className="form-check-input" type="checkbox" name="gearParty" id={partyValue.id} value={partyValue.id} />
+        <label className="form-check-label" htmlFor={partyValue.id}>
+          {partyValue.name}
+        </label>
+      </div>
     ));
 
     return (
@@ -169,6 +227,24 @@ class NewGear extends React.Component {
         <h1>Add a New Gear Item Page</h1>
 
         <form>
+{/* This is the row of radio buttons for the Seasons collection. */}
+          <div className="container col-12 inputBorder">
+            <p>Season: Is this to be used all the time or only during a specific season?</p>
+            <div
+              className="row justify-content-center p-3"
+            >
+              { buildSeasonsList() }
+            </div>
+          </div>
+
+{/* This is the row of radio buttons for the Party collection. */}
+          <div className="container col-12 inputBorder">
+            <p>Party: Will you use this all the time or only when going as a couple, with the family, or solo?</p>
+            <div className="row justify-content-center p-3">
+              { buildPartyList() }
+            </div>
+          </div>
+
           <div className="row justify-content-center">
           <div className="col-4">
           <div className="form-group">

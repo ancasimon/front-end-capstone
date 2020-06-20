@@ -20,4 +20,6 @@ const getGearSeasonsByGearId = (gearId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getGearSeasonsByGearId };
+const postGearSeason = (newGearSeason) => axios.post(`${baseUrl}/gearSeason.json`, newGearSeason);
+
+export default { getGearSeasonsByGearId, postGearSeason };
