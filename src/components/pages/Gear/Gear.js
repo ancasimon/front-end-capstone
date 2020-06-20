@@ -25,6 +25,10 @@ class Gear extends React.Component {
     this.getGear();
   }
 
+  componentWillUnmount() {
+    this.getGear();
+  }
+
   render() {
     const { gear } = this.state;
     const buildGearGrid = gear.map((gearItem) => (

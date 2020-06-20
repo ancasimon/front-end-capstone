@@ -37,6 +37,10 @@ class GearItem extends React.Component {
     this.getAdditionalGearProperties();
   }
 
+  componentWillUnmount() {
+    this.getAdditionalGearProperties();
+  }
+
   render() {
     const { gearItem } = this.props;
     const {
@@ -57,14 +61,14 @@ class GearItem extends React.Component {
 
           {
             gearSeasons
-              ? <td>{gearSeasons.map((item) => <img className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              ? <td>{gearSeasons.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
 
           <td><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
           {
             gearParties
-              ? <td>{gearParties.map((item) => <img className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              ? <td>{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
 
