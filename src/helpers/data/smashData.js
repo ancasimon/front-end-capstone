@@ -7,6 +7,7 @@ import seasonsData from './seasonsData';
 import weatherData from './weatherData';
 
 const getGearProperties = (gearId) => new Promise((resolve, reject) => {
+  console.log('running smash function', gearId);
   gearData.getSingleGear(gearId)
     .then((singleGearResponse) => {
       functionsData.getFunctions()
@@ -16,33 +17,34 @@ const getGearProperties = (gearId) => new Promise((resolve, reject) => {
             .then((allWeatherValues) => {
               const gearMetadata = {};
               const selectedWeather = allWeatherValues.find((y) => y.id === singleGearResponse.data.weatherId);
-              gearSeasonData.getGearSeasonsByGearId(gearId)
-                .then((gearSeasons) => {
-                  seasonsData.getSeasons()
-                    .then((allSeasons) => {
-                      const selectedGearSeasons = [];
-                      gearSeasons.forEach((gearSeasonObject) => {
-                        const foundGearSeason = allSeasons.find((seasonValue) => seasonValue.id === gearSeasonObject.seasonId);
-                        selectedGearSeasons.push(foundGearSeason);
-                        gearPartyData.getGearPartiesByGearId(gearId)
-                          .then((gearParties) => {
-                            partyData.getPartyValues()
-                              .then((allPartyValues) => {
-                                const selectedGearParties = [];
-                                gearParties.forEach((gearPartyObject) => {
-                                  const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
-                                  selectedGearParties.push(foundGearParty);
+              // gearSeasonData.getGearSeasonsByGearId(gearId)
+              //   .then((gearSeasons) => {
+              //     seasonsData.getSeasons()
+              //       .then((allSeasons) => {
+              //         const selectedGearSeasons = [];
+              //         gearSeasons.forEach((gearSeasonObject) => {
+              //           const foundGearSeason = allSeasons.find((seasonValue) => seasonValue.id === gearSeasonObject.seasonId);
+              //           selectedGearSeasons.push(foundGearSeason);
+              //           gearPartyData.getGearPartiesByGearId(gearId)
+              //             .then((gearParties) => {
+              //               partyData.getPartyValues()
+              //                 .then((allPartyValues) => {
+              //                   const selectedGearParties = [];
+              //                   gearParties.forEach((gearPartyObject) => {
+              //                     const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
+                                  // selectedGearParties.push(foundGearParty);
                                   gearMetadata.function = selectedFunction;
                                   gearMetadata.weather = selectedWeather;
-                                  gearMetadata.seasons = selectedGearSeasons;
-                                  gearMetadata.parties = selectedGearParties;
+                                  // gearMetadata.seasons = selectedGearSeasons;
+                                  // gearMetadata.parties = selectedGearParties;
+                                  console.log('gear item after smash', gearId, gearMetadata);
                                   resolve(gearMetadata);
-                                });
-                              });
-                          });
-                      });
-                    });
-                });
+                      //           });
+                      //         });
+                      //     });
+                      // });
+                //     });
+                // });
             });
         });
     })

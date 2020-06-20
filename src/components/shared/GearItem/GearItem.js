@@ -37,10 +37,6 @@ class GearItem extends React.Component {
     this.getAdditionalGearProperties();
   }
 
-  componentWillUnmount() {
-    this.getAdditionalGearProperties();
-  }
-
   render() {
     const { gearItem } = this.props;
     const {
@@ -58,6 +54,7 @@ class GearItem extends React.Component {
           <td>{gearItem.brand}</td>
           <td>{gearItem.model}</td>
           <td><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
+          {/* { console.log('func value', gearFunction.id) } */}
 
           {
             gearSeasons
@@ -71,7 +68,7 @@ class GearItem extends React.Component {
               ? <td>{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
-
+          <td>{gearItem.weightInGrams * 1 }</td>
           { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
           <td>{gearItem.expirationYear}</td>
           <td>

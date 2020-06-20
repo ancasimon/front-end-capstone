@@ -25,10 +25,6 @@ class Gear extends React.Component {
     this.getGear();
   }
 
-  componentWillUnmount() {
-    this.getGear();
-  }
-
   render() {
     const { gear } = this.state;
     const buildGearGrid = gear.map((gearItem) => (
@@ -51,6 +47,7 @@ class Gear extends React.Component {
               <th>Seasons</th>
               <th>Weather</th>
               <th>Party</th>
+              <th>Weight (gr.)</th>
               <th>Available?</th>
               <th>Exp. Yr.</th>
               <th>Actions</th>

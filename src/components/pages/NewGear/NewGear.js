@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import authData from '../../../helpers/data/authData';
+import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
+import weatherData from '../../../helpers/data/weatherData';
 
 import './NewGear.scss';
 
@@ -17,9 +19,28 @@ class NewGear extends React.Component {
     gearManYr: 2000,
     gearExpYr: 2050,
     gearWeight: 0,
-    gearFunction: '1',
-    gearWeather: '1',
+    gearFunction: '',
+    gearWeather: '',
     gearImageUrl: '',
+    functionsList: [],
+    weatherList: [],
+  }
+
+  getFunctionsList = () => {
+    functionsData.getFunctions()
+      .then((functionsList) => this.setState({ functionsList }))
+      .catch((err) => console.error('unable to get list of function values', err));
+  }
+
+  getWeatherList = () => {
+    weatherData.getWeatherValues()
+      .then((weatherList) => this.setState({ weatherList }))
+      .catch((err) => console.error('unable to get list of weather values', err));
+  }
+
+  componentDidMount() {
+    this.getFunctionsList();
+    this.getWeatherList();
   }
 
   changeGearItem = (e) => {
@@ -52,21 +73,28 @@ class NewGear extends React.Component {
 
   changeGearManYr = (e) => {
     e.preventDefault();
-    this.setState({ gearManYr: e.target.value });
+    this.setState({ gearManYr: e.target.value * 1 });
   }
 
   changeGearExpYr = (e) => {
     e.preventDefault();
-    this.setState({ gearExpYr: e.target.value });
+    this.setState({ gearExpYr: e.target.value * 1 });
   }
 
   changeGearWeight = (e) => {
     e.preventDefault();
-    this.setState({ gearWeight: e.target.value });
+    this.setState({ gearWeight: e.target.value * 1 });
   }
 
-  // changeGearFunction
-  // changeGearWeather
+  changeGearFunction = (e) => {
+    e.preventDefault();
+    this.setState({ gearFunction: e.target.value });
+  }
+
+  changeGearWeather = (e) => {
+    e.preventDefault();
+    this.setState({ gearWeather: e.target.value });
+  }
 
   changeGearImageUrl = (e) => {
     e.preventDefault();
@@ -89,6 +117,7 @@ class NewGear extends React.Component {
       gearWeather,
       gearImageUrl,
     } = this.state;
+
     const newGear = {
       uid: authData.getUid(),
       item: gearItem,
@@ -123,7 +152,17 @@ class NewGear extends React.Component {
       gearFunction,
       gearWeather,
       gearImageUrl,
+      functionsList,
+      weatherList,
     } = this.state;
+
+    const buildFunctionsList = () => functionsList.map((functionValue) => (
+        <option key={functionValue.id} value={functionValue.id}>{functionValue.name}</option>
+    ));
+
+    const buildWeatherList = () => weatherList.map((weatherValue) => (
+        <option key={weatherValue.id} value={weatherValue.id}>{weatherValue.name}</option>
+    ));
 
     return (
       <div className="NewGear col-12">
@@ -236,15 +275,11 @@ class NewGear extends React.Component {
             <select
               className="form-control"
               id="gear-function"
-              // value={gearFunction}
-              // onChange={this.changeGearFunction}
+              value={gearFunction}
+              onChange={this.changeGearFunction}
             >
-              {/* XXX NEED to get functions list to display here! */}
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {/* NEED to get the list of function values from Firebase to display here! */}
+              { buildFunctionsList() }
             </select>
           </div>
           <div className="form-group">
@@ -252,15 +287,11 @@ class NewGear extends React.Component {
             <select
               className="form-control"
               id="gear-weather"
-              // value={gearWeather}
-              // onChange={this.changeGearWeather}
+              value={gearWeather}
+              onChange={this.changeGearWeather}
             >
-              {/* XXX NEED to get weather list to display here! */}
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {/* NEED to get the list of weather values from Firebase to display here! */}
+              {buildWeatherList()}
             </select>
           </div>
           <div className="form-group">
