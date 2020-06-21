@@ -16,7 +16,7 @@ class SingleGear extends React.Component {
 
   buildSingleView = () => {
     const { gearItemId } = this.props.match.params;
-    smashData.getGearProperties(gearItemId)
+    smashData.getGearWithProperties(gearItemId)
       .then((response) => this.setState({
         gearItem: response.data,
         gearFunction: response.function,

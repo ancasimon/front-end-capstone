@@ -9,6 +9,7 @@ import partyData from '../../../helpers/data/partyData';
 import seasonsData from '../../../helpers/data/seasonsData';
 import weatherData from '../../../helpers/data/weatherData';
 
+import '../../../styles/index.scss';
 import './NewGear.scss';
 
 class NewGear extends React.Component {
