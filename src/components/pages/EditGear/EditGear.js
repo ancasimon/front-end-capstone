@@ -7,6 +7,7 @@ import gearData from '../../../helpers/data/gearData';
 import gearSeasonData from '../../../helpers/data/gearSeasonData';
 import partyData from '../../../helpers/data/partyData';
 import seasonsData from '../../../helpers/data/seasonsData';
+import smashData from '../../../helpers/data/smashData';
 import weatherData from '../../../helpers/data/weatherData';
 
 import '../../../styles/index.scss';
@@ -30,6 +31,7 @@ class EditGear extends React.Component {
     weatherList: [],
     seasonsList: [],
     partyList: [],
+    gearSeasons: [],
   }
 
   getFunctionsList = () => {
@@ -49,6 +51,12 @@ class EditGear extends React.Component {
       .then((seasonsList) => this.setState({ seasonsList }))
       .catch((err) => console.error('unable to get list of seasons', err));
   }
+  // THOUGHT I would copy the seasonsList function above abut make it get the seasons from the gearItem resolved in the smash function - still not done!!!!
+  // getSelectedSeasonsList = () => {
+  //   smashData.getGearWithProperties(gearItem.id)
+  //     .then((seasons) => this.setState({ seasonsList }))
+  //     .catch((err) => console.error('unable to get list of seasons', err));
+  // }
 
   getPartyList = () => {
     partyData.getPartyValues()
@@ -213,6 +221,16 @@ class EditGear extends React.Component {
         </label>
       </div>
     ));
+
+    // THOUGHT I would copy the function below but make it display the seasons frpm inside a gear object instead - which I need to make sure have the isChecked property!!!That's still not working!!!
+    // const buildSeasonsList = () => seasonsList.map((seasonValue) => (
+    //   <div className="form-check col-2" key={seasonValue.id}>
+    //     <input className="form-check-input gearSeasonCheckbox" type="checkbox" name="gearSeason" id={seasonValue.id} value={seasonValue.id} />
+    //     <label className="form-check-label" htmlFor={seasonValue.id}>
+    //       {seasonValue.name}
+    //     </label>
+    //   </div>
+    // ));
 
     const buildPartyList = () => partyList.map((partyValue) => (
       <div className="form-check col-2" key={partyValue.id}>
