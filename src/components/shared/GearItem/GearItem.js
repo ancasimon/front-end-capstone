@@ -78,9 +78,12 @@ class GearItem extends React.Component {
               ? <td>{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
-          <td>{gearItem.weightInGrams * 1 }</td>
-          { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
-          <td>{gearItem.expirationYear}</td>
+          {/* <td>{gearItem.weightInGrams * 1 }</td> */}
+
+          { gearItem.isAvailable ? <td className="green"><i class="fas fa-check"></i></td> : <td className="red"><i class="fas fa-times"></i></td> }
+
+          {/* <td>{gearItem.expirationYear}</td> */}
+
           <td className="row">
             <Link to={singleLink} className="btn p-1"><i className="fas fa-eye"></i></Link>
             <Link to={newRoute} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
