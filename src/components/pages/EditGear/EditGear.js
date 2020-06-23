@@ -325,6 +325,9 @@ class EditGear extends React.Component {
     return (
       <div className="NewGear col-12">
         <h1>Edit Your Gear</h1>
+        <div>
+          <img className="singleGearPhoto" src={gearImageUrl} alt={gearItem} />
+        </div>
 
         <form>
 {/* This is the row of radio buttons for the Seasons collection. */}
@@ -346,7 +349,7 @@ class EditGear extends React.Component {
           </div>
 
           <div className="row justify-content-center">
-          <div className="col-4">
+          <div className="col-sm-4">
           <div className="form-group">
             <label htmlFor="gear-item">Item</label>
             <input
@@ -413,7 +416,7 @@ class EditGear extends React.Component {
             <label className="form-check-label" htmlFor="gear-available">Is it available?</label>
           </div>
           </div>
-          <div className="col-4">
+          <div className="col-sm-4">
           <div className="form-group">
             <label htmlFor="gear-manYr">Manufacture Year</label>
             <input

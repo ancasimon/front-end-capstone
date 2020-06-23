@@ -80,7 +80,7 @@ class GearItem extends React.Component {
           }
           {/* <td>{gearItem.weightInGrams * 1 }</td> */}
 
-          { gearItem.isAvailable ? <td className="green"><i class="fas fa-check"></i></td> : <td className="red"><i class="fas fa-times"></i></td> }
+          { gearItem.isAvailable ? <td className="green"><i className="fas fa-check"></i></td> : <td className="red"><i className="fas fa-times"></i></td> }
 
           {/* <td>{gearItem.expirationYear}</td> */}
 
