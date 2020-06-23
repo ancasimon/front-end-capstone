@@ -22,4 +22,10 @@ const getGearSeasonsByGearId = (gearId) => new Promise((resolve, reject) => {
 
 const postGearSeason = (newGearSeason) => axios.post(`${baseUrl}/gearSeason.json`, newGearSeason);
 
-export default { getGearSeasonsByGearId, postGearSeason };
+const deleteGearSeason = (gearSeasonId) => axios.delete(`${baseUrl}/gearSeason/${gearSeasonId}.json`);
+
+export default {
+  getGearSeasonsByGearId,
+  postGearSeason,
+  deleteGearSeason,
+};

@@ -9,7 +9,9 @@ import partyData from '../../../helpers/data/partyData';
 import seasonsData from '../../../helpers/data/seasonsData';
 import weatherData from '../../../helpers/data/weatherData';
 
+import '../../../styles/index.scss';
 import './NewGear.scss';
+import gearPartyData from '../../../helpers/data/gearPartyData';
 
 class NewGear extends React.Component {
   state = {
@@ -29,6 +31,8 @@ class NewGear extends React.Component {
     weatherList: [],
     seasonsList: [],
     partyList: [],
+    gearSeasonsList: [],
+    gearPartyList: [],
   }
 
   getFunctionsList = () => {
@@ -62,21 +66,66 @@ class NewGear extends React.Component {
     this.getPartyList();
   }
 
-  // createGearSeasonRecord = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.dataset);
-  //   console.log(e.target.checked);
-  //   // if (e.target.checked) {
-  //   //   const newGearSeason = {
-  //   //     gearId: e.target.dataset,
-  //   //     seasonId: e.target.checked,
-  //   //   };
-  //     // console.log('new gearseason', newGearSeason);
-  //     // gearSeasonData.postGearSeason(newGearSeason)
-  //     //   .then(() => console.log('created new gearseason'))
-  //     //   .catch((err) => console.error('unable to create a new gearSeason record', err));
-  //   // }
-  // }
+  changeGearSeason = (e) => {
+    const gearSeasonsArr = this.state.gearSeasonsList;
+    // console.log('target', e.target.checked);
+    // console.log('whole e', e);
+    if (e.target.checked) {
+      gearSeasonsArr.push(e.target.value);
+    } else {
+      console.log('unchecked', e.target.value);
+      console.log('current array', gearSeasonsArr);
+      const selSeasonIndex = gearSeasonsArr.indexOf(e.target.value);
+      console.log('index', selSeasonIndex);
+      gearSeasonsArr.splice(selSeasonIndex, 1);
+      console.log('updated array', gearSeasonsArr);
+    }
+    this.setState({ gearSeasonsList: gearSeasonsArr });
+    console.log('state', this.state);
+  }
+
+  createNewGearSeasonRecord = (gearId) => {
+    const { gearSeasonsList } = this.state;
+    gearSeasonsList.forEach((seasonId) => {
+      const newGearSeason = {
+        gearId,
+        seasonId,
+      };
+      console.log('new gearseason', newGearSeason);
+      gearSeasonData.postGearSeason(newGearSeason)
+        .then(() => console.log('created new gearseason'))
+        .catch((err) => console.error('could not create new gearSeason record'));
+    });
+  }
+
+  changeGearParty = (e) => {
+    const gearPartyArr = this.state.gearPartyList;
+    if (e.target.checked) {
+      gearPartyArr.push(e.target.value);
+    } else {
+      console.log('unchecked', e.target.value);
+      const selPartyIndex = gearPartyArr.indexOf(e.target.value);
+      console.log('index', selPartyIndex);
+      gearPartyArr.splice(selPartyIndex, 1);
+      console.log('updated paryy list', gearPartyArr);
+    }
+    this.setState({ gearPartyList: gearPartyArr });
+    console.log('state', this.state);
+  }
+
+  createNewGearPartyRecord = (gearId) => {
+    const { gearPartyList } = this.state;
+    gearPartyList.forEach((partyId) => {
+      const newGearParty = {
+        gearId,
+        partyId,
+      };
+      console.log('new gear party record', newGearParty);
+      gearPartyData.postGearParty(newGearParty)
+        .then(() => console.log('created new gearParty'))
+        .catch((err) => console.error('could not create new gearParty record'));
+    });
+  }
 
   changeGearItem = (e) => {
     e.preventDefault();
@@ -168,9 +217,13 @@ class NewGear extends React.Component {
       weightInGrams: gearWeight,
       imageUrl: gearImageUrl,
     };
+
     gearData.postGear(newGear)
-      .then(() => {
-        // this.createGearSeasonRecord();
+      .then((fbResponse) => {
+        const newGearId = fbResponse.data.name;
+        console.log('new gearid', newGearId);
+        this.createNewGearSeasonRecord(newGearId);
+        this.createNewGearPartyRecord(newGearId);
         this.props.history.push('/gear');
       })
       .catch((err) => console.error('unable to save new gear', err));
@@ -206,7 +259,14 @@ class NewGear extends React.Component {
 
     const buildSeasonsList = () => seasonsList.map((seasonValue) => (
       <div className="form-check col-2" key={seasonValue.id}>
-        <input className="form-check-input gearSeasonCheckbox" type="checkbox" name="gearSeason" id={seasonValue.id} value={seasonValue.id} />
+        <input
+          className="form-check-input gearSeasonCheckbox"
+          type="checkbox"
+          name="gearSeason"
+          id={seasonValue.id}
+          value={seasonValue.id}
+          onChange={this.changeGearSeason}
+        />
         <label className="form-check-label" htmlFor={seasonValue.id}>
           {seasonValue.name}
         </label>
@@ -215,7 +275,14 @@ class NewGear extends React.Component {
 
     const buildPartyList = () => partyList.map((partyValue) => (
       <div className="form-check col-2" key={partyValue.id}>
-        <input className="form-check-input" type="checkbox" name="gearParty" id={partyValue.id} value={partyValue.id} />
+        <input
+          className="form-check-input"
+          type="checkbox"
+          name="gearParty"
+          id={partyValue.id}
+          value={partyValue.id}
+          onChange={this.changeGearParty}
+        />
         <label className="form-check-label" htmlFor={partyValue.id}>
           {partyValue.name}
         </label>
