@@ -25,10 +25,10 @@ class GearItem extends React.Component {
     smashData.getGearWithProperties(gearItem.id)
       .then((gearWithProperties) => {
         this.setState({
-          gearFunction: gearWithProperties.function,
-          gearWeather: gearWithProperties.weather,
-          gearSeasons: gearWithProperties.seasons,
-          gearParties: gearWithProperties.parties,
+          gearFunction: gearWithProperties.selectedFunction,
+          gearWeather: gearWithProperties.selectedWeather,
+          gearSeasons: gearWithProperties.selectedSeasons,
+          gearParties: gearWithProperties.selectedParties,
         });
       })
       .catch((err) => console.error('unable to get additional properties of gear item', err));

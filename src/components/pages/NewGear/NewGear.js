@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import authData from '../../../helpers/data/authData';
 import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
+import gearPartyData from '../../../helpers/data/gearPartyData';
 import gearSeasonData from '../../../helpers/data/gearSeasonData';
 import partyData from '../../../helpers/data/partyData';
 import seasonsData from '../../../helpers/data/seasonsData';
@@ -11,7 +12,6 @@ import weatherData from '../../../helpers/data/weatherData';
 
 import '../../../styles/index.scss';
 import './NewGear.scss';
-import gearPartyData from '../../../helpers/data/gearPartyData';
 
 class NewGear extends React.Component {
   state = {

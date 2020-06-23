@@ -36,10 +36,10 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                                   const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
                                   selectedGearParties.push(foundGearParty);
                                   const gearWithMetadata = { ...singleGearResponse.data };
-                                  gearWithMetadata.function = selectedFunction;
-                                  gearWithMetadata.weather = selectedWeather;
-                                  gearWithMetadata.seasons = selectedGearSeasons;
-                                  gearWithMetadata.parties = selectedGearParties;
+                                  gearWithMetadata.selectedFunction = selectedFunction;
+                                  gearWithMetadata.selectedWeather = selectedWeather;
+                                  gearWithMetadata.selectedSeasons = selectedGearSeasons;
+                                  gearWithMetadata.selectedParties = selectedGearParties;
                                   // console.log('gearmetadata', gearWithMetadata);
                                   resolve(gearWithMetadata);
                                 });

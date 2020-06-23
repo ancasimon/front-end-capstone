@@ -20,10 +20,10 @@ class SingleGear extends React.Component {
     smashData.getGearWithProperties(gearItemId)
       .then((response) => this.setState({
         gearItem: response,
-        gearFunction: response.function,
-        gearWeather: response.weather,
-        gearSeasons: response.seasons,
-        gearParties: response.parties,
+        gearFunction: response.selectedFunction,
+        gearWeather: response.selectedWeather,
+        gearSeasons: response.selectedSeasons,
+        gearParties: response.selectedParties,
       }))
       .catch((err) => console.error('unable to get gear record', err));
   }
