@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import authData from '../../../helpers/data/authData';
 import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
@@ -36,6 +38,10 @@ class EditGear extends React.Component {
     gearPartyList: [],
   }
 
+  static propTypes = {
+    previouspath: PropTypes.string,
+  }
+
   getFunctionsList = () => {
     functionsData.getFunctions()
       .then((functionsList) => this.setState({ functionsList }))
@@ -58,10 +64,12 @@ class EditGear extends React.Component {
   getPartyList = () => {
     partyData.getPartyValues()
       .then((partyList) => this.setState({ partyList }))
-      .catch((err) => console.error('unabel to get list of parties', err));
+      .catch((err) => console.error('unable to get list of parties', err));
   }
 
   componentDidMount() {
+    console.log('props', this.props);
+    console.log('this!!!', this);
     this.getFunctionsList();
     this.getWeatherList();
     this.getSeasonsList();
@@ -245,12 +253,11 @@ class EditGear extends React.Component {
     };
 
     gearData.putGear(gearItemId, updatedGearItem)
-      .then((fbResponse) => {
-        const updatedGearId = fbResponse.data.name;
-        console.log('updated gearid', updatedGearId);
+      .then(() => {
+        const { previouspath } = this.props.location;
         // this.createNewGearSeasonRecord(updatedGearId);
         // this.createNewGearPartyRecord(updatedGearId);
-        this.props.history.push('/gear');
+        previouspath === '/gear' ? this.props.history.push('/gear') : this.props.history.push(previouspath.currentpath);
       })
       .catch((err) => console.error('unable to save new gear', err));
   }

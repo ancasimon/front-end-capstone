@@ -14,6 +14,7 @@ class GearItem extends React.Component {
     gearWeather: {},
     gearSeasons: [],
     gearParties: [],
+    currentpath: '/gear',
   }
 
   static propTypes = {
@@ -45,10 +46,15 @@ class GearItem extends React.Component {
       gearWeather,
       gearSeasons,
       gearParties,
+      currentpath,
     } = this.state;
 
     const singleLink = `/gear/${gearItem.id}`;
     const editLink = `/gear/edit/${gearItem.id}`;
+    const newRoute = {
+      pathname: `/gear/edit/${gearItem.id}`,
+      previouspath: { currentpath },
+    };
 
     return (
       <tbody>
@@ -77,7 +83,7 @@ class GearItem extends React.Component {
           <td>{gearItem.expirationYear}</td>
           <td className="row">
             <Link to={singleLink} className="btn p-1"><i className="fas fa-eye"></i></Link>
-            <Link to={editLink} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <Link to={newRoute} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
             <button className="btn pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
           </td>
         </tr>

@@ -12,6 +12,7 @@ class SingleGear extends React.Component {
     gearWeather: {},
     gearSeasons: [],
     gearParties: [],
+    currentpath: '',
   }
 
   buildSingleView = () => {
@@ -24,6 +25,7 @@ class SingleGear extends React.Component {
         gearWeather: response.selectedWeather,
         gearSeasons: response.selectedSeasons,
         gearParties: response.selectedParties,
+        currentpath: this.props.location.pathname,
       }))
       .catch((err) => console.error('unable to get gear record', err));
   }
@@ -40,11 +42,14 @@ class SingleGear extends React.Component {
       gearWeather,
       gearSeasons,
       gearParties,
+      currentpath,
     } = this.state;
 
     const { gearItemId } = this.props.match.params;
 
     const editLink = `/gear/edit/${gearItemId}`;
+
+    const newRoute = { pathname: `/gear/edit/${gearItemId}`, previouspath: { currentpath } };
 
     return (
       <div className="SingleGear col-12">
@@ -115,7 +120,7 @@ class SingleGear extends React.Component {
         </div> */}
 
           <div className="row justify-content-center">
-            <Link to={editLink} className="col-sm-4 btn btn-lg p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <Link to={newRoute} className="col-sm-4 btn btn-lg p-1"><i className="fas fa-pencil-alt"></i></Link>
             <button className="col-sm-4 btn-lg pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
           </div>
         </div>
