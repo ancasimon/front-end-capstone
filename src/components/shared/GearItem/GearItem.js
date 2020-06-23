@@ -20,7 +20,7 @@ class GearItem extends React.Component {
     gearItem: gearShape.gearShape,
   }
 
-  getAdditionalGearProperties = () => {
+  getGearWithAdditionalProperties = () => {
     const { gearItem } = this.props;
     smashData.getGearWithProperties(gearItem.id)
       .then((gearWithProperties) => {
@@ -35,7 +35,7 @@ class GearItem extends React.Component {
   }
 
   componentDidMount() {
-    this.getAdditionalGearProperties();
+    this.getGearWithAdditionalProperties();
   }
 
   render() {
