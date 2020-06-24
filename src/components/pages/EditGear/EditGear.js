@@ -56,23 +56,9 @@ class EditGear extends React.Component {
       .catch((err) => console.error('unable to get list of weather values', err));
   }
 
-  // getSeasonsList = () => {
-  //   seasonsData.getSeasons()
-  //     .then((seasonsList) => this.setState({ seasonsList }))
-  //     .catch((err) => console.error('unable to get list of seasons', err));
-  // }
-
-  // getPartyList = () => {
-  //   partyData.getPartyValues()
-  //     .then((partyList) => this.setState({ partyList }))
-  //     .catch((err) => console.error('unable to get list of parties', err));
-  // }
-
-  componentDidMount() {
+  buildEditPage = () => {
     this.getFunctionsList();
     this.getWeatherList();
-    // console.log('props', this.props);
-    // console.log('this!!!', this);
     const editId = this.props.match.params.gearItemId;
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
@@ -100,8 +86,27 @@ class EditGear extends React.Component {
       .catch((err) => console.error('could not get edit id', err));
   }
 
+  // getSeasonsList = () => {
+  //   seasonsData.getSeasons()
+  //     .then((seasonsList) => this.setState({ seasonsList }))
+  //     .catch((err) => console.error('unable to get list of seasons', err));
+  // }
+
+  // getPartyList = () => {
+  //   partyData.getPartyValues()
+  //     .then((partyList) => this.setState({ partyList }))
+  //     .catch((err) => console.error('unable to get list of parties', err));
+  // }
+
+  componentDidMount() {
+    this.buildEditPage();
+    // console.log('props', this.props);
+    // console.log('this!!!', this);
+  }
+
   changeGearSeason = (event) => {
     // const gearSeasonsArr = this.state.gearSeasonsList;
+    const { allSeasonsWithChecks } = this.state;
     const editId = this.props.match.params.gearItemId;
     const currentGearSeasonCheckedValue = event.target.checked;
     const currentSeasonId = event.target.id;
@@ -117,11 +122,15 @@ class EditGear extends React.Component {
       console.log('need to delete current gear season');
       console.log('gearSeasonId to be deleted', currentGearSeasonId);
       this.deleteGearSeasonRecord(currentGearSeasonId);
+      this.buildEditPage();
+      // this.setState({ allSeasonsWithChecks });
       // this.createNewGearSeasonRecord(this.editId);
     } else {
       console.log('need to create new gear season');
       console.log('gearId in creating new gear season function', editId);
       this.createNewGearSeasonRecord(editId, currentSeasonId);
+      this.buildEditPage();
+      // this.setState({ allSeasonsWithChecks });
       // console.log('current array', gearSeasonsArr);
       // const selSeasonIndex = gearSeasonsArr.indexOf(e.target.value);
       // console.log('index', selSeasonIndex);
