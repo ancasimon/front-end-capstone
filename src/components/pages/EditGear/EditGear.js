@@ -35,7 +35,8 @@ class EditGear extends React.Component {
     seasonsList: [],
     partyList: [],
     gearSeasonsList: [],
-    gearPartyList: [],
+    // gearPartyList: [],
+    allPartiesWithChecks: [],
   }
 
   static propTypes = {
@@ -54,26 +55,22 @@ class EditGear extends React.Component {
       .catch((err) => console.error('unable to get list of weather values', err));
   }
 
-  // to get the list of seasons to indicate which ones have already been selected: OPTION: Loop over the regular seasons list. If the same season value is in both > then check it in the display - BUT ... if I want to add an isChecked property - I need to do that in the data file.. right???(make a copy of it there an dadd the isChecked property??) SOO - go back to data file - create a copy of the regular seasons array, add an isChecked property - set to true if it the value is found in both the regular seasons array and the gear seasons array for a gear item. Then use that function for the READs too??
-  getSeasonsList = () => {
-    seasonsData.getSeasons()
-      .then((seasonsList) => this.setState({ seasonsList }))
-      .catch((err) => console.error('unable to get list of seasons', err));
-  }
+  // to get the list of seasons to indicate which ones have already been selected: OPTION: Loop over the regular seasons list. If the same season value is in both > then check it in the display - BUT ... if I want to add an isChecked property - I need to do that in the data file.. right???(make a copy of it there and add the isChecked property??) SOO - go back to data file - create a copy of the regular seasons array, add an isChecked property - set to true if it the value is found in both the regular seasons array and the gear seasons array for a gear item. Then use that function for the READs too??
+  // getSeasonsList = () => {
+  //   seasonsData.getSeasons()
+  //     .then((seasonsList) => this.setState({ seasonsList }))
+  //     .catch((err) => console.error('unable to get list of seasons', err));
+  // }
 
-  getPartyList = () => {
-    partyData.getPartyValues()
-      .then((partyList) => this.setState({ partyList }))
-      .catch((err) => console.error('unable to get list of parties', err));
-  }
+  // getPartyList = () => {
+  //   partyData.getPartyValues()
+  //     .then((partyList) => this.setState({ partyList }))
+  //     .catch((err) => console.error('unable to get list of parties', err));
+  // }
 
   componentDidMount() {
     console.log('props', this.props);
     console.log('this!!!', this);
-    this.getFunctionsList();
-    this.getWeatherList();
-    this.getSeasonsList();
-    this.getPartyList();
     const editId = this.props.match.params.gearItemId;
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
@@ -93,8 +90,24 @@ class EditGear extends React.Component {
           gearWeather: currentGear.weatherId,
           gearImageUrl: currentGear.imageUrl,
           gearSeasonsList: currentGear.selectedSeasons,
-          gearPartyList: currentGear.selctedParties,
+          gearPartyList: currentGear.selectedParties,
+          allPartiesWithChecks: currentGear.allPartiesWithChecks,
         });
+        seasonsData.getSeasons()
+          .then((seasonsList) => {
+            this.setState({ seasonsList });
+            // console.log('reg seasons list', seasonsList);
+            const allSeasonsWithChecks = [];
+            seasonsList.map((eachSeason) => {
+              // this.gearSeasonsList.includes(eachSeason.id) ? allSeasonsWithChecks.push(eachSeason.checked) : allSeasonsWithChecks.push(eachSeason);
+              // console.log('each season', eachSeason);
+              // console.log('currgear sel seasons - just to see if they are coming through here', currentGear.selectedSeasons);
+              // console.log('true or false? included??', currentGear.selectedSeasons.includes(eachSeason.id));
+              currentGear.selectedSeasons.includes(eachSeason.id) ? allSeasonsWithChecks.push(eachSeason) : console.log('none found');
+            });
+            // console.log('new seasons array', allSeasonsWithChecks);
+            return allSeasonsWithChecks;
+          });
       })
       .catch((err) => console.error('could not get edit id', err));
   }
@@ -132,33 +145,36 @@ class EditGear extends React.Component {
   // }
 
   changeGearParty = (e) => {
-    const gearPartyArr = this.state.gearPartyList;
-    if (e.target.checked) {
+    const gearPartyArr = this.state.allPartiesWithChecks;
+    if (e.target.isChecked === true) {
       gearPartyArr.push(e.target.value);
+    // if (e.target.checked) {
+    //   gearPartyArr.push(e.target.value);
     } else {
       console.log('unchecked', e.target.value);
       const selPartyIndex = gearPartyArr.indexOf(e.target.value);
       console.log('index', selPartyIndex);
       gearPartyArr.splice(selPartyIndex, 1);
-      console.log('updated paryy list', gearPartyArr);
+      console.log('updated party list', gearPartyArr);
     }
     this.setState({ gearPartyList: gearPartyArr });
     console.log('state', this.state);
   }
+// TO DECIDE WHETHER to create a new gearSeason record - should I compare the records to the HTMLAllCollection, or just delete/create every time the check boxes are selected???
 
-  // createNewGearPartyRecord = (gearId) => {
-  //   const { gearPartyList } = this.state;
-  //   gearPartyList.forEach((partyId) => {
-  //     const newGearParty = {
-  //       gearId,
-  //       partyId,
-  //     };
-  //     console.log('new gear party record', newGearParty);
-  //     gearPartyData.postGearParty(newGearParty)
-  //       .then(() => console.log('created new gearParty'))
-  //       .catch((err) => console.error('could not create new gearParty record'));
-  //   });
-  // }
+  createNewGearPartyRecord = (gearId) => {
+    const { gearPartyList } = this.state;
+    gearPartyList.forEach((partyId) => {
+      const newGearParty = {
+        gearId,
+        partyId,
+      };
+      console.log('new gear party record', newGearParty);
+      gearPartyData.postGearParty(newGearParty)
+        .then(() => console.log('created new gearParty'))
+        .catch((err) => console.error('could not create new gearParty record'));
+    });
+  }
 
   changeGearItem = (e) => {
     e.preventDefault();
@@ -256,7 +272,8 @@ class EditGear extends React.Component {
       .then(() => {
         const { previouspath } = this.props.location;
         // this.createNewGearSeasonRecord(updatedGearId);
-        // this.createNewGearPartyRecord(updatedGearId);
+        this.createNewGearPartyRecord(gearItemId);
+        console.log('created new gearparty record', this.createNewGearPartyRecord());
         previouspath === '/gear' ? this.props.history.push('/gear') : this.props.history.push(previouspath.currentpath);
       })
       .catch((err) => console.error('unable to save new gear', err));
@@ -280,6 +297,7 @@ class EditGear extends React.Component {
       weatherList,
       seasonsList,
       partyList,
+      allPartiesWithChecks,
     } = this.state;
 
     const buildFunctionsList = () => functionsList.map((functionValue) => (
@@ -291,6 +309,7 @@ class EditGear extends React.Component {
     ));
 
     const buildSeasonsList = () => seasonsList.map((seasonValue) => (
+      console.log('is gearSeason checked in seasons list', this.state.gearSeasonsList, seasonValue.id),
       <div className="form-check col-2" key={seasonValue.id}>
         <input
           className="form-check-input gearSeasonCheckbox"
@@ -298,6 +317,7 @@ class EditGear extends React.Component {
           name="gearSeason"
           id={seasonValue.id}
           value={seasonValue.id}
+          checked = {this.state.gearSeasonsList.includes(seasonValue.id)}
           onChange={this.changeGearSeason}
         />
         <label className="form-check-label" htmlFor={seasonValue.id}>
@@ -306,7 +326,7 @@ class EditGear extends React.Component {
       </div>
     ));
 
-    const buildPartyList = () => partyList.map((partyValue) => (
+    const buildPartyList = () => allPartiesWithChecks.map((partyValue) => (
       <div className="form-check col-2" key={partyValue.id}>
         <input
           className="form-check-input"
@@ -314,6 +334,7 @@ class EditGear extends React.Component {
           name="gearParty"
           id={partyValue.id}
           value={partyValue.id}
+          checked={partyValue.isChecked}
           onChange={this.changeGearParty}
         />
         <label className="form-check-label" htmlFor={partyValue.id}>

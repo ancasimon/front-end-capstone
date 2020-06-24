@@ -32,15 +32,27 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                             partyData.getPartyValues()
                               .then((allPartyValues) => {
                                 const selectedGearParties = [];
+                                const allGearPartiesWithChecks = [];
                                 gearParties.forEach((gearPartyObject) => {
                                   const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
                                   selectedGearParties.push(foundGearParty);
+                                  allPartyValues.forEach((partyValue) => {
+                                    const newPartyValue = { ...partyValue };
+                                    if (partyValue.id === gearPartyObject.partyId) {
+                                      newPartyValue.isChecked = true;
+                                    } else {
+                                      newPartyValue.isChecked = false;
+                                    };
+                                    allGearPartiesWithChecks.push(newPartyValue);
+                                    console.log('new party array!!!', allGearPartiesWithChecks);
+                                  });
                                   const gearWithMetadata = { ...singleGearResponse.data };
                                   gearWithMetadata.selectedFunction = selectedFunction;
                                   gearWithMetadata.selectedWeather = selectedWeather;
                                   gearWithMetadata.selectedSeasons = selectedGearSeasons;
                                   gearWithMetadata.selectedParties = selectedGearParties;
-                                  // console.log('gearmetadata', gearWithMetadata);
+                                  gearWithMetadata.allPartiesWithChecks = allGearPartiesWithChecks;
+                                  console.log('gearmetadata', gearWithMetadata);
                                   resolve(gearWithMetadata);
                                 });
                               });
