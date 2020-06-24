@@ -24,15 +24,29 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                   seasonsData.getSeasons()
                     .then((allSeasons) => {
                       const selectedGearSeasons = [];
+                      const allSeasonsWithChecks = [];
                       gearSeasons.forEach((gearSeasonObject) => {
                         const foundGearSeason = allSeasons.find((seasonValue) => seasonValue.id === gearSeasonObject.seasonId);
                         selectedGearSeasons.push(foundGearSeason);
+                        allSeasons.forEach((seasonValue) => {
+                          const newSeasonValue = { ...seasonValue };
+                          if (seasonValue.id === gearSeasonObject.seasonId) {
+                            newSeasonValue.isChecked = true;
+                            newSeasonValue.relatedGearId = gearSeasonObject.gearId;
+                            newSeasonValue.relatedGearSeasonId = gearSeasonObject.id;
+                          } else {
+                            newSeasonValue.isChecked = false;
+                          }
+                          allSeasonsWithChecks.push(newSeasonValue);
+                          console.log('new season value added!!!', newSeasonValue);
+                          console.log('new season array!!!', allSeasonsWithChecks);
+                        });
                         gearPartyData.getGearPartiesByGearId(gearId)
                           .then((gearParties) => {
                             partyData.getPartyValues()
                               .then((allPartyValues) => {
                                 const selectedGearParties = [];
-                                const allGearPartiesWithChecks = [];
+                                const allPartiesWithChecks = [];
                                 gearParties.forEach((gearPartyObject) => {
                                   const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
                                   selectedGearParties.push(foundGearParty);
@@ -42,16 +56,17 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                                       newPartyValue.isChecked = true;
                                     } else {
                                       newPartyValue.isChecked = false;
-                                    };
-                                    allGearPartiesWithChecks.push(newPartyValue);
-                                    console.log('new party array!!!', allGearPartiesWithChecks);
+                                    }
+                                    allPartiesWithChecks.push(newPartyValue);
+                                    console.log('new party array!!!', allPartiesWithChecks);
                                   });
                                   const gearWithMetadata = { ...singleGearResponse.data };
                                   gearWithMetadata.selectedFunction = selectedFunction;
                                   gearWithMetadata.selectedWeather = selectedWeather;
                                   gearWithMetadata.selectedSeasons = selectedGearSeasons;
                                   gearWithMetadata.selectedParties = selectedGearParties;
-                                  gearWithMetadata.allPartiesWithChecks = allGearPartiesWithChecks;
+                                  gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
+                                  gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
                                   console.log('gearmetadata', gearWithMetadata);
                                   resolve(gearWithMetadata);
                                 });
