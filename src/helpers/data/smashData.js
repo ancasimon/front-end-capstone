@@ -86,4 +86,20 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getGearWithProperties };
+const completelyRemoveGearItemAndChildren = (gearItemId) => new Promise((resolve, reject) => {
+  gearData.deleteGear(gearItemId)
+    .then(() => {
+      gearSeasonData.getGearSeasonsByGearId(gearItemId)
+        .then((gearSeasonsForThisGearItem) => {
+          gearPartyData.getGearPartiesByGearId(gearItemId)
+            .then((gearPartiesForThisGearItem) => {
+              gearSeasonsForThisGearItem.forEach((gearSeason) => gearSeasonData.deleteGearSeason(gearSeason.id));
+              gearPartiesForThisGearItem.forEach((gearParty) => gearPartyData.deleteGearParty(gearParty.id));
+              resolve();
+            });
+        });
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getGearWithProperties, completelyRemoveGearItemAndChildren };
