@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import gearData from '../../../helpers/data/gearData';
 import smashData from '../../../helpers/data/smashData';
 
 import './SingleGear.scss';
@@ -33,6 +34,13 @@ class SingleGear extends React.Component {
   componentDidMount() {
     const { gearItemId } = this.props.match.params;
     this.buildSingleView(gearItemId);
+  }
+
+  removeGearItem = () => {
+    const { gearItemId } = this.props.match.params;
+    smashData.completelyRemoveGearItemAndChildren(gearItemId)
+      .then(() => this.props.history.push('/gear'))
+      .catch((err) => console.error('unable to delete this gear record', err));
   }
 
   render() {
@@ -125,8 +133,8 @@ class SingleGear extends React.Component {
         </div> */}
 
           <div className="row justify-content-center">
-            <Link to={newRoute} className="col-sm-4 btn btn-lg p-1"><i className="fas fa-pencil-alt"></i></Link>
-            <button className="col-sm-4 btn-lg pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
+            <Link to={newRoute} className="btn btn-lg col-sm-4 p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <button className="btn btn-lg col-sm-4 pointerHand p-1" onClick={this.removeGearItem}><i className="fas fa-trash-alt"></i></button>
           </div>
         </div>
       </div>

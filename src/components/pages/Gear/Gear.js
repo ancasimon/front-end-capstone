@@ -6,6 +6,7 @@ import GearItem from '../../shared/GearItem/GearItem';
 
 import authData from '../../../helpers/data/authData';
 import gearData from '../../../helpers/data/gearData';
+import smashData from '../../../helpers/data/smashData';
 
 import './Gear.scss';
 
@@ -26,7 +27,7 @@ class Gear extends React.Component {
   }
 
   removeGearItem = (gearId) => {
-    gearData.deleteGear(gearId)
+    smashData.completelyRemoveGearItemAndChildren(gearId)
       .then(() => this.getGear())
       .catch((err) => console.log('could not delete this gear item', err));
   }
