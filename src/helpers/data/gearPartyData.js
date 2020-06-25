@@ -22,5 +22,7 @@ const getGearPartiesByGearId = (gearId) => new Promise((resolve, reject) => {
 
 const postGearParty = (newGearPartyId) => axios.post(`${baseUrl}/gearParty.json`, newGearPartyId);
 
-export default { getGearPartiesByGearId, postGearParty };
+const deleteGearParty = (gearPartyId) => axios.delete(`${baseUrl}/gearParty/${gearPartyId}.json`);
+
+export default { getGearPartiesByGearId, postGearParty, deleteGearParty };
 

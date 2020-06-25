@@ -12,6 +12,7 @@ class SingleGear extends React.Component {
     gearWeather: {},
     gearSeasons: [],
     gearParties: [],
+    currentpath: '',
   }
 
   buildSingleView = () => {
@@ -20,10 +21,11 @@ class SingleGear extends React.Component {
     smashData.getGearWithProperties(gearItemId)
       .then((response) => this.setState({
         gearItem: response,
-        gearFunction: response.function,
-        gearWeather: response.weather,
-        gearSeasons: response.seasons,
-        gearParties: response.parties,
+        gearFunction: response.selectedFunction,
+        gearWeather: response.selectedWeather,
+        gearSeasons: response.selectedSeasons,
+        gearParties: response.selectedParties,
+        currentpath: this.props.location.pathname,
       }))
       .catch((err) => console.error('unable to get gear record', err));
   }
@@ -40,11 +42,15 @@ class SingleGear extends React.Component {
       gearWeather,
       gearSeasons,
       gearParties,
+      currentpath,
     } = this.state;
 
     const { gearItemId } = this.props.match.params;
 
-    const editLink = `/gear/edit/${gearItemId}`;
+    // Note: I used the editLink variable below initially when this is all I had to pass down to the Edit Page component. Once I wantted to maek changes to return the user to the exact page that he left when he staretd editing, then I had to pass 2 pieces of info - this route as well as the path they came from - so newroute replaced and included the edit path - hence the variable below was no longer needed.
+    // const editLink = `/gear/edit/${gearItemId}`;
+
+    const newRoute = { pathname: `/gear/edit/${gearItemId}`, previouspath: { currentpath } };
 
     return (
       <div className="SingleGear col-12">
@@ -115,7 +121,7 @@ class SingleGear extends React.Component {
         </div> */}
 
           <div className="row justify-content-center">
-            <Link to={editLink} className="col-sm-4 btn btn-lg p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <Link to={newRoute} className="col-sm-4 btn btn-lg p-1"><i className="fas fa-pencil-alt"></i></Link>
             <button className="col-sm-4 btn-lg pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
           </div>
         </div>

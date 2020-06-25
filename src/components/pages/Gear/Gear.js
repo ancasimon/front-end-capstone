@@ -47,9 +47,9 @@ class Gear extends React.Component {
               <th>Seasons</th>
               <th>Weather</th>
               <th>Party</th>
-              <th>Weight (gr.)</th>
+              {/* <th>Weight (gr.)</th> */}
               <th>Available?</th>
-              <th>Exp. Yr.</th>
+              {/* <th>Exp. Yr.</th> */}
               <th>Actions</th>
             </tr>
           </thead>

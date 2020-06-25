@@ -23,4 +23,11 @@ const getSingleGear = (gearId) => axios.get(`${baseUrl}/gear/${gearId}.json`);
 
 const postGear = (newGear) => axios.post(`${baseUrl}/gear.json`, newGear);
 
-export default { getGearByUid, getSingleGear, postGear };
+const putGear = (gearItemId, updatedGearItem) => axios.put(`${baseUrl}/gear/${gearItemId}.json`, updatedGearItem);
+
+export default {
+  getGearByUid,
+  getSingleGear,
+  postGear,
+  putGear,
+};

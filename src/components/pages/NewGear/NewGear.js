@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import authData from '../../../helpers/data/authData';
 import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
+import gearPartyData from '../../../helpers/data/gearPartyData';
 import gearSeasonData from '../../../helpers/data/gearSeasonData';
 import partyData from '../../../helpers/data/partyData';
 import seasonsData from '../../../helpers/data/seasonsData';
@@ -11,7 +12,6 @@ import weatherData from '../../../helpers/data/weatherData';
 
 import '../../../styles/index.scss';
 import './NewGear.scss';
-import gearPartyData from '../../../helpers/data/gearPartyData';
 
 class NewGear extends React.Component {
   state = {
@@ -107,7 +107,7 @@ class NewGear extends React.Component {
       const selPartyIndex = gearPartyArr.indexOf(e.target.value);
       console.log('index', selPartyIndex);
       gearPartyArr.splice(selPartyIndex, 1);
-      console.log('updated paryy list', gearPartyArr);
+      console.log('updated party list', gearPartyArr);
     }
     this.setState({ gearPartyList: gearPartyArr });
     console.log('state', this.state);

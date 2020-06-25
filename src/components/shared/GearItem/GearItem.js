@@ -14,6 +14,7 @@ class GearItem extends React.Component {
     gearWeather: {},
     gearSeasons: [],
     gearParties: [],
+    currentpath: '/gear',
   }
 
   static propTypes = {
@@ -25,10 +26,10 @@ class GearItem extends React.Component {
     smashData.getGearWithProperties(gearItem.id)
       .then((gearWithProperties) => {
         this.setState({
-          gearFunction: gearWithProperties.function,
-          gearWeather: gearWithProperties.weather,
-          gearSeasons: gearWithProperties.seasons,
-          gearParties: gearWithProperties.parties,
+          gearFunction: gearWithProperties.selectedFunction,
+          gearWeather: gearWithProperties.selectedWeather,
+          gearSeasons: gearWithProperties.selectedSeasons,
+          gearParties: gearWithProperties.selectedParties,
         });
       })
       .catch((err) => console.error('unable to get additional properties of gear item', err));
@@ -45,10 +46,17 @@ class GearItem extends React.Component {
       gearWeather,
       gearSeasons,
       gearParties,
+      currentpath,
     } = this.state;
 
     const singleLink = `/gear/${gearItem.id}`;
-    const editLink = `/gear/edit/${gearItem.id}`;
+
+    // Note: I used the editLink variable below initially when this is all I had to pass down to the Edit Page component. Once I wantted to maek changes to return the user to the exact page that he left when he staretd editing, then I had to pass 2 pieces of info - this route as well as the path they came from - so newroute replaced and included the edit path - hence the variable below was no longer needed.
+    // const editLink = `/gear/edit/${gearItem.id}`;
+    const newRoute = {
+      pathname: `/gear/edit/${gearItem.id}`,
+      previouspath: { currentpath },
+    };
 
     return (
       <tbody>
@@ -72,12 +80,15 @@ class GearItem extends React.Component {
               ? <td>{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
               : <td>N/A</td>
           }
-          <td>{gearItem.weightInGrams * 1 }</td>
-          { gearItem.isAvailable ? <td>Yes</td> : <td>No</td> }
-          <td>{gearItem.expirationYear}</td>
+          {/* <td>{gearItem.weightInGrams * 1 }</td> */}
+
+          { gearItem.isAvailable ? <td className="green"><i className="fas fa-check"></i></td> : <td className="red"><i className="fas fa-times"></i></td> }
+
+          {/* <td>{gearItem.expirationYear}</td> */}
+
           <td className="row">
             <Link to={singleLink} className="btn p-1"><i className="fas fa-eye"></i></Link>
-            <Link to={editLink} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <Link to={newRoute} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
             <button className="btn pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
           </td>
         </tr>
