@@ -113,6 +113,10 @@ class SingleGear extends React.Component {
                 <h6 className="col-sm align-middle">When you may have to replace it: </h6><p className="col-sm align-middle"> Year {gearItem.expirationYear}</p>
               </div>
 
+              <div className="row">
+                <h6 className="col-sm align-middle">Details: </h6><p className="col-sm align-middle"> {gearItem.details}</p>
+              </div>
+
             </div>
           </div>
 
