@@ -25,9 +25,12 @@ const postGear = (newGear) => axios.post(`${baseUrl}/gear.json`, newGear);
 
 const putGear = (gearItemId, updatedGearItem) => axios.put(`${baseUrl}/gear/${gearItemId}.json`, updatedGearItem);
 
+const deleteGear = (gearItemId) => axios.delete(`${baseUrl}/gear/${gearItemId}.json`);
+
 export default {
   getGearByUid,
   getSingleGear,
   postGear,
   putGear,
+  deleteGear,
 };
