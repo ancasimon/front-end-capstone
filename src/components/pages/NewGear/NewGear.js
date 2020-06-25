@@ -107,7 +107,7 @@ class NewGear extends React.Component {
       const selPartyIndex = gearPartyArr.indexOf(e.target.value);
       console.log('index', selPartyIndex);
       gearPartyArr.splice(selPartyIndex, 1);
-      console.log('updated paryy list', gearPartyArr);
+      console.log('updated party list', gearPartyArr);
     }
     this.setState({ gearPartyList: gearPartyArr });
     console.log('state', this.state);

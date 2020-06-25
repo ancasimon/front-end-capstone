@@ -38,7 +38,7 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                           }
                           allSeasonsWithChecks.push(newSeasonValue);
                           // Note for allSeasonsWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the seasons selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
-                          console.log('new season val', newSeasonValue);
+                          // console.log('new season val', newSeasonValue);
                         });
                         gearPartyData.getGearPartiesByGearId(gearId)
                           .then((gearParties) => {
@@ -59,7 +59,7 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                                     }
                                     allPartiesWithChecks.push(newPartyValue);
                                     // Note for allPartiesWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the parties selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
-                                    console.log('new party array!!!', allPartiesWithChecks);
+                                    // console.log('new party array!!!', allPartiesWithChecks);
                                   });
                                   const gearWithMetadata = { ...singleGearResponse.data };
                                   selectedGearSeasons.push(foundGearSeason);
