@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import logo from '../../../img-capstone/gearup_logo.png';
 import '../../../styles/index.scss';
 import './MyNavbar.scss';
 
@@ -26,6 +27,7 @@ class MyNavbar extends React.Component {
 
   state = {
     isOpen: false,
+    logo,
   }
 
   toggle = () => {
@@ -72,8 +74,10 @@ class MyNavbar extends React.Component {
 
     return (
       <div className="MyNavbar">
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">GearUp</NavbarBrand>
+        <Navbar className="nav pt-0 pb-0" dark expand="md">
+          <NavbarBrand href="/">
+          < img src={logo} width="75" alt="logo" />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
             { buildNavbar() }

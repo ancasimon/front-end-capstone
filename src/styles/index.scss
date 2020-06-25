@@ -1,6 +1,64 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
+@import './events';
+
+body {
+  background: url(https://tinyurl.com/y9ng68ek) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  font-family: $regularFonts;
+  color: black;
+}
+
+.nav {
+  background-color: $slateGray;
+  font-family: $regularFonts;
+  font-size: 1.2em;
+  }
+
+.pageDisplay {
+  background-color: $powderBlue;
+  opacity: 0.90;
+  display: block;
+  width: 90%;
+  margin: auto;
+  height: auto;
+  margin-top: 2em;
+  margin-bottom: 3em;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.heading {
+  font-family: $headerFonts;
+}
+
+.textShadow {	
+  text-shadow: 4px 3px 0px $powderBlue, 9px 8px 0px rgba(0,0,0,0.15);
+}
+
+.greenButtons {
+  @include buttons;
+}
+
+.redButtons {
+  @include buttons;
+  background-color: darkred;
+}
+
+.blueButtons {
+  @include buttons;
+  background-color: $lightBlue;
+}
+
+.photoBorder {
+  border: $slateGray solid 2px;
+  border-radius: 10px;
+}
 
 table {
   overflow-y: auto;
@@ -10,7 +68,8 @@ table {
 thead th {
   position: sticky;
   top: 0;
-  background-color: lightgreen;
+  background-color: $slateGray;
+  color: white;
 }
 
 .pointerHand {
@@ -18,7 +77,8 @@ thead th {
 }
 
 .inputBorder {
-  border: 2px solid grey;
+  border: 2px solid $slateGray;
+  border-radius: 20px;
   padding: 4px;
   margin: 4px;
 }
@@ -26,4 +86,9 @@ thead th {
 .singleGearPhoto {
   max-width: 200px;
   max-height: 200px;
+}
+
+.question {
+  font-weight: bolder;
+  font-style: italic;
 }
