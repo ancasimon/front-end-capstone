@@ -26,8 +26,7 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                       const selectedGearSeasons = [];
                       const allSeasonsWithChecks = [];
                       gearSeasons.forEach((gearSeasonObject) => {
-                        const foundGearSeason = allSeasons.find((seasonValue) => seasonValue.id === gearSeasonObject.seasonId);
-                        selectedGearSeasons.push(foundGearSeason);
+                        const foundGearSeason = allSeasons.find((x) => x.id === gearSeasonObject.seasonId);
                         allSeasons.forEach((seasonValue) => {
                           const newSeasonValue = { ...seasonValue };
                           if (seasonValue.id === gearSeasonObject.seasonId) {
@@ -38,8 +37,8 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                             newSeasonValue.isChecked = false;
                           }
                           allSeasonsWithChecks.push(newSeasonValue);
-                          console.log('new season value added!!!', newSeasonValue);
-                          console.log('new season array!!!', allSeasonsWithChecks);
+                          // Note for allSeasonsWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the seasons selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
+                          console.log('new season val', newSeasonValue);
                         });
                         gearPartyData.getGearPartiesByGearId(gearId)
                           .then((gearParties) => {
@@ -49,18 +48,24 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                                 const allPartiesWithChecks = [];
                                 gearParties.forEach((gearPartyObject) => {
                                   const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
-                                  selectedGearParties.push(foundGearParty);
                                   allPartyValues.forEach((partyValue) => {
                                     const newPartyValue = { ...partyValue };
                                     if (partyValue.id === gearPartyObject.partyId) {
                                       newPartyValue.isChecked = true;
+                                      newPartyValue.relatedGearId = gearPartyObject.gearId;
+                                      newPartyValue.relatedGearPartyId = gearPartyObject.id;
                                     } else {
                                       newPartyValue.isChecked = false;
                                     }
                                     allPartiesWithChecks.push(newPartyValue);
+                                    // Note for allPartiesWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the parties selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
                                     console.log('new party array!!!', allPartiesWithChecks);
                                   });
                                   const gearWithMetadata = { ...singleGearResponse.data };
+                                  selectedGearSeasons.push(foundGearSeason);
+                                  // Note for selectedGearSeasons array defined above: I am using this array to control the display of selected seasons for a gear item on the view pages - both the list of gear and the single gear view page.
+                                  selectedGearParties.push(foundGearParty);
+                                  // Note for selectedGearParties array defined above: I am using this array to control the display of selected parties (couple/solo/family) for a gear item on the view pages - both the list of gear and the single gear view page.
                                   gearWithMetadata.selectedFunction = selectedFunction;
                                   gearWithMetadata.selectedWeather = selectedWeather;
                                   gearWithMetadata.selectedSeasons = selectedGearSeasons;
