@@ -1,0 +1,13 @@
+@mixin buttons {
+  margin: 1em;
+  padding: 1em;
+  background-color: $darkOliveGreen;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+  &:hover {
+    background-color: $slateGray;
+    color: black;
+    text-decoration: none ;
+  }
+}

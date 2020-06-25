@@ -64,27 +64,27 @@ class GearItem extends React.Component {
       <tbody>
         <tr>
           <th scope="row">{gearItem.item}</th>
-          <td><img className="gearPhoto" src={gearItem.imageUrl} alt={gearItem.item} /></td>
+          <td className="d-none d-sm-table-cell"><img className="gearPhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} /></td>
           <td>{gearItem.brand}</td>
-          <td>{gearItem.model}</td>
-          <td><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
+          <td className="d-none d-sm-table-cell">{gearItem.model}</td>
+          <td className="d-none d-sm-table-cell"><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
           {/* { console.log('func value', gearFunction.id) } */}
 
           {
             gearSeasons
-              ? <td>{gearSeasons.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
-              : <td>N/A</td>
+              ? <td className="d-none d-sm-table-cell">{gearSeasons.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              : <td className="d-none d-sm-table-cell">N/A</td>
           }
 
-          <td><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
+          <td className="d-none d-sm-table-cell"><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
           {
             gearParties
-              ? <td>{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
-              : <td>N/A</td>
+              ? <td className="d-none d-sm-table-cell">{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              : <td className="d-none d-sm-table-cell">N/A</td>
           }
           {/* <td>{gearItem.weightInGrams * 1 }</td> */}
 
-          { gearItem.isAvailable ? <td className="green"><i className="fas fa-check"></i></td> : <td className="red"><i className="fas fa-times"></i></td> }
+          { gearItem.isAvailable ? <td className="green d-none d-sm-table-cell"><i className="fas fa-check"></i></td> : <td className="red d-none d-sm-table-cell"><i className="fas fa-times"></i></td> }
 
           {/* <td>{gearItem.expirationYear}</td> */}
 

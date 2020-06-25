@@ -8,6 +8,7 @@ import authData from '../../../helpers/data/authData';
 import gearData from '../../../helpers/data/gearData';
 import smashData from '../../../helpers/data/smashData';
 
+import '../../../styles/index.scss';
 import './Gear.scss';
 
 class Gear extends React.Component {
@@ -38,24 +39,24 @@ class Gear extends React.Component {
       <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
     ));
     return (
-      <div className="Gear col-12 pt-0">
-        <h1>Gear List Page</h1>
-        <div className="p-3">
-          <Link to='gear/new' className="mt-5">Did you buy some new gear? Add it to your list!</Link>
+      <div className="Gear col-12 pt-0 pageDisplay">
+        <h1 className="heading textShadow">Check Out All Your Gear</h1>
+        <div className="p-1 m-1 d-flex flex-wrap justify-content-center">
+          <Link to='gear/new' className="greenButtons mt-1"><i className="fas fa-plus"></i> Did you buy some new gear? Add it to your list!</Link>
         </div>
         <Table hover>
           <thead>
             <tr>
               <th>Item</th>
-              <th>Image</th>
+              <th className="d-none d-sm-table-cell">Image</th>
               <th>Brand</th>
-              <th>Model</th>
-              <th>Function</th>
-              <th>Seasons</th>
-              <th>Weather</th>
-              <th>Party</th>
+              <th className="d-none d-sm-table-cell">Model</th>
+              <th className="d-none d-sm-table-cell">Function</th>
+              <th className="d-none d-sm-table-cell">Seasons</th>
+              <th className="d-none d-sm-table-cell">Weather</th>
+              <th className="d-none d-sm-table-cell">Party</th>
               {/* <th>Weight (gr.)</th> */}
-              <th>Available?</th>
+              <th className="d-none d-sm-table-cell">Available?</th>
               {/* <th>Exp. Yr.</th> */}
               <th>Actions</th>
             </tr>

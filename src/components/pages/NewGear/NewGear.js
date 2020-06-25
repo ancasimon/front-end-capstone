@@ -290,13 +290,13 @@ class NewGear extends React.Component {
     ));
 
     return (
-      <div className="NewGear col-12">
-        <h1>Add a New Gear Item Page</h1>
+      <div className="NewGear col-12 pageDisplay">
+        <h1 className="heading textShadow">Track a New Piece of Gear</h1>
 
         <form>
 {/* This is the row of radio buttons for the Seasons collection. */}
           <div className="container col-12 inputBorder">
-            <p>Season: Is this to be used all the time or only during a specific season?</p>
+            <p className="question">Season: Will you use this item all the time or only during a specific season?</p>
             <div
               className="row justify-content-center p-3"
             >
@@ -306,7 +306,7 @@ class NewGear extends React.Component {
 
 {/* This is the row of radio buttons for the Party collection. */}
           <div className="container col-12 inputBorder">
-            <p>Party: Will you use this all the time or only when going as a couple, with the family, or solo?</p>
+            <p className="question">Party: Will you use this item all the time or only when going as a couple, with the family, or solo?</p>
             <div className="row justify-content-center p-3">
               { buildPartyList() }
             </div>
@@ -315,7 +315,7 @@ class NewGear extends React.Component {
           <div className="row justify-content-center">
           <div className="col-4">
           <div className="form-group">
-            <label htmlFor="gear-item">Item</label>
+            <label htmlFor="gear-item" className="question">Item</label>
             <input
               type="text"
               className="form-control"
@@ -326,7 +326,7 @@ class NewGear extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="gear-brand">Brand</label>
+            <label htmlFor="gear-brand" className="question">Brand</label>
             <input
             type="text"
             className="form-control"
@@ -337,7 +337,7 @@ class NewGear extends React.Component {
           />
           </div>
           <div className="form-group">
-            <label htmlFor="gear-model">Model</label>
+            <label htmlFor="gear-model" className="question">Model</label>
             <input
               type="text"
               className="form-control"
@@ -348,7 +348,7 @@ class NewGear extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="gear-details">Details</label>
+            <label htmlFor="gear-details" className="question">Details</label>
             <textarea
               className="form-control"
               id="gear-details"
@@ -366,7 +366,7 @@ class NewGear extends React.Component {
               value={gearEstCampsite}
               onChange={this.changeGearEstCampsite}
             />
-            <label className="form-check-label" htmlFor="gear-estCampsite">Can it be used only at an established campsite?</label>
+            <label className="form-check-label question" htmlFor="gear-estCampsite">Can it be used only at an established campsite?</label>
           </div>
           <div className="form-group form-check">
             <input
@@ -376,12 +376,12 @@ class NewGear extends React.Component {
               value={gearAvailable}
               onChange={this.changeGearAvailable}
             />
-            <label className="form-check-label" htmlFor="gear-available">Is it available?</label>
+            <label className="form-check-label question" htmlFor="gear-available">Is it available?</label>
           </div>
           </div>
           <div className="col-4">
           <div className="form-group">
-            <label htmlFor="gear-manYr">Manufacture Year</label>
+            <label htmlFor="gear-manYr" className="question">Manufacture Year</label>
             <input
               type="number"
               className="form-control"
@@ -392,7 +392,7 @@ class NewGear extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="gear-expYr">Expiration Year</label>
+            <label htmlFor="gear-expYr" className="question">Expiration Year</label>
             <input
               type="number"
               className="form-control"
@@ -403,7 +403,7 @@ class NewGear extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="gear-weight">What is the weight? (in grams)</label>
+            <label htmlFor="gear-weight" className="question">What is the weight? (in grams)</label>
             <input
               type="number"
               className="form-control"
@@ -414,7 +414,7 @@ class NewGear extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="gear-function">Function</label>
+            <label htmlFor="gear-function" className="question">Function</label>
             <select
               className="form-control"
               id="gear-function"
@@ -426,7 +426,7 @@ class NewGear extends React.Component {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="gear-weather">Weather</label>
+            <label htmlFor="gear-weather" className="question">Weather</label>
             <select
               className="form-control"
               id="gear-weather"
@@ -438,7 +438,7 @@ class NewGear extends React.Component {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="gear-image">Photo URL</label>
+            <label htmlFor="gear-image" className="question">Photo URL</label>
             <input
               type="text"
               className="form-control"
@@ -450,8 +450,8 @@ class NewGear extends React.Component {
           </div>
           </div>
           </div>
-          <button type="submit" className="btn btn-primary" onClick={this.saveNewGear}>Save New Gear</button>
-          <Link className="btn btn-danger" to='/gear'>Cancel</Link>
+          <button type="submit" className="btn greenButtons" onClick={this.saveNewGear}>Save New Gear</button>
+          <Link className="btn redButtons" to='/gear'>Cancel</Link>
         </form>
 
       </div>
