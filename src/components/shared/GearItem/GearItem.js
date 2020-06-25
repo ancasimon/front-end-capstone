@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import smashData from '../../../helpers/data/smashData';
 
@@ -19,6 +20,7 @@ class GearItem extends React.Component {
 
   static propTypes = {
     gearItem: gearShape.gearShape,
+    removeGearItem: PropTypes.func.isRequired,
   }
 
   getGearWithAdditionalProperties = () => {
@@ -40,7 +42,7 @@ class GearItem extends React.Component {
   }
 
   render() {
-    const { gearItem } = this.props;
+    const { gearItem, removeGearItem } = this.props;
     const {
       gearFunction,
       gearWeather,
@@ -89,7 +91,7 @@ class GearItem extends React.Component {
           <td className="row">
             <Link to={singleLink} className="btn p-1"><i className="fas fa-eye"></i></Link>
             <Link to={newRoute} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
-            <button className="btn pointerHand p-1"><i className="fas fa-trash-alt"></i></button>
+            <button className="btn pointerHand p-1" onClick={() => removeGearItem(gearItem.id)}><i className="fas fa-trash-alt"></i></button>
           </td>
         </tr>
       </tbody>

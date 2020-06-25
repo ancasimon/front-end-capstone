@@ -25,10 +25,16 @@ class Gear extends React.Component {
     this.getGear();
   }
 
+  removeGearItem = (gearId) => {
+    gearData.deleteGear(gearId)
+      .then(() => this.getGear())
+      .catch((err) => console.log('could not delete this gear item', err));
+  }
+
   render() {
     const { gear } = this.state;
     const buildGearGrid = gear.map((gearItem) => (
-      <GearItem key={gearItem.id} gearItem={gearItem} />
+      <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
     ));
     return (
       <div className="Gear col-12 pt-0">
