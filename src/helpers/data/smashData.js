@@ -27,16 +27,20 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                       const allSeasonsWithChecks = [];
                       gearSeasons.forEach((gearSeasonObject) => {
                         const foundGearSeason = allSeasons.find((x) => x.id === gearSeasonObject.seasonId);
-                        allSeasons.forEach((seasonValue) => {
+                        allSeasons.forEach((seasonValue, i) => {
                           const newSeasonValue = { ...seasonValue };
                           if (seasonValue.id === gearSeasonObject.seasonId) {
                             newSeasonValue.isChecked = true;
                             newSeasonValue.relatedGearId = gearSeasonObject.gearId;
                             newSeasonValue.relatedGearSeasonId = gearSeasonObject.id;
+                            // allSeasonsWithChecks.push(newSeasonValue);
+                            allSeasonsWithChecks[i] = newSeasonValue;
+                            console.log('running IF statement of allSeasons for each');
                           } else {
                             newSeasonValue.isChecked = false;
+                            allSeasonsWithChecks[i] = newSeasonValue;
+                            console.log('running else statement of allSeasons for each');
                           }
-                          allSeasonsWithChecks.push(newSeasonValue);
                           // Note for allSeasonsWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the seasons selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
                           // console.log('new season val', newSeasonValue);
                         });
