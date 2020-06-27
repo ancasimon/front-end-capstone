@@ -142,12 +142,12 @@ class Gear extends React.Component {
 
         {/* COLLAPSE ACCORDION FOR FILTERS BELOW */}
         <div>
-          <Button className="blueButtons" onClick={this.toggleAccordion}>Filter Your List</Button>
+          <Button className="blueButtons" onClick={this.toggleAccordion}>Filter your list</Button>
           <Collapse className="m-2" isOpen={isOpen}>
             <div className="row">
               <div className="col-sm-3">
                 <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
-                  <DropdownToggle caret>
+                  <DropdownToggle caret className="blueButtons p-1">
                     By Function
                     </DropdownToggle>
                   <DropdownMenu>
@@ -160,7 +160,7 @@ class Gear extends React.Component {
 
               <div className="col-sm-3">
                 <Dropdown isOpen={dropdownPartyOpen} toggle={this.toggleDropdownParty}>
-                  <DropdownToggle caret>
+                  <DropdownToggle caret className="blueButtons p-1">
                     By Party
                     </DropdownToggle>
                   <DropdownMenu>
@@ -173,7 +173,7 @@ class Gear extends React.Component {
 
               <div className="col-sm-3">
                 <Dropdown isOpen={dropdownSeasonOpen} toggle={this.toggleDropdownSeason}>
-                  <DropdownToggle caret>
+                  <DropdownToggle caret className="blueButtons p-1">
                     By Season
                     </DropdownToggle>
                   <DropdownMenu>
@@ -186,7 +186,7 @@ class Gear extends React.Component {
 
               <div className="col-sm-3">
                 <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
-                  <DropdownToggle caret>
+                  <DropdownToggle caret className="blueButtons p-1">
                     By Expiration Year
                     </DropdownToggle>
                   <DropdownMenu>
