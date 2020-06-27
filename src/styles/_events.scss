@@ -1,8 +1,8 @@
 @mixin buttons {
-  margin: 1em;
+  margin: 0.5em;
   padding: 1em;
   background-color: $darkOliveGreen;
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: bold;
   color: white;
   &:hover {
