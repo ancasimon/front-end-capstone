@@ -34,6 +34,7 @@ class Gear extends React.Component {
     functionsList: [],
     partyList: [],
     seasonsList: [],
+    selectedFunction: '',
   }
 
   toggleAccordion = () => {
@@ -81,11 +82,16 @@ class Gear extends React.Component {
       .catch((err) => console.error('could not get gear from firebase', err));
   }
 
-  componentDidMount() {
+  buildGearPage = () => {
+    console.log('running buildGearPage');
     this.getFunctionsList();
     this.getPartyList();
     this.getSeasonsList();
     this.getGear();
+  }
+
+  componentDidMount() {
+    this.buildGearPage();
   }
 
   removeGearItem = (gearId) => {
@@ -105,10 +111,30 @@ class Gear extends React.Component {
       functionsList,
       partyList,
       seasonsList,
+      selectedFunction,
     } = this.state;
 
+    const filterByFunction = (functionId) => {
+      // this.setState({ gear });
+      this.setState({ selectedFunction: functionId });
+      console.log('filterByFunction running', this.state.selectedFunction);
+      const uid = authData.getUid();
+      gearData.getGearByUid(uid)
+        .then((fbData) => {
+          const filteredlist = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
+          this.setState({ gear: filteredlist });
+          gear.map((gearItem) => (
+        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+          ));
+          console.log('filtered array', filteredlist);
+          console.log('filtered GEAR list', this.state.gear);
+          // this.setState({ gear });
+        })
+        .catch((err) => console.error('could not get gear for filtering from firebase', err));
+    };
+
     const buildFunctionsList = () => functionsList.map((functionValue) => (
-      <DropdownItem key={functionValue.id} value={functionValue.id}>{functionValue.name}</DropdownItem>
+      <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterByFunction(functionValue.id)}>{functionValue.name}</DropdownItem>
     ));
 
     const buildPartyList = () => partyList.map((partyValue) => (
@@ -151,7 +177,7 @@ class Gear extends React.Component {
                     By Function
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
                   </DropdownMenu>
@@ -164,7 +190,7 @@ class Gear extends React.Component {
                     By Party
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildPartyList()}
                   </DropdownMenu>
@@ -177,7 +203,7 @@ class Gear extends React.Component {
                     By Season
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildSeasonsList()}
                   </DropdownMenu>
@@ -190,7 +216,7 @@ class Gear extends React.Component {
                     By Expiration Year
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildYearsList()}
                   </DropdownMenu>
