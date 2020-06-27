@@ -14,7 +14,10 @@ import {
 import GearItem from '../../shared/GearItem/GearItem';
 
 import authData from '../../../helpers/data/authData';
+import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
+import partyData from '../../../helpers/data/partyData';
+import seasonsData from '../../../helpers/data/seasonsData';
 import smashData from '../../../helpers/data/smashData';
 
 import '../../../styles/index.scss';
@@ -24,11 +27,13 @@ class Gear extends React.Component {
   state = {
     gear: [],
     isOpen: false,
-    dropdownOpen: false,
     dropdownFunctionOpen: false,
     dropdownPartyOpen: false,
     dropdownSeasonOpen: false,
     dropdownExpYearOpen: false,
+    functionsList: [],
+    partyList: [],
+    seasonsList: [],
   }
 
   toggleAccordion = () => {
@@ -51,6 +56,24 @@ class Gear extends React.Component {
     this.setState({ dropdownExpYearOpen: !this.state.dropdownExpYearOpen });
   }
 
+  getFunctionsList = () => {
+    functionsData.getFunctions()
+      .then((functionsList) => this.setState({ functionsList }))
+      .catch((err) => console.error('unable to get list of function values', err));
+  }
+
+  getPartyList = () => {
+    partyData.getPartyValues()
+      .then((partyList) => this.setState({ partyList }))
+      .catch((err) => console.error('could not get list of parties', err));
+  }
+
+  getSeasonsList = () => {
+    seasonsData.getSeasons()
+      .then((seasonsList) => this.setState({ seasonsList }))
+      .catch((err) => console.error('could not get list of seasons', err));
+  }
+
   getGear = () => {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
@@ -59,6 +82,9 @@ class Gear extends React.Component {
   }
 
   componentDidMount() {
+    this.getFunctionsList();
+    this.getPartyList();
+    this.getSeasonsList();
     this.getGear();
   }
 
@@ -72,12 +98,35 @@ class Gear extends React.Component {
     const {
       gear,
       isOpen,
-      dropdownOpen,
       dropdownFunctionOpen,
       dropdownPartyOpen,
       dropdownSeasonOpen,
       dropdownExpYearOpen,
+      functionsList,
+      partyList,
+      seasonsList,
     } = this.state;
+
+    const buildFunctionsList = () => functionsList.map((functionValue) => (
+      <DropdownItem key={functionValue.id} value={functionValue.id}>{functionValue.name}</DropdownItem>
+    ));
+
+    const buildPartyList = () => partyList.map((partyValue) => (
+      <DropdownItem key={partyValue.id} value={partyValue.id}>{partyValue.name}</DropdownItem>
+    ));
+
+    const buildSeasonsList = () => seasonsList.map((seasonValue) => (
+      <DropdownItem key={seasonValue.id} value={seasonValue.id}>{seasonValue.name}</DropdownItem>
+    ));
+
+    const buildYearsList = () => {
+      const year = 2000;
+      return (
+        Array.from(new Array(50), (v, i) => (
+          <DropdownItem key={i} value={year + i}>{year + i}</DropdownItem>
+        ))
+      );
+    };
 
     const buildGearGrid = gear.map((gearItem) => (
       <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
@@ -104,7 +153,7 @@ class Gear extends React.Component {
                   <DropdownMenu>
                     <DropdownItem>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Foo Action</DropdownItem>
+                    {buildFunctionsList()}
                   </DropdownMenu>
                 </Dropdown>
               </div>
@@ -117,7 +166,7 @@ class Gear extends React.Component {
                   <DropdownMenu>
                     <DropdownItem>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Foo Action</DropdownItem>
+                    {buildPartyList()}
                   </DropdownMenu>
                 </Dropdown>
               </div>
@@ -130,7 +179,7 @@ class Gear extends React.Component {
                   <DropdownMenu>
                     <DropdownItem>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Foo Action</DropdownItem>
+                    {buildSeasonsList()}
                   </DropdownMenu>
                 </Dropdown>
               </div>
@@ -143,7 +192,7 @@ class Gear extends React.Component {
                   <DropdownMenu>
                     <DropdownItem>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Foo Action</DropdownItem>
+                    {buildYearsList()}
                   </DropdownMenu>
                 </Dropdown>
               </div>
