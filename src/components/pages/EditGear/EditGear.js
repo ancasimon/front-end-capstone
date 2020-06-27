@@ -51,13 +51,11 @@ class EditGear extends React.Component {
   }
 
   buildEditPage = () => {
-    this.getFunctionsList();
-    this.getWeatherList();
     const editId = this.props.match.params.gearItemId;
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
         const currentGear = fbResponse;
-        console.log('curr gear', currentGear);
+        console.log('curr gear in edit', currentGear);
         this.setState({
           gearItem: currentGear.item,
           gearBrand: currentGear.brand,
@@ -81,9 +79,9 @@ class EditGear extends React.Component {
   }
 
   componentDidMount() {
+    this.getFunctionsList();
+    this.getWeatherList();
     this.buildEditPage();
-    console.log('checkboxes', this.allSeasonsWithChecks);
-    console.log('checkboxes', this.allPartiesWithChecks);
   }
 
   changeGearSeason = (event) => {
@@ -98,13 +96,11 @@ class EditGear extends React.Component {
     console.log('gearseasonid', currentGearSeasonId);
     console.log('seasonid', currentSeasonId);
     if (newGearSeasonCheckedValue === false) {
-      console.log('need to delete current gear season');
       console.log('gearSeasonId to be deleted', currentGearSeasonId);
       this.deleteGearSeasonRecord(currentGearSeasonId);
       this.buildEditPage();
     } else if (newGearSeasonCheckedValue === true) {
-      console.log('need to create new gear season');
-      console.log('gearId in creating new gear season function', editId);
+      console.log('gearId need to create NEW gear season', editId);
       this.createNewGearSeasonRecord(editId, currentSeasonId);
       this.buildEditPage();
     }
