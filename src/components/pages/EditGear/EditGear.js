@@ -32,6 +32,7 @@ class EditGear extends React.Component {
     weatherList: [],
     allPartiesWithChecks: [],
     allSeasonsWithChecks: [],
+    checkboxSeasonAll: false,
   }
 
   static propTypes = {
@@ -55,6 +56,8 @@ class EditGear extends React.Component {
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
         const currentGear = fbResponse;
+        // const allSeasonsOnEdit = fbResponse.allSeasonsWithChecks;
+        // console.log('new array all seasons on edit', allSeasonsOnEdit);
         console.log('curr gear in edit', currentGear);
         this.setState({
           gearItem: currentGear.item,
@@ -73,7 +76,9 @@ class EditGear extends React.Component {
           gearPartyList: currentGear.selectedParties,
           allPartiesWithChecks: currentGear.allPartiesWithChecks,
           allSeasonsWithChecks: currentGear.allSeasonsWithChecks,
+          // checkboxSeasonAll: this.allSeasonsOnEdit[0].isChecked,
         });
+        // console.log('value of All season checkbox', this.checkboxSeasonAll);
       })
       .catch((err) => console.error('could not get edit id', err));
   }
