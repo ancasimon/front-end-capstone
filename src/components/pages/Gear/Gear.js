@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Table } from 'reactstrap';
+
+import {
+  Button,
+  Collapse,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Table,
+} from 'reactstrap';
 
 import GearItem from '../../shared/GearItem/GearItem';
 
@@ -14,6 +23,32 @@ import './Gear.scss';
 class Gear extends React.Component {
   state = {
     gear: [],
+    isOpen: false,
+    dropdownOpen: false,
+    dropdownFunctionOpen: false,
+    dropdownPartyOpen: false,
+    dropdownSeasonOpen: false,
+    dropdownExpYearOpen: false,
+  }
+
+  toggleAccordion = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  toggleDropdownFunction = () => {
+    this.setState({ dropdownFunctionOpen: !this.state.dropdownFunctionOpen });
+  }
+
+  toggleDropdownParty = () => {
+    this.setState({ dropdownPartyOpen: !this.state.dropdownPartyOpen });
+  }
+
+  toggleDropdownSeason = () => {
+    this.setState({ dropdownSeasonOpen: !this.state.dropdownSeasonOpen });
+  }
+
+  toggleDropdownExpYear = () => {
+    this.setState({ dropdownExpYearOpen: !this.state.dropdownExpYearOpen });
   }
 
   getGear = () => {
@@ -34,16 +69,90 @@ class Gear extends React.Component {
   }
 
   render() {
-    const { gear } = this.state;
+    const {
+      gear,
+      isOpen,
+      dropdownOpen,
+      dropdownFunctionOpen,
+      dropdownPartyOpen,
+      dropdownSeasonOpen,
+      dropdownExpYearOpen,
+    } = this.state;
+
     const buildGearGrid = gear.map((gearItem) => (
       <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
     ));
+
     return (
       <div className="Gear col-12 pt-0 pageDisplay">
         <h1 className="heading textShadow">Check Out All Your Gear</h1>
-        <div className="p-1 m-1 d-flex flex-wrap justify-content-center">
+
+        <div className="p-1 mt-1 d-flex flex-wrap justify-content-center">
           <Link to='gear/new' className="greenButtons mt-1"><i className="fas fa-plus"></i> Did you buy some new gear? Add it to your list!</Link>
         </div>
+
+        {/* COLLAPSE ACCORDION FOR FILTERS BELOW */}
+        <div>
+          <Button className="blueButtons" onClick={this.toggleAccordion}>Filter Your List</Button>
+          <Collapse className="m-2" isOpen={isOpen}>
+            <div className="row">
+              <div className="col-sm-3">
+                <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
+                  <DropdownToggle caret>
+                    By Function
+                    </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Foo Action</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+
+              <div className="col-sm-3">
+                <Dropdown isOpen={dropdownPartyOpen} toggle={this.toggleDropdownParty}>
+                  <DropdownToggle caret>
+                    By Party
+                    </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Foo Action</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+
+              <div className="col-sm-3">
+                <Dropdown isOpen={dropdownSeasonOpen} toggle={this.toggleDropdownSeason}>
+                  <DropdownToggle caret>
+                    By Season
+                    </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Foo Action</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+
+              <div className="col-sm-3">
+                <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
+                  <DropdownToggle caret>
+                    By Expiration Year
+                    </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>Clear Filter</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Foo Action</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+
+            </div>
+          </Collapse>
+        </div>
+        {/* COLLAPSE DIV ENDS HERE */}
+
         <Table hover>
           <thead>
             <tr>
