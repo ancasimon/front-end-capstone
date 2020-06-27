@@ -32,7 +32,7 @@ class EditGear extends React.Component {
     weatherList: [],
     allPartiesWithChecks: [],
     allSeasonsWithChecks: [],
-    checkboxSeasonAll: false,
+    // checkboxSeasonAll: false,
   }
 
   static propTypes = {
