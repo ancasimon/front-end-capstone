@@ -25,59 +25,71 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                     .then((allSeasons) => {
                       const selectedGearSeasons = [];
                       const allSeasonsWithChecks = [];
-                      gearSeasons.forEach((gearSeasonObject) => {
-                        const foundGearSeason = allSeasons.find((x) => x.id === gearSeasonObject.seasonId);
-                        allSeasons.forEach((seasonValue) => {
-                          const newSeasonValue = { ...seasonValue };
-                          if (seasonValue.id === gearSeasonObject.seasonId) {
-                            newSeasonValue.isChecked = true;
-                            newSeasonValue.relatedGearId = gearSeasonObject.gearId;
-                            newSeasonValue.relatedGearSeasonId = gearSeasonObject.id;
-                          } else {
-                            newSeasonValue.isChecked = false;
+                      allSeasons.forEach((seasonValue) => {
+                        const newSeasonValue = { ...seasonValue };
+                        allSeasonsWithChecks.push(newSeasonValue);
+                        // console.log('updated array w checks', allSeasonsWithChecks);
+                        gearSeasons.forEach((gearSeasonObject) => {
+                          // NOTES: The 2 lines below show how I initiallycontrolled hte display of selected seasons for a gear completelyRemoveGearItemAndChildren. And this method was replaced by the push of seasons with a true isChecked property below.
+                          // const foundGearSeason = allSeasons.find((x) => x.id === gearSeasonObject.seasonId);
+                          // selectedGearSeasons.push(foundGearSeason);
+                          for (let i = 0; i < allSeasonsWithChecks.length; i += 1) {
+                            if (allSeasonsWithChecks[i].id === gearSeasonObject.seasonId) {
+                              allSeasonsWithChecks[i].isChecked = true;
+                              allSeasonsWithChecks[i].relatedGearId = gearSeasonObject.gearId;
+                              allSeasonsWithChecks[i].relatedGearSeasonId = gearSeasonObject.id;
+                              console.log('running new FOR loop');
+                              console.log('updated selected seasons', selectedGearSeasons);
+                            }
                           }
-                          allSeasonsWithChecks.push(newSeasonValue);
+                          console.log('updated array w checks AFTER new FOR loop', allSeasonsWithChecks);
                           // Note for allSeasonsWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the seasons selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
-                          // console.log('new season val', newSeasonValue);
                         });
-                        gearPartyData.getGearPartiesByGearId(gearId)
-                          .then((gearParties) => {
-                            partyData.getPartyValues()
-                              .then((allPartyValues) => {
-                                const selectedGearParties = [];
-                                const allPartiesWithChecks = [];
+                      });
+                      for (let i = 0; i < allSeasonsWithChecks.length; i += 1) {
+                        if (allSeasonsWithChecks[i].isChecked === true) {
+                          selectedGearSeasons.push(allSeasonsWithChecks[i]);
+                          // Note for selectedGearSeasons array defined above: I am using this array to control the display of selected seasons for a gear item on the view pages - both the list of gear and the single gear view page.
+                          console.log('updated selected seasons', selectedGearSeasons);
+                        }
+                      }
+                      gearPartyData.getGearPartiesByGearId(gearId)
+                        .then((gearParties) => {
+                          partyData.getPartyValues()
+                            .then((allPartyValues) => {
+                              const selectedGearParties = [];
+                              const allPartiesWithChecks = [];
+                              allPartyValues.forEach((partyValue) => {
+                                const newPartyValue = { ...partyValue };
+                                allPartiesWithChecks.push(newPartyValue);
                                 gearParties.forEach((gearPartyObject) => {
-                                  const foundGearParty = allPartyValues.find((partyValue) => partyValue.id === gearPartyObject.partyId);
-                                  allPartyValues.forEach((partyValue) => {
-                                    const newPartyValue = { ...partyValue };
-                                    if (partyValue.id === gearPartyObject.partyId) {
-                                      newPartyValue.isChecked = true;
-                                      newPartyValue.relatedGearId = gearPartyObject.gearId;
-                                      newPartyValue.relatedGearPartyId = gearPartyObject.id;
-                                    } else {
-                                      newPartyValue.isChecked = false;
+                                  for (let i = 0; i < allPartiesWithChecks.length; i += 1) {
+                                    if (allPartiesWithChecks[i].id === gearPartyObject.partyId) {
+                                      allPartiesWithChecks[i].isChecked = true;
+                                      allPartiesWithChecks[i].relatedGearId = gearPartyObject.gearId;
+                                      allPartiesWithChecks[i].relatedGearPartyId = gearPartyObject.id;
                                     }
-                                    allPartiesWithChecks.push(newPartyValue);
-                                    // Note for allPartiesWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the parties selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
-                                    // console.log('new party array!!!', allPartiesWithChecks);
-                                  });
-                                  const gearWithMetadata = { ...singleGearResponse.data };
-                                  selectedGearSeasons.push(foundGearSeason);
-                                  // Note for selectedGearSeasons array defined above: I am using this array to control the display of selected seasons for a gear item on the view pages - both the list of gear and the single gear view page.
-                                  selectedGearParties.push(foundGearParty);
-                                  // Note for selectedGearParties array defined above: I am using this array to control the display of selected parties (couple/solo/family) for a gear item on the view pages - both the list of gear and the single gear view page.
-                                  gearWithMetadata.selectedFunction = selectedFunction;
-                                  gearWithMetadata.selectedWeather = selectedWeather;
-                                  gearWithMetadata.selectedSeasons = selectedGearSeasons;
-                                  gearWithMetadata.selectedParties = selectedGearParties;
-                                  gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
-                                  gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
-                                  console.log('gearmetadata', gearWithMetadata);
-                                  resolve(gearWithMetadata);
+                                  }
+                                  // Note for allPartiesWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the parties selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
                                 });
                               });
-                          });
-                      });
+                              for (let i = 0; i < allPartiesWithChecks.length; i += 1) {
+                                if (allPartiesWithChecks[i].isChecked === true) {
+                                  selectedGearParties.push(allPartiesWithChecks[i]);
+                                }
+                              }
+                              // Note for selectedGearParties array defined above: I am using this array to control the display of selected parties (couple/solo/family) for a gear item on the view pages - both the list of gear and the single gear view page.
+                              const gearWithMetadata = { ...singleGearResponse.data };
+                              gearWithMetadata.selectedFunction = selectedFunction;
+                              gearWithMetadata.selectedWeather = selectedWeather;
+                              gearWithMetadata.selectedSeasons = selectedGearSeasons;
+                              gearWithMetadata.selectedParties = selectedGearParties;
+                              gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
+                              gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
+                              console.log('gearmetadata', gearWithMetadata);
+                              resolve(gearWithMetadata);
+                            });
+                        });
                     });
                 });
             });

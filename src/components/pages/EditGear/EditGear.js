@@ -32,6 +32,7 @@ class EditGear extends React.Component {
     weatherList: [],
     allPartiesWithChecks: [],
     allSeasonsWithChecks: [],
+    // checkboxSeasonAll: false,
   }
 
   static propTypes = {
@@ -51,13 +52,13 @@ class EditGear extends React.Component {
   }
 
   buildEditPage = () => {
-    this.getFunctionsList();
-    this.getWeatherList();
     const editId = this.props.match.params.gearItemId;
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
         const currentGear = fbResponse;
-        console.log('curr gear', currentGear);
+        // const allSeasonsOnEdit = fbResponse.allSeasonsWithChecks;
+        // console.log('new array all seasons on edit', allSeasonsOnEdit);
+        console.log('curr gear in edit', currentGear);
         this.setState({
           gearItem: currentGear.item,
           gearBrand: currentGear.brand,
@@ -75,15 +76,17 @@ class EditGear extends React.Component {
           gearPartyList: currentGear.selectedParties,
           allPartiesWithChecks: currentGear.allPartiesWithChecks,
           allSeasonsWithChecks: currentGear.allSeasonsWithChecks,
+          // checkboxSeasonAll: this.allSeasonsOnEdit[0].isChecked,
         });
+        // console.log('value of All season checkbox', this.checkboxSeasonAll);
       })
       .catch((err) => console.error('could not get edit id', err));
   }
 
   componentDidMount() {
+    this.getFunctionsList();
+    this.getWeatherList();
     this.buildEditPage();
-    console.log('checkboxes', this.allSeasonsWithChecks);
-    console.log('checkboxes', this.allPartiesWithChecks);
   }
 
   changeGearSeason = (event) => {
@@ -97,14 +100,12 @@ class EditGear extends React.Component {
     console.log('gearid', currentGearId);
     console.log('gearseasonid', currentGearSeasonId);
     console.log('seasonid', currentSeasonId);
-    if (newGearSeasonCheckedValue === false) {
-      console.log('need to delete current gear season');
+    if (newGearSeasonCheckedValue === !true) {
       console.log('gearSeasonId to be deleted', currentGearSeasonId);
       this.deleteGearSeasonRecord(currentGearSeasonId);
       this.buildEditPage();
     } else if (newGearSeasonCheckedValue === true) {
-      console.log('need to create new gear season');
-      console.log('gearId in creating new gear season function', editId);
+      console.log('gearId need to create NEW gear season', editId);
       this.createNewGearSeasonRecord(editId, currentSeasonId);
       this.buildEditPage();
     }
@@ -137,14 +138,12 @@ class EditGear extends React.Component {
     console.log('gearid', currentGearId);
     console.log('gearseasonid', currentGearPartyId);
     console.log('seasonid', currentPartyId);
-    if (newGearPartyCheckedValue === false) {
-      console.log('need to delete current gear party');
+    if (newGearPartyCheckedValue === !true) {
       console.log('gearPartyId to be deleted', currentGearPartyId);
       this.deleteGearPartyRecord(currentGearPartyId);
       this.buildEditPage();
     } else if (newGearPartyCheckedValue === true) {
-      console.log('need to create new gear party');
-      console.log('gearId in creating new gear party function', editId);
+      console.log('gearId needed to create NEW gear party', editId);
       this.createNewGearPartyRecord(editId, currentPartyId);
       this.buildEditPage();
     }
@@ -283,8 +282,6 @@ class EditGear extends React.Component {
       gearImageUrl,
       functionsList,
       weatherList,
-      // seasonsList,
-      // partyList,
       allPartiesWithChecks,
       allSeasonsWithChecks,
     } = this.state;
@@ -300,12 +297,12 @@ class EditGear extends React.Component {
     const buildSeasonsList = () => allSeasonsWithChecks.map((seasonValue) => (
       <div className="form-check col-2" key={seasonValue.id}>
         <input
-          className="form-check-input gearSeasonCheckbox"
+          className="form-check-input"
           type="checkbox"
           name="gearSeason"
           id={seasonValue.id}
           value={seasonValue.id}
-          checked = {seasonValue.isChecked}
+          checked={seasonValue.isChecked}
           relatedgearid={seasonValue.relatedGearId}
           relatedgearseasonid={seasonValue.relatedGearSeasonId}
           onChange={this.changeGearSeason}
@@ -326,7 +323,7 @@ class EditGear extends React.Component {
           value={partyValue.id}
           checked={partyValue.isChecked}
           relatedgearid={partyValue.relatedGearId}
-          relatedgearpartyid={partyValue.relatedGearSeasonId}
+          relatedgearpartyid={partyValue.relatedGearPartyId}
           onChange={this.changeGearParty}
         />
         <label className="form-check-label" htmlFor={partyValue.id}>
