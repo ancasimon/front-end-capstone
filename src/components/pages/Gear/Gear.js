@@ -88,16 +88,27 @@ class Gear extends React.Component {
       .catch((err) => console.error('could not get gear from firebase', err));
   }
 
+  getAvailableGear = () => {
+    const uid = authData.getUid();
+    gearData.getGearByUid(uid)
+      .then((gear) => {
+        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true);
+        this.setState({ gear: availableGearItemsOnly });
+        console.log('available gear only???', gear);
+      })
+      .catch((err) => console.error('could not get only available gear from firebase', err));
+  }
+
   buildGearPage = () => {
     console.log('running buildGearPage');
     this.getFunctionsList();
     this.getPartyList();
     this.getSeasonsList();
-    this.getGear();
   }
 
   componentDidMount() {
     this.buildGearPage();
+    this.getAvailableGear();
   }
 
   removeGearItem = (gearId) => {
@@ -106,7 +117,16 @@ class Gear extends React.Component {
       .catch((err) => console.log('could not delete this gear item', err));
   }
 
+  // updateGearList = () => {
+  //   const { valueAvailable, gear } = this.state;
+  //   this.setState({ valueAvailable: false });
+  //   this.getGear();
+  //   this.setState({ gear });
+  //   this.buildGearPage();
+  // }
+
   render() {
+
     const {
       gear,
       isOpen,
@@ -221,13 +241,14 @@ class Gear extends React.Component {
               </div>
 
               <div className="col-sm-2">
-                <span small>Available gear only by default:</span>
+                <p>Available gear only by default:</p>
               </div>
 
               <div className="col-sm-2">
                 <Switch
                   isOn={valueAvailable}
                   handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
+                  // onChange={this.updateGearList()}
                 />
               </div>
 
