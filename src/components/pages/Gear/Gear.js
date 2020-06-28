@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 
 import GearItem from '../../shared/GearItem/GearItem';
+import Switch from '../../shared/Switch/Switch';
 
 import authData from '../../../helpers/data/authData';
 import functionsData from '../../../helpers/data/functionsData';
@@ -35,6 +36,13 @@ class Gear extends React.Component {
     partyList: [],
     seasonsList: [],
     selectedFunction: '',
+    valueAvailable: true,
+  }
+
+  toggleAvailableSwitch = (e) => {
+    this.setState({ valueAvailable: !this.state.valueAvailable });
+    console.log('new val of switch', this.state.valueAvailable);
+    this.buildGearPage();
   }
 
   toggleAccordion = () => {
@@ -82,12 +90,39 @@ class Gear extends React.Component {
       .catch((err) => console.error('could not get gear from firebase', err));
   }
 
+  getAvailableGear = () => {
+    const uid = authData.getUid();
+    gearData.getGearByUid(uid)
+      .then((gear) => {
+        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true);
+        this.setState({ gear: availableGearItemsOnly });
+        console.log('available gear only???', gear);
+      })
+      .catch((err) => console.error('could not get only available gear from firebase', err));
+  }
+
+  getUnavailableGear = () => {
+    const uid = authData.getUid();
+    gearData.getGearByUid(uid)
+      .then((gear) => {
+        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false);
+        this.setState({ gear: unavailableGearItems });
+        console.log('UNavailable gear only???', gear);
+      })
+      .catch((err) => console.error('could not get only available gear from firebase', err));
+  }
+
   buildGearPage = () => {
     console.log('running buildGearPage');
     this.getFunctionsList();
     this.getPartyList();
     this.getSeasonsList();
-    this.getGear();
+    const { valueAvailable } = this.state;
+    if (valueAvailable === true) {
+      this.getAvailableGear();
+    } else {
+      this.getUnavailableGear();
+    }
   }
 
   componentDidMount() {
@@ -100,7 +135,16 @@ class Gear extends React.Component {
       .catch((err) => console.log('could not delete this gear item', err));
   }
 
+  // updateGearList = () => {
+  //   const { valueAvailable, gear } = this.state;
+  //   this.setState({ valueAvailable: false });
+  //   this.getGear();
+  //   this.setState({ gear });
+  //   this.buildGearPage();
+  // }
+
   render() {
+
     const {
       gear,
       isOpen,
@@ -112,6 +156,7 @@ class Gear extends React.Component {
       partyList,
       seasonsList,
       selectedFunction,
+      valueAvailable,
     } = this.state;
 
     const filterByFunction = (functionId) => {
@@ -170,8 +215,9 @@ class Gear extends React.Component {
         <div>
           <Button className="blueButtons" onClick={this.toggleAccordion}>Filter your list</Button>
           <Collapse className="m-2" isOpen={isOpen}>
-            <div className="row">
-              <div className="col-sm-3">
+
+            <div className="row justify-content-around">
+              <div className="col-sm-2">
                 <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Function
@@ -184,33 +230,22 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
-              <div className="col-sm-3">
-                <Dropdown isOpen={dropdownPartyOpen} toggle={this.toggleDropdownParty}>
+              {/* <div className="row justify-content-around">
+              <div className="col-sm-2">
+                <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
                   <DropdownToggle caret className="blueButtons p-1">
-                    By Party
+                    By Function
                     </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    {buildPartyList()}
+                    {buildFunctionsList()}
                   </DropdownMenu>
                 </Dropdown>
-              </div>
+              </div> */}
 
-              <div className="col-sm-3">
-                <Dropdown isOpen={dropdownSeasonOpen} toggle={this.toggleDropdownSeason}>
-                  <DropdownToggle caret className="blueButtons p-1">
-                    By Season
-                    </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
-                    <DropdownItem divider />
-                    {buildSeasonsList()}
-                  </DropdownMenu>
-                </Dropdown>
-              </div>
 
-              <div className="col-sm-3">
+              <div className="col-sm-2">
                 <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Expiration Year
@@ -221,6 +256,18 @@ class Gear extends React.Component {
                     {buildYearsList()}
                   </DropdownMenu>
                 </Dropdown>
+              </div>
+
+              <div className="col-sm-2">
+                <p>Available gear only (by default):</p>
+              </div>
+
+              <div className="col-sm-2">
+                <Switch
+                  isOn={valueAvailable}
+                  handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
+                  // onClick={this.buildGearPage()}
+                />
               </div>
 
             </div>
