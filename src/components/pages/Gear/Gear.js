@@ -35,6 +35,9 @@ class Gear extends React.Component {
     partyList: [],
     seasonsList: [],
     selectedFunction: '',
+    selectedParty: 'party1',
+    selectedSeason: 'season1',
+    selectedExpYear: '',
   }
 
   toggleAccordion = () => {
@@ -115,7 +118,6 @@ class Gear extends React.Component {
     } = this.state;
 
     const filterByFunction = (functionId) => {
-      // this.setState({ gear });
       this.setState({ selectedFunction: functionId });
       console.log('filterByFunction running', this.state.selectedFunction);
       const uid = authData.getUid();
@@ -128,21 +130,55 @@ class Gear extends React.Component {
           ));
           console.log('filtered array', filteredlist);
           console.log('filtered GEAR list', this.state.gear);
-          // this.setState({ gear });
         })
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
     };
+
+    const filterByParty = (partyId) => {
+      this.setState({ selectedParty: partyId });
+      console.log('filterByParty running', this.state.selectedParty);
+      const uid = authData.getUid();
+      smashData.getGearWithProperties(gearId)
+        .then((fbData) => {
+          const filteredlist = fbData.filter((gearItem) => gearItem === this.state.partyId);
+          this.setState({ gear: filteredlist });
+          gear.map((gearItem) => (
+        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+          ));
+          console.log('filtered array', filteredlist);
+          console.log('filtered GEAR list', this.state.gear);
+        })
+        .catch((err) => console.error('could not get gear for filtering from firebase', err));
+    };
+
+    const filterBySeason = (seasonId) => {
+      this.setState({ selectedSeason: seasonId });
+      console.log('filterBySeason running', this.state.selectedSeason);
+      const uid = authData.getUid();
+      gearData.getGearByUid(uid)
+        .then((fbData) => {
+          const filteredlist = fbData.filter((gearItem) => gearItem === this.state.seasonId);
+          this.setState({ gear: filteredlist });
+          gear.map((gearItem) => (
+        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+          ));
+          console.log('filtered array', filteredlist);
+          console.log('filtered GEAR list', this.state.gear);
+        })
+        .catch((err) => console.error('could not get gear for filtering from firebase', err));
+    };
+
 
     const buildFunctionsList = () => functionsList.map((functionValue) => (
       <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterByFunction(functionValue.id)}>{functionValue.name}</DropdownItem>
     ));
 
     const buildPartyList = () => partyList.map((partyValue) => (
-      <DropdownItem key={partyValue.id} value={partyValue.id}>{partyValue.name}</DropdownItem>
+      <DropdownItem key={partyValue.id} value={partyValue.id} onClick={() => filterByParty(partyValue.id)}>{partyValue.name}</DropdownItem>
     ));
 
     const buildSeasonsList = () => seasonsList.map((seasonValue) => (
-      <DropdownItem key={seasonValue.id} value={seasonValue.id}>{seasonValue.name}</DropdownItem>
+      <DropdownItem key={seasonValue.id} value={seasonValue.id} onClick={() => filterBySeason(seasonValue.id)}>{seasonValue.name}</DropdownItem>
     ));
 
     const buildYearsList = () => {
