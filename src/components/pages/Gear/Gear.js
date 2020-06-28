@@ -20,6 +20,7 @@ import gearData from '../../../helpers/data/gearData';
 import partyData from '../../../helpers/data/partyData';
 import seasonsData from '../../../helpers/data/seasonsData';
 import smashData from '../../../helpers/data/smashData';
+import weatherData from '../../../helpers/data/weatherData';
 
 import '../../../styles/index.scss';
 import './Gear.scss';
@@ -35,7 +36,9 @@ class Gear extends React.Component {
     functionsList: [],
     partyList: [],
     seasonsList: [],
+    weatherList: [],
     selectedFunction: '',
+    selectedWeather: '',
     valueAvailable: true,
   }
 
@@ -51,6 +54,10 @@ class Gear extends React.Component {
 
   toggleDropdownFunction = () => {
     this.setState({ dropdownFunctionOpen: !this.state.dropdownFunctionOpen });
+  }
+
+  toggleDropdownWeather = () => {
+    this.setState({ dropdownWeatherOpen: !this.state.dropdownWeatherOpen });
   }
 
   toggleDropdownParty = () => {
@@ -69,6 +76,12 @@ class Gear extends React.Component {
     functionsData.getFunctions()
       .then((functionsList) => this.setState({ functionsList }))
       .catch((err) => console.error('unable to get list of function values', err));
+  }
+
+  getWeatherList = () => {
+    weatherData.getWeatherValues()
+      .then((weatherList) => this.setState({ weatherList }))
+      .catch((err) => console.error('unable to get list of weather values', err));
   }
 
   getPartyList = () => {
@@ -115,6 +128,7 @@ class Gear extends React.Component {
   buildGearPage = () => {
     console.log('running buildGearPage');
     this.getFunctionsList();
+    this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
     const { valueAvailable } = this.state;
@@ -149,10 +163,12 @@ class Gear extends React.Component {
       gear,
       isOpen,
       dropdownFunctionOpen,
+      dropdownWeatherOpen,
       dropdownPartyOpen,
       dropdownSeasonOpen,
       dropdownExpYearOpen,
       functionsList,
+      weatherList,
       partyList,
       seasonsList,
       selectedFunction,
@@ -178,8 +194,31 @@ class Gear extends React.Component {
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
     };
 
+    const filterByWeather = (weatherId) => {
+      // this.setState({ gear });
+      this.setState({ selectedWeather: weatherId });
+      console.log('filterByWeather running', this.state.selectedWeather);
+      const uid = authData.getUid();
+      gearData.getGearByUid(uid)
+        .then((fbData) => {
+          const filteredlist = fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
+          this.setState({ gear: filteredlist });
+          gear.map((gearItem) => (
+        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+          ));
+          console.log('filtered array', filteredlist);
+          console.log('filtered GEAR list', this.state.gear);
+          // this.setState({ gear });
+        })
+        .catch((err) => console.error('could not get gear for filtering by weather from firebase', err));
+    };
+
     const buildFunctionsList = () => functionsList.map((functionValue) => (
       <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterByFunction(functionValue.id)}>{functionValue.name}</DropdownItem>
+    ));
+
+    const buildWeatherList = () => weatherList.map((weatherValue) => (
+      <DropdownItem key={weatherValue.id} value={weatherValue.id} onClick={() => filterByWeather(weatherValue.id)}>{weatherValue.name}</DropdownItem>
     ));
 
     const buildPartyList = () => partyList.map((partyValue) => (
@@ -216,8 +255,20 @@ class Gear extends React.Component {
           <Button className="blueButtons" onClick={this.toggleAccordion}>Filter your list</Button>
           <Collapse className="m-2" isOpen={isOpen}>
 
-            <div className="row justify-content-around">
-              <div className="col-sm-2">
+            <div className="row justify-content-center col-12">
+                <div>
+                  <p>Available gear only (by default):
+                  <Switch
+                  isOn={valueAvailable}
+                  handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
+                  // onClick={this.buildGearPage()}
+                  />
+                  </p>
+                </div>
+            </div>
+
+            <div className="row justify-content-center col-12">
+              <div className="col-sm-4">
                 <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Function
@@ -230,22 +281,21 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
-              {/* <div className="row justify-content-around">
-              <div className="col-sm-2">
-                <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
+              <div className="col-sm-4">
+                <Dropdown isOpen={dropdownWeatherOpen} toggle={this.toggleDropdownWeather}>
                   <DropdownToggle caret className="blueButtons p-1">
-                    By Function
+                    By Weather
                     </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    {buildFunctionsList()}
+                    {buildWeatherList()}
                   </DropdownMenu>
                 </Dropdown>
-              </div> */}
+              </div>
 
 
-              <div className="col-sm-2">
+              <div className="col-sm-4">
                 <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Expiration Year
@@ -256,18 +306,6 @@ class Gear extends React.Component {
                     {buildYearsList()}
                   </DropdownMenu>
                 </Dropdown>
-              </div>
-
-              <div className="col-sm-2">
-                <p>Available gear only (by default):</p>
-              </div>
-
-              <div className="col-sm-2">
-                <Switch
-                  isOn={valueAvailable}
-                  handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
-                  // onClick={this.buildGearPage()}
-                />
               </div>
 
             </div>
