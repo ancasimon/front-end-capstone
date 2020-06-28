@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 
 import GearItem from '../../shared/GearItem/GearItem';
+import Switch from '../../shared/Switch/Switch';
 
 import authData from '../../../helpers/data/authData';
 import functionsData from '../../../helpers/data/functionsData';
@@ -170,8 +171,9 @@ class Gear extends React.Component {
         <div>
           <Button className="blueButtons" onClick={this.toggleAccordion}>Filter your list</Button>
           <Collapse className="m-2" isOpen={isOpen}>
-            <div className="row">
-              <div className="col-sm-3">
+
+            <div className="row justify-content-around">
+              <div className="col-sm-2">
                 <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Function
@@ -184,7 +186,7 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
-              <div className="col-sm-3">
+              <div className="col-sm-2">
                 <Dropdown isOpen={dropdownPartyOpen} toggle={this.toggleDropdownParty}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Party
@@ -197,7 +199,7 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
-              <div className="col-sm-3">
+              <div className="col-sm-2">
                 <Dropdown isOpen={dropdownSeasonOpen} toggle={this.toggleDropdownSeason}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Season
@@ -210,7 +212,7 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
-              <div className="col-sm-3">
+              <div className="col-sm-2">
                 <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
                   <DropdownToggle caret className="blueButtons p-1">
                     By Expiration Year
@@ -221,6 +223,10 @@ class Gear extends React.Component {
                     {buildYearsList()}
                   </DropdownMenu>
                 </Dropdown>
+              </div>
+
+              <div className="col-sm-2 m-3">
+                <Switch />
               </div>
 
             </div>
