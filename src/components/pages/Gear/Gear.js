@@ -137,16 +137,18 @@ class Gear extends React.Component {
     const filterByParty = (partyId) => {
       this.setState({ selectedParty: partyId });
       console.log('filterByParty running', this.state.selectedParty);
-      const uid = authData.getUid();
-      smashData.getGearWithProperties(gearId)
+      smashData.getGearListWithFilterData()
         .then((fbData) => {
-          const filteredlist = fbData.filter((gearItem) => gearItem === this.state.partyId);
-          this.setState({ gear: filteredlist });
-          gear.map((gearItem) => (
-        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
-          ));
-          console.log('filtered array', filteredlist);
-          console.log('filtered GEAR list', this.state.gear);
+          console.log('fb data coming for filtering', fbData);
+          // console.log('newArrayOfParties', newArrayOfParties);
+        //   const partyArrayToCheck = fbData.selectedParties;
+        //   const filteredlist = partyArrayToCheck.filter((value) => value.id === this.state.selectedParty);
+        //   this.setState({ gear: filteredlist });
+        //   gear.map((gearItem) => (
+        // <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+        //   ));
+        //   console.log('filtered array of parties', filteredlist);
+        //   console.log('filtered GEAR list', this.state.gear);
         })
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
     };
