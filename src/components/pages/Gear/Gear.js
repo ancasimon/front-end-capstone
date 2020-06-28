@@ -36,6 +36,11 @@ class Gear extends React.Component {
     partyList: [],
     seasonsList: [],
     selectedFunction: '',
+    valueAvailable: true,
+  }
+
+  toggleAvailableSwitch = () => {
+    this.setState({ valueAvailable: !this.state.valueAvailable });
   }
 
   toggleAccordion = () => {
@@ -113,6 +118,7 @@ class Gear extends React.Component {
       partyList,
       seasonsList,
       selectedFunction,
+      valueAvailable,
     } = this.state;
 
     const filterByFunction = (functionId) => {
@@ -186,31 +192,20 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
+              {/* <div className="row justify-content-around">
               <div className="col-sm-2">
-                <Dropdown isOpen={dropdownPartyOpen} toggle={this.toggleDropdownParty}>
+                <Dropdown isOpen={dropdownFunctionOpen} toggle={this.toggleDropdownFunction}>
                   <DropdownToggle caret className="blueButtons p-1">
-                    By Party
+                    By Function
                     </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
-                    {buildPartyList()}
+                    {buildFunctionsList()}
                   </DropdownMenu>
                 </Dropdown>
-              </div>
+              </div> */}
 
-              <div className="col-sm-2">
-                <Dropdown isOpen={dropdownSeasonOpen} toggle={this.toggleDropdownSeason}>
-                  <DropdownToggle caret className="blueButtons p-1">
-                    By Season
-                    </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
-                    <DropdownItem divider />
-                    {buildSeasonsList()}
-                  </DropdownMenu>
-                </Dropdown>
-              </div>
 
               <div className="col-sm-2">
                 <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
@@ -225,8 +220,15 @@ class Gear extends React.Component {
                 </Dropdown>
               </div>
 
-              <div className="col-sm-2 m-3">
-                <Switch />
+              <div className="col-sm-2">
+                <span small>Available gear only by default:</span>
+              </div>
+
+              <div className="col-sm-2">
+                <Switch
+                  isOn={valueAvailable}
+                  handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
+                />
               </div>
 
             </div>
