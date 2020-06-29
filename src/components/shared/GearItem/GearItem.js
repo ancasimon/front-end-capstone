@@ -42,11 +42,6 @@ class GearItem extends React.Component {
     this.getGearWithAdditionalProperties();
   }
 
-  // deleteGearItem = () => {
-  //   const {  } = this.props;
-  //   removeGearItem();
-  // }
-
   deleteConfirmationMessage = (gearId) => {
     const { gearItem, removeGearItem } = this.props;
     Swal.fire({
