@@ -34,6 +34,7 @@ class NewGear extends React.Component {
     partyList: [],
     gearSeasonsList: [],
     gearPartyList: [],
+    gearTimestamp: '',
   }
 
   getFunctionsList = () => {
@@ -205,6 +206,7 @@ class NewGear extends React.Component {
       gearFunction,
       gearWeather,
       gearImageUrl,
+      gearTimestamp,
     } = this.state;
     if (gearItem === '' && gearFunction === '' && gearBrand === '') {
       this.validationAlert();
@@ -223,12 +225,14 @@ class NewGear extends React.Component {
         forEstablishedCampsite: gearEstCampsite,
         weightInGrams: gearWeight,
         imageUrl: gearImageUrl,
+        gearTimestamp: new Date(),
       };
 
       gearData.postGear(newGear)
         .then((fbResponse) => {
           const newGearId = fbResponse.data.name;
           console.log('new gearid', newGearId);
+          console.log('new gear timestamp!!!', gearTimestamp);
           this.createNewGearSeasonRecord(newGearId);
           this.createNewGearPartyRecord(newGearId);
           this.props.history.push('/gear');
