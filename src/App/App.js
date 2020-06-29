@@ -11,6 +11,7 @@ import {
 
 import Auth from '../components/pages/Auth/Auth';
 import EditGear from '../components/pages/EditGear/EditGear';
+import Footer from '../components/shared/Footer/Footer';
 import Gear from '../components/pages/Gear/Gear';
 import Home from '../components/pages/Home/Home';
 import NewGear from '../components/pages/NewGear/NewGear';
@@ -83,6 +84,9 @@ class App extends React.Component {
 
           </React.Fragment>
         </BrowserRouter>
+
+        <Footer />
+
       </div>
     );
   }

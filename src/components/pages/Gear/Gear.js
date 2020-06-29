@@ -169,7 +169,6 @@ class Gear extends React.Component {
 
     const filterByFunction = (functionId) => {
       this.setState({ selectedFunction: functionId });
-      console.log('filterByFunction running', this.state.selectedFunction);
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
@@ -178,15 +177,12 @@ class Gear extends React.Component {
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
-          console.log('filtered array', filteredlist);
-          console.log('filtered GEAR list', this.state.gear);
         })
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
     };
 
     const filterByWeather = (weatherId) => {
       this.setState({ selectedWeather: weatherId });
-      console.log('filterByWeather running', this.state.selectedWeather);
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
@@ -195,8 +191,6 @@ class Gear extends React.Component {
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
-          console.log('filtered array', filteredlist);
-          console.log('filtered GEAR list', this.state.gear);
         })
         .catch((err) => console.error('could not get gear for filtering by weather from firebase', err));
     };
@@ -211,8 +205,6 @@ class Gear extends React.Component {
           gear.map((gearItem) => (
             <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
-          console.log('filtered array', filteredlist);
-          console.log('filtered GEAR list', this.state.gear);
         })
         .catch((err) => console.error('could not filter data by exp year', err));
     };
@@ -235,7 +227,6 @@ class Gear extends React.Component {
 
     const buildYearsList = () => {
       const year = 2010;
-      console.log('sel exp yr', selectedExpYear);
       return (
         Array.from(new Array(40), (v, i) => (
           <DropdownItem key={i} value={year + i} onClick={() => filterByYear(year + i)}>{year + i}</DropdownItem>
@@ -266,7 +257,6 @@ class Gear extends React.Component {
                   <Switch
                   isOn={valueAvailable}
                   handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
-                  // onClick={this.buildGearPage()}
                   />
                   </p>
                 </div>
