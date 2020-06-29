@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 import smashData from '../../../helpers/data/smashData';
@@ -40,6 +41,28 @@ class SingleGear extends React.Component {
     smashData.completelyRemoveGearItemAndChildren(gearItemId)
       .then(() => this.props.history.push('/gear'))
       .catch((err) => console.error('unable to delete this gear record', err));
+  }
+
+  deleteConfirmationMessage = (gearId) => {
+    const { gearItemId } = this.props.match.params;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#32471E',
+      cancelButtonColor: '#8b0000',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success',
+        );
+        this.removeGearItem(gearItemId);
+      }
+    });
   }
 
   render() {
@@ -135,7 +158,7 @@ class SingleGear extends React.Component {
 
           <div className="row justify-content-center">
             <Link to={newRoute} className="btn btn-lg greenButtons col-sm-4 p-1"><i className="fas fa-pencil-alt"></i></Link>
-            <button className="btn btn-lg redButtons col-sm-4 pointerHand p-1" onClick={this.removeGearItem}><i className="fas fa-trash-alt"></i></button>
+            <button className="btn btn-lg redButtons col-sm-4 pointerHand p-1" onClick={this.deleteConfirmationMessage}><i className="fas fa-trash-alt"></i></button>
           </div>
         </div>
       </div>
