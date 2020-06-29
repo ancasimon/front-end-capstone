@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 import authData from '../../../helpers/data/authData';
@@ -185,6 +186,10 @@ class NewGear extends React.Component {
     this.setState({ gearImageUrl: e.target.value });
   }
 
+  validationAlert = () => {
+    Swal.fire('You must specify required details Function, Item, and Brand to add this item to your list!');
+  }
+
   saveNewGear = (e) => {
     e.preventDefault();
     const {
@@ -201,32 +206,35 @@ class NewGear extends React.Component {
       gearWeather,
       gearImageUrl,
     } = this.state;
+    if (gearItem === '' && gearFunction === '' && gearBrand === '') {
+      this.validationAlert();
+    } else {
+      const newGear = {
+        uid: authData.getUid(),
+        item: gearItem,
+        isAvailable: gearAvailable,
+        functionId: gearFunction,
+        brand: gearBrand,
+        model: gearModel,
+        details: gearDetails,
+        manufactureYear: gearManYr,
+        expirationYear: gearExpYr,
+        weatherId: gearWeather,
+        forEstablishedCampsite: gearEstCampsite,
+        weightInGrams: gearWeight,
+        imageUrl: gearImageUrl,
+      };
 
-    const newGear = {
-      uid: authData.getUid(),
-      item: gearItem,
-      isAvailable: gearAvailable,
-      functionId: gearFunction,
-      brand: gearBrand,
-      model: gearModel,
-      details: gearDetails,
-      manufactureYear: gearManYr,
-      expirationYear: gearExpYr,
-      weatherId: gearWeather,
-      forEstablishedCampsite: gearEstCampsite,
-      weightInGrams: gearWeight,
-      imageUrl: gearImageUrl,
-    };
-
-    gearData.postGear(newGear)
-      .then((fbResponse) => {
-        const newGearId = fbResponse.data.name;
-        console.log('new gearid', newGearId);
-        this.createNewGearSeasonRecord(newGearId);
-        this.createNewGearPartyRecord(newGearId);
-        this.props.history.push('/gear');
-      })
-      .catch((err) => console.error('unable to save new gear', err));
+      gearData.postGear(newGear)
+        .then((fbResponse) => {
+          const newGearId = fbResponse.data.name;
+          console.log('new gearid', newGearId);
+          this.createNewGearSeasonRecord(newGearId);
+          this.createNewGearPartyRecord(newGearId);
+          this.props.history.push('/gear');
+        })
+        .catch((err) => console.error('unable to save new gear', err));
+    }
   }
 
   render() {
@@ -293,8 +301,155 @@ class NewGear extends React.Component {
       <div className="NewGear col-12 pageDisplay">
         <h1 className="heading textShadow">Track a New Piece of Gear</h1>
 
-        <form>
-{/* This is the row of radio buttons for the Seasons collection. */}
+        <form className="mt-5">
+        <div className="container col-12 mb-3 inputBorder">
+            <p className="question">Required Information</p>
+            <div
+              className="row justify-content-around"
+            >
+              <div className="form-group col-4">
+                <label htmlFor="gear-function" className="question">Function</label>
+                <select
+                  className="form-control"
+                  id="gear-function"
+                  value={gearFunction}
+                  onChange={this.changeGearFunction}
+                >
+                  {/* This is the list of function values from Firebase that gets displayed here! */}
+                  { buildFunctionsList() }
+                </select>
+              </div>
+              <div className="form-group col-4">
+                <label htmlFor="gear-item" className="question">Item</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="gear-item"
+                  placeholder="What is it?"
+                  value={gearItem}
+                  onChange={this.changeGearItem}
+                />
+              </div>
+              <div className="form-group col-4">
+                <label htmlFor="gear-brand" className="question">Brand</label>
+                <input
+                type="text"
+                className="form-control"
+                id="gear-brand"
+                placeholder="Who made it?"
+                value={gearBrand}
+                onChange={this.changeGearBrand}
+              />
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-4">
+            <div className="form-group form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="gear-available"
+                  value={gearAvailable}
+                  onChange={this.changeGearAvailable}
+                />
+                <label className="form-check-label question" htmlFor="gear-available">Is it available?</label>
+              </div>
+              <div className="form-group form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="gear-estCampsite"
+                  value={gearEstCampsite}
+                  onChange={this.changeGearEstCampsite}
+                />
+                <label className="form-check-label question" htmlFor="gear-estCampsite">Can it be used only at an established campsite?</label>
+              </div>
+              <div className="form-group">
+                <label htmlFor="gear-model" className="question">Model</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="gear-model"
+                  placeholder="What type?"
+                  value={gearModel}
+                  onChange={this.changeGearModel}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="gear-details" className="question">Details</label>
+                <textarea
+                  className="form-control"
+                  id="gear-details"
+                  rows="3"
+                  placeholder="What do you like about it?"
+                  value={gearDetails}
+                  onChange={this.changeGearDetails}
+                ></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="gear-image" className="question">Photo URL</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="gear-image"
+                  placeholder="Take a pic!"
+                  value={gearImageUrl}
+                  onChange={this.changeGearImageUrl}
+                />
+              </div>
+            </div>
+
+            <div className="col-4">
+              <div className="form-group">
+                <label htmlFor="gear-manYr" className="question">Manufacture Year</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="gear-manYr"
+                  placeholder="When was it made?"
+                  value={gearManYr}
+                  onChange={this.changeGearManYr}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="gear-expYr" className="question">Expiration Year</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="gear-expYr"
+                  placeholder="When do you think you will need to replace it?"
+                  value={gearExpYr}
+                  onChange={this.changeGearExpYr}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="gear-weight" className="question">What is the weight? (in grams)</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="gear-weight"
+                  placeholder="How much does it weigh?"
+                  value={gearWeight}
+                  onChange={this.changeGearWeight}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="gear-weather" className="question">Weather</label>
+                <select
+                  className="form-control"
+                  id="gear-weather"
+                  value={gearWeather}
+                  onChange={this.changeGearWeather}
+                >
+                  {/* The list of weather values from Firebase gets displayed here! */}
+                  {buildWeatherList()}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* This is the row of radio buttons for the Seasons collection. */}
           <div className="container col-12 inputBorder">
             <p className="question">Season: Will you use this item all the time or only during a specific season?</p>
             <div
@@ -312,144 +467,6 @@ class NewGear extends React.Component {
             </div>
           </div>
 
-          <div className="row justify-content-center">
-          <div className="col-4">
-          <div className="form-group">
-            <label htmlFor="gear-item" className="question">Item</label>
-            <input
-              type="text"
-              className="form-control"
-              id="gear-item"
-              placeholder="What is it?"
-              value={gearItem}
-              onChange={this.changeGearItem}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-brand" className="question">Brand</label>
-            <input
-            type="text"
-            className="form-control"
-            id="gear-brand"
-            placeholder="Who made it?"
-            value={gearBrand}
-            onChange={this.changeGearBrand}
-          />
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-model" className="question">Model</label>
-            <input
-              type="text"
-              className="form-control"
-              id="gear-model"
-              placeholder="What type?"
-              value={gearModel}
-              onChange={this.changeGearModel}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-details" className="question">Details</label>
-            <textarea
-              className="form-control"
-              id="gear-details"
-              rows="3"
-              placeholder="What do you like about it?"
-              value={gearDetails}
-              onChange={this.changeGearDetails}
-            ></textarea>
-          </div>
-          <div className="form-group form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="gear-estCampsite"
-              value={gearEstCampsite}
-              onChange={this.changeGearEstCampsite}
-            />
-            <label className="form-check-label question" htmlFor="gear-estCampsite">Can it be used only at an established campsite?</label>
-          </div>
-          <div className="form-group form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="gear-available"
-              value={gearAvailable}
-              onChange={this.changeGearAvailable}
-            />
-            <label className="form-check-label question" htmlFor="gear-available">Is it available?</label>
-          </div>
-          </div>
-          <div className="col-4">
-          <div className="form-group">
-            <label htmlFor="gear-manYr" className="question">Manufacture Year</label>
-            <input
-              type="number"
-              className="form-control"
-              id="gear-manYr"
-              placeholder="When was it made?"
-              value={gearManYr}
-              onChange={this.changeGearManYr}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-expYr" className="question">Expiration Year</label>
-            <input
-              type="number"
-              className="form-control"
-              id="gear-expYr"
-              placeholder="When do you think you will need to replace it?"
-              value={gearExpYr}
-              onChange={this.changeGearExpYr}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-weight" className="question">What is the weight? (in grams)</label>
-            <input
-              type="number"
-              className="form-control"
-              id="gear-weight"
-              placeholder="How much does it weigh?"
-              value={gearWeight}
-              onChange={this.changeGearWeight}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-function" className="question">Function</label>
-            <select
-              className="form-control"
-              id="gear-function"
-              value={gearFunction}
-              onChange={this.changeGearFunction}
-            >
-              {/* NEED to get the list of function values from Firebase to display here! */}
-              { buildFunctionsList() }
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-weather" className="question">Weather</label>
-            <select
-              className="form-control"
-              id="gear-weather"
-              value={gearWeather}
-              onChange={this.changeGearWeather}
-            >
-              {/* NEED to get the list of weather values from Firebase to display here! */}
-              {buildWeatherList()}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="gear-image" className="question">Photo URL</label>
-            <input
-              type="text"
-              className="form-control"
-              id="gear-image"
-              placeholder="Take a pic!"
-              value={gearImageUrl}
-              onChange={this.changeGearImageUrl}
-            />
-          </div>
-          </div>
-          </div>
           <button type="submit" className="btn greenButtons" onClick={this.saveNewGear}>Save New Gear</button>
           <Link className="btn redButtons" to='/gear'>Cancel</Link>
         </form>
