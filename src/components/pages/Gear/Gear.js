@@ -39,6 +39,7 @@ class Gear extends React.Component {
     weatherList: [],
     selectedFunction: '',
     selectedWeather: '',
+    selectedExpYear: 0,
     valueAvailable: true,
   }
 
@@ -149,16 +150,7 @@ class Gear extends React.Component {
       .catch((err) => console.log('could not delete this gear item', err));
   }
 
-  // updateGearList = () => {
-  //   const { valueAvailable, gear } = this.state;
-  //   this.setState({ valueAvailable: false });
-  //   this.getGear();
-  //   this.setState({ gear });
-  //   this.buildGearPage();
-  // }
-
   render() {
-
     const {
       gear,
       isOpen,
@@ -171,12 +163,11 @@ class Gear extends React.Component {
       weatherList,
       partyList,
       seasonsList,
-      selectedFunction,
       valueAvailable,
+      selectedExpYear,
     } = this.state;
 
     const filterByFunction = (functionId) => {
-      // this.setState({ gear });
       this.setState({ selectedFunction: functionId });
       console.log('filterByFunction running', this.state.selectedFunction);
       const uid = authData.getUid();
@@ -189,13 +180,11 @@ class Gear extends React.Component {
           ));
           console.log('filtered array', filteredlist);
           console.log('filtered GEAR list', this.state.gear);
-          // this.setState({ gear });
         })
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
     };
 
     const filterByWeather = (weatherId) => {
-      // this.setState({ gear });
       this.setState({ selectedWeather: weatherId });
       console.log('filterByWeather running', this.state.selectedWeather);
       const uid = authData.getUid();
@@ -208,9 +197,24 @@ class Gear extends React.Component {
           ));
           console.log('filtered array', filteredlist);
           console.log('filtered GEAR list', this.state.gear);
-          // this.setState({ gear });
         })
         .catch((err) => console.error('could not get gear for filtering by weather from firebase', err));
+    };
+
+    const filterByYear = (yearValue) => {
+      this.setState({ selectedExpYear: yearValue });
+      const uid = authData.getUid();
+      gearData.getGearByUid(uid)
+        .then((fbData) => {
+          const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
+          this.setState({ gear: filteredlist });
+          gear.map((gearItem) => (
+            <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+          ));
+          console.log('filtered array', filteredlist);
+          console.log('filtered GEAR list', this.state.gear);
+        })
+        .catch((err) => console.error('could not filter data by exp year', err));
     };
 
     const buildFunctionsList = () => functionsList.map((functionValue) => (
@@ -230,10 +234,11 @@ class Gear extends React.Component {
     ));
 
     const buildYearsList = () => {
-      const year = 2000;
+      const year = 2010;
+      console.log('sel exp yr', selectedExpYear);
       return (
-        Array.from(new Array(50), (v, i) => (
-          <DropdownItem key={i} value={year + i}>{year + i}</DropdownItem>
+        Array.from(new Array(40), (v, i) => (
+          <DropdownItem key={i} value={year + i} onClick={() => filterByYear(year + i)}>{year + i}</DropdownItem>
         ))
       );
     };
