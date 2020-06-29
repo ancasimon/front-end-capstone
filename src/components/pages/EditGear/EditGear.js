@@ -118,13 +118,19 @@ class EditGear extends React.Component {
     };
     console.log('new gearseason', newGearSeason);
     gearSeasonData.postGearSeason(newGearSeason)
-      .then(() => console.log('created new gearseason', newGearSeason))
+      .then(() => {
+        this.buildEditPage();
+        console.log('created new gearseason', newGearSeason);
+      })
       .catch((err) => console.error('could not create new gearSeason record'));
   };
 
   deleteGearSeasonRecord = (gearSeasonId) => {
     gearSeasonData.deleteGearSeason(gearSeasonId)
-      .then(() => console.log('deleted this gear season record', gearSeasonId))
+      .then(() => {
+        console.log('deleted this gear season record', gearSeasonId);
+        this.buildEditPage();
+      })
       .catch((err) => console.error('could not delete the gear season record', err));
   }
 
@@ -141,11 +147,9 @@ class EditGear extends React.Component {
     if (newGearPartyCheckedValue === !true) {
       console.log('gearPartyId to be deleted', currentGearPartyId);
       this.deleteGearPartyRecord(currentGearPartyId);
-      this.buildEditPage();
     } else if (newGearPartyCheckedValue === true) {
       console.log('gearId needed to create NEW gear party', editId);
       this.createNewGearPartyRecord(editId, currentPartyId);
-      this.buildEditPage();
     }
   }
 
