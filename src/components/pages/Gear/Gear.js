@@ -261,7 +261,6 @@ class Gear extends React.Component {
                   <Switch
                   isOn={valueAvailable}
                   handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
-                  // onClick={this.buildGearPage()}
                   />
                   </p>
                 </div>
