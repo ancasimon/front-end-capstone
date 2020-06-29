@@ -114,11 +114,8 @@ const getGearListWithFilterData = () => new Promise((resolve, reject) => {
       resolve(newArray);
       console.log('newarray!!!!!', newArray);
     });
-    // .catch((err) = reject(err));
+  // .catch((err) = reject(err));
 });
-
-
-
 
 //         gearData.getSingleGear(item.id)
 //           .then((singleGearResponse) => {
