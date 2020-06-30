@@ -41,11 +41,10 @@ class Gear extends React.Component {
     selectedWeather: '',
     valueAvailable: true,
   }
+  // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
 
   toggleAvailableSwitch = (e) => {
-    this.setState({ valueAvailable: !this.state.valueAvailable });
-    console.log('new val of switch', this.state.valueAvailable);
-    this.buildGearPage();
+    this.setState({ valueAvailable: e }, this.buildGearPage(e));
   }
 
   toggleAccordion = () => {
@@ -109,7 +108,7 @@ class Gear extends React.Component {
       .then((gear) => {
         const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true);
         this.setState({ gear: availableGearItemsOnly });
-        console.log('available gear only???', gear);
+        // console.log('available gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -120,19 +119,18 @@ class Gear extends React.Component {
       .then((gear) => {
         const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false);
         this.setState({ gear: unavailableGearItems });
-        console.log('UNavailable gear only???', gear);
+        // console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
 
-  buildGearPage = () => {
-    console.log('running buildGearPage');
+  buildGearPage = (e) => {
+    // console.log('running buildGearPage');
     this.getFunctionsList();
     this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
-    const { valueAvailable } = this.state;
-    if (valueAvailable === true) {
+    if (e === true) {
       this.getAvailableGear();
     } else {
       this.getUnavailableGear();
@@ -140,25 +138,16 @@ class Gear extends React.Component {
   }
 
   componentDidMount() {
-    this.buildGearPage();
+    this.buildGearPage(this.state.valueAvailable);
   }
 
   removeGearItem = (gearId) => {
     smashData.completelyRemoveGearItemAndChildren(gearId)
       .then(() => this.getGear())
-      .catch((err) => console.log('could not delete this gear item', err));
+      .catch((err) => console.error('could not delete this gear item', err));
   }
 
-  // updateGearList = () => {
-  //   const { valueAvailable, gear } = this.state;
-  //   this.setState({ valueAvailable: false });
-  //   this.getGear();
-  //   this.setState({ gear });
-  //   this.buildGearPage();
-  // }
-
   render() {
-
     const {
       gear,
       isOpen,
@@ -176,9 +165,8 @@ class Gear extends React.Component {
     } = this.state;
 
     const filterByFunction = (functionId) => {
-      // this.setState({ gear });
       this.setState({ selectedFunction: functionId });
-      console.log('filterByFunction running', this.state.selectedFunction);
+      // console.log('filterByFunction running', this.state.selectedFunction);
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
@@ -187,17 +175,15 @@ class Gear extends React.Component {
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
-          console.log('filtered array', filteredlist);
-          console.log('filtered GEAR list', this.state.gear);
-          // this.setState({ gear });
+          // console.log('filtered array', filteredlist);
+          // console.log('filtered GEAR list', this.state.gear);
         })
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
     };
 
     const filterByWeather = (weatherId) => {
-      // this.setState({ gear });
       this.setState({ selectedWeather: weatherId });
-      console.log('filterByWeather running', this.state.selectedWeather);
+      // console.log('filterByWeather running', this.state.selectedWeather);
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
@@ -206,9 +192,8 @@ class Gear extends React.Component {
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
-          console.log('filtered array', filteredlist);
-          console.log('filtered GEAR list', this.state.gear);
-          // this.setState({ gear });
+          // console.log('filtered array', filteredlist);
+          // console.log('filtered GEAR list', this.state.gear);
         })
         .catch((err) => console.error('could not get gear for filtering by weather from firebase', err));
     };
@@ -273,7 +258,7 @@ class Gear extends React.Component {
                     By Function
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
                   </DropdownMenu>
@@ -286,7 +271,7 @@ class Gear extends React.Component {
                     By Weather
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildWeatherList()}
                   </DropdownMenu>
@@ -300,7 +285,7 @@ class Gear extends React.Component {
                     By Expiration Year
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildYearsList()}
                   </DropdownMenu>
