@@ -13,7 +13,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 2000,
     "imageUrl": "https://www.rei.com/media/fc642344-08d5-46b6-ba95-ed24e586f227?size=784x588",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
     },
   "gear2": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -29,7 +29,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/5e5cb589-ea08-46e3-96e7-b97109e2bb4b?size=784x588",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
     },
   "gear3": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -45,7 +45,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 1530,
     "imageUrl": "https://www.rei.com/media/dcf95859-70b5-40ee-8f88-8913410eecf8?size=784x588",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
     },
   "gear4": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -61,7 +61,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 263,
     "imageUrl": "https://m.media-amazon.com/images/I/711uLRkCaWL._AC_SR700,525_.jpg",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
     },
    "gear5": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -77,7 +77,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/3f369adb-311d-424b-9131-71f36ec31d97?size=512x682",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear6": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -93,7 +93,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 198,
     "imageUrl": "https://www.rei.com/media/aba7c8fb-fa5c-4db2-b9a2-bc450030b00d?size=784x588",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear7": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -109,7 +109,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/product/894800",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear8": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -125,7 +125,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 70,
     "imageUrl": "https://content.backcountry.com/images/items/900/ODR/ODR1098/BK.jpg",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear9": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -141,7 +141,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/93328a6c-3f86-4a00-9a1c-f0ea5eab1471?size=512x682",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear10": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -157,7 +157,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/995b70c0-cb48-4248-9479-a090d04e9e96?size=512x682",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear11": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -173,7 +173,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://di2ponv0v5otw.cloudfront.net/posts/2018/01/16/5a5e47353a112edb95c68103/m_5a5e474984b5ce592b0f2980.jpg",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
 "gear12": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -189,7 +189,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://di2ponv0v5otw.cloudfront.net/posts/2018/01/16/5a5e47353a112edb95c68103/m_5a5e474984b5ce592b0f2980.jpg",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
 "gear13": {
   "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -205,7 +205,7 @@
   "forEstablishedCampsite": false,
   "weightInGrams": 280,
   "imageUrl": "https://www.rei.com/media/f8048630-cc6f-4256-af82-172a551beb14",
-  "gearTimestamp": "2020-06-01T23:30:12.226Z"
+  "timestamp": "2020-06-01T23:30:12.226Z"
 },
   "gear14": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -221,7 +221,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 110,
     "imageUrl": "https://www.rei.com/media/bc654457-7df0-4ebf-86c4-103cded027cc?size=512x682",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear15": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -237,7 +237,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 120,
     "imageUrl": "https://www.rei.com/media/ece1b62a-e57f-4d31-afea-c4011b5d3a10?size=512x682",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear16": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -253,7 +253,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 145,
     "imageUrl": "https://www.patagonia.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwb901c3b0/images/hi-res/gray.jpg?sw=1600&sh=1600&ox=0&oy=0&oimg=https%3A%2F%2Fwww.patagonia.com%2Fdw%2Fimage%2Fv2%2FBDJB_PRD%2Fon%2Fdemandware.static%2F-%2FSites-patagonia-master%2Fdefault%2Fdw7325a87a%2Fimages%2Fhi-res%2F57058_PGBE.png%3Fsw%3D1600%26sh%3D1600%26q%3D75&sfrm=png&q=75",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear17": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -269,7 +269,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/94768470-7590-4c66-a800-d9402926807c?size=784x588",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear18": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -285,7 +285,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/51b2ff48-c733-47eb-be1d-3c1e24564796?size=784x588",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear19": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -301,7 +301,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams":306,
     "imageUrl": "https://www.rei.com/media/product/102353",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear20": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -317,7 +317,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 139,
     "imageUrl": "https://www.rei.com/media/product/885409",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear21": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -333,7 +333,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 122,
     "imageUrl": "https://www.rei.com/media/bc0b4740-fe2a-4453-9549-7dc6f7896c76?size=512x682",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear22": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -349,7 +349,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 266,
     "imageUrl": "https://www.rei.com/media/product/163667",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear23": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -365,7 +365,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 266,
     "imageUrl": "https://www.rei.com/media/product/163667",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear24": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -381,7 +381,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 292,
     "imageUrl": "https://www.rei.com/media/product/163655",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear25": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -397,7 +397,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 292,
     "imageUrl": "https://www.rei.com/media/product/163655",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear26": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -413,7 +413,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://cdni.llbean.net/is/image/wim/501704_0_45?hei=196&wid=170&defaultImage=llbstage/A0211793_2",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear27": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -429,7 +429,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/product/173522",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear28": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -445,7 +445,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
     "imageUrl": "https://www.rei.com/media/product/897073",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear29": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -461,7 +461,7 @@
     "forEstablishedCampsite": false,
     "weightInGrams": 96,
     "imageUrl": "https://www.rei.com/media/product/144128",
-    "gearTimestamp": "2020-06-01T23:30:12.226Z"
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear30": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -476,7 +476,8 @@
     "weatherId": "weather5",
     "forEstablishedCampsite": false,
     "weightInGrams": 96,
-    "imageUrl": "https://www.rei.com/media/product/144128"
+    "imageUrl": "https://www.rei.com/media/product/144128",
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear31": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -491,7 +492,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/692852"
+    "imageUrl": "https://www.rei.com/media/product/692852",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear32": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -506,7 +508,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 187,
-    "imageUrl": "https://www.rei.com/media/product/114886"
+    "imageUrl": "https://www.rei.com/media/product/114886",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear33": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -521,7 +524,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/814695"
+    "imageUrl": "https://www.rei.com/media/product/814695",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear34": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -536,7 +540,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/127505"
+    "imageUrl": "https://www.rei.com/media/product/127505",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
    "gear35": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -551,7 +556,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/139477"
+    "imageUrl": "https://www.rei.com/media/product/139477",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear36": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -566,7 +572,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://antigravitygear.com/wp-content/uploads/2017/05/12_bottle-150x150.png"
+    "imageUrl": "https://antigravitygear.com/wp-content/uploads/2017/05/12_bottle-150x150.png",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear37": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -581,7 +588,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://d2d8wwwkmhfcva.cloudfront.net/800x/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_091842fb-a5ae-4d6d-92ff-526e331a75f1.jpeg"
+    "imageUrl": "https://d2d8wwwkmhfcva.cloudfront.net/800x/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_091842fb-a5ae-4d6d-92ff-526e331a75f1.jpeg",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear38": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -596,7 +604,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSq3quTYoe4XRSSFiq4mSFsTHHm5yJFOzg18Uw-j1K4TYogmqCwXLf3Rl8XLjCrk-9CIZoK8YnA&usqp=CAc"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSq3quTYoe4XRSSFiq4mSFsTHHm5yJFOzg18Uw-j1K4TYogmqCwXLf3Rl8XLjCrk-9CIZoK8YnA&usqp=CAc",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear39": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -611,7 +620,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/139465"
+    "imageUrl": "https://www.rei.com/media/product/139465",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear40": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -626,7 +636,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/782972"
+    "imageUrl": "https://www.rei.com/media/product/782972",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear41": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -641,7 +652,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/739717"
+    "imageUrl": "https://www.rei.com/media/product/739717",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear42": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -656,7 +668,8 @@
     "weatherId": "weather4",
     "forEstablishedCampsite": false,
     "weightInGrams": 12,
-    "imageUrl": "https://antigravitygear.com/wp-content/uploads/2016/12/tin_man_stove.png"
+    "imageUrl": "https://antigravitygear.com/wp-content/uploads/2016/12/tin_man_stove.png",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear43": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -671,7 +684,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 73,
-    "imageUrl": "https://www.rei.com/media/product/114890"
+    "imageUrl": "https://www.rei.com/media/product/114890",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear44": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -686,7 +700,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/794753"
+    "imageUrl": "https://www.rei.com/media/product/794753",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear45": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -701,7 +716,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRHCNbUwoMrMaQ-ysTRGFQ6SRj4Cvr_N36HcH9gSxXyvnb2g4fR&usqp=CAU"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRHCNbUwoMrMaQ-ysTRGFQ6SRj4Cvr_N36HcH9gSxXyvnb2g4fR&usqp=CAU",
+    "timestamp": "2020-06-02T23:30:12.226Z"
   },
   "gear46": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -716,7 +732,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/744598"
+    "imageUrl": "https://www.rei.com/media/product/744598",
+    "timestamp": "2020-06-03T23:30:12.226Z"
   },
   "gear47": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -731,7 +748,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1502581113l/36009730._SX318_.jpg"
+    "imageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1502581113l/36009730._SX318_.jpg",
+    "timestamp": "2020-06-03T23:30:12.226Z"
     },
   "gear48": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -746,7 +764,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQDjxW0ijDGdT-3o4sTSLqmj2Tm5N8cKN1caiLx3VKwu8LJQcqvKFS99yhCwA&usqp=CAc"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQDjxW0ijDGdT-3o4sTSLqmj2Tm5N8cKN1caiLx3VKwu8LJQcqvKFS99yhCwA&usqp=CAc",
+    "timestamp": "2020-06-03T23:30:12.226Z"
   },
   "gear49": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -761,7 +780,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/d3654a5c-cf32-4ac5-8cae-d43f8f180bca?size=784x588"
+    "imageUrl": "https://www.rei.com/media/d3654a5c-cf32-4ac5-8cae-d43f8f180bca?size=784x588",
+    "timestamp": "2020-06-03T23:30:12.226Z"
   },
   "gear50": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -776,7 +796,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.craftsonsea.co.uk/wp-content/uploads/2019/06/camping-activities-and-games-for-kids-free-i-spy-printable.jpg"
+    "imageUrl": "https://www.craftsonsea.co.uk/wp-content/uploads/2019/06/camping-activities-and-games-for-kids-free-i-spy-printable.jpg",
+    "timestamp": "2020-06-03T23:30:12.226Z"
   },
   "gear51": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -791,7 +812,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 159,
-    "imageUrl": "https://www.rei.com/media/product/783328"
+    "imageUrl": "https://www.rei.com/media/product/783328",
+    "timestamp": "2020-06-03T23:30:12.226Z"
   },
   "gear52": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -806,7 +828,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/159148"
+    "imageUrl": "https://www.rei.com/media/product/159148",
+    "timestamp": "2020-06-03T23:30:12.226Z"
   },
   "gear53": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -821,7 +844,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 226,
-    "imageUrl": "https://www.rei.com/media/product/695383"
+    "imageUrl": "https://www.rei.com/media/product/695383",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear54": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -836,7 +860,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 65,
-    "imageUrl": "https://www.rei.com/media/product/846492"
+    "imageUrl": "https://www.rei.com/media/product/846492",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
    "gear55": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -851,7 +876,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0, 
-    "imageUrl": "https://www.rei.com/media/product/149985"
+    "imageUrl": "https://www.rei.com/media/product/149985",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear56": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -866,7 +892,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 1162,
-    "imageUrl": "https://www.rei.com/media/f04e4f7f-f82a-4b7d-987e-7a90ba158f2b?size=784x588"
+    "imageUrl": "https://www.rei.com/media/f04e4f7f-f82a-4b7d-987e-7a90ba158f2b?size=784x588",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear57": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -881,7 +908,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/168413"
+    "imageUrl": "https://www.rei.com/media/product/168413",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear58": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -896,7 +924,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://cdni.llbean.net/is/image/wim/307107_464_41?hei=1092&wid=950&resMode=sharp2&defaultImage=llbstage/A0211793_2"
+    "imageUrl": "https://cdni.llbean.net/is/image/wim/307107_464_41?hei=1092&wid=950&resMode=sharp2&defaultImage=llbstage/A0211793_2",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear59": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -911,7 +940,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://smorgasbite.files.wordpress.com/2010/09/2010-09-12-10-03-20.jpg"
+    "imageUrl": "https://smorgasbite.files.wordpress.com/2010/09/2010-09-12-10-03-20.jpg",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear60": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -926,7 +956,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/134252"
+    "imageUrl": "https://www.rei.com/media/product/134252",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear61": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -941,7 +972,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.vermontcountrystore.com/ccstore/v1/images/?source=/file/v931487134657963984/products/H4508.main.png&height=500&width=500&quality=0.88"
+    "imageUrl": "https://www.vermontcountrystore.com/ccstore/v1/images/?source=/file/v931487134657963984/products/H4508.main.png&height=500&width=500&quality=0.88",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear62": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -956,7 +988,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://lh3.googleusercontent.com/buvLk-yRQkfk981VjLB7GSYRAV3t9i4rwBNt45-MA42C0nuzXgABQCr2ZH9Fs1ff2PPX_moHF0JIUchOw2lBIzLAoccphDnJHoxf3Esm=w600-l68"
+    "imageUrl": "https://lh3.googleusercontent.com/buvLk-yRQkfk981VjLB7GSYRAV3t9i4rwBNt45-MA42C0nuzXgABQCr2ZH9Fs1ff2PPX_moHF0JIUchOw2lBIzLAoccphDnJHoxf3Esm=w600-l68",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear63": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -971,7 +1004,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 215,
-    "imageUrl": "https://www.rei.com/media/4a4fbe3f-4a76-4abf-b187-08892427923f?size=784x588"
+    "imageUrl": "https://www.rei.com/media/4a4fbe3f-4a76-4abf-b187-08892427923f?size=784x588",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear64": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -986,7 +1020,8 @@
     "weatherId": "weather4",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/6b795a7d-e8db-4363-99bd-3ff8aff36cfb?size=784x588"
+    "imageUrl": "https://www.rei.com/media/6b795a7d-e8db-4363-99bd-3ff8aff36cfb?size=784x588",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear65": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1001,7 +1036,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/3165e72b-dc57-4a20-810a-2385d9bcabf1?size=784x588"
+    "imageUrl": "https://www.rei.com/media/3165e72b-dc57-4a20-810a-2385d9bcabf1?size=784x588",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear66": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1016,7 +1052,8 @@
     "weatherId": "weather4",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/828908"
+    "imageUrl": "https://www.rei.com/media/product/828908",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear67": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1031,7 +1068,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/07268a09-018e-4a73-9b59-304db23b5b02?size=784x588"
+    "imageUrl": "https://www.rei.com/media/07268a09-018e-4a73-9b59-304db23b5b02?size=784x588",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear68": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1046,7 +1084,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/175143"
+    "imageUrl": "https://www.rei.com/media/product/175143",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear69": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1061,7 +1100,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/799009"
+    "imageUrl": "https://www.rei.com/media/product/799009",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear70": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1076,7 +1116,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/868169"
+    "imageUrl": "https://www.rei.com/media/product/868169",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear71": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1091,7 +1132,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.webphotosource.net/img/source/1miyhjrsu1/exact/HOME-ESSENTIALS_Cottenelle-Toilet-Paper_2-Ply_60-pack-of-506-sheet-rolls_4700049-1.jpeg?keep=c&crop=yes&u=7mzq6p&q=70"
+    "imageUrl": "https://www.webphotosource.net/img/source/1miyhjrsu1/exact/HOME-ESSENTIALS_Cottenelle-Toilet-Paper_2-Ply_60-pack-of-506-sheet-rolls_4700049-1.jpeg?keep=c&crop=yes&u=7mzq6p&q=70",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear72": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1106,7 +1148,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/156880"
+    "imageUrl": "https://www.rei.com/media/product/156880",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear73": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1121,7 +1164,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/129941"
+    "imageUrl": "https://www.rei.com/media/product/129941",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear74": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1136,7 +1180,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://cdn.shopify.com/s/files/1/0268/1051/5538/products/20200424181244_960x.jpg?v=1587766445"
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0268/1051/5538/products/20200424181244_960x.jpg?v=1587766445",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear75": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1151,7 +1196,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://5.imimg.com/data5/DC/JI/MY-2459695/pp-ziplock-bags-500x500.png"
+    "imageUrl": "https://5.imimg.com/data5/DC/JI/MY-2459695/pp-ziplock-bags-500x500.png",
+    "timestamp": "2020-06-04T23:30:12.226Z"
   },
   "gear76": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1166,7 +1212,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": " https://www.rei.com/media/product/166913"
+    "imageUrl": " https://www.rei.com/media/product/166913",
+    "timestamp": "2020-06-05T23:30:12.226Z"
   },
   "gear77": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1181,7 +1228,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/2dca280f-122c-462d-bff0-b4885183cdb9?size=784x588"
+    "imageUrl": "https://www.rei.com/media/2dca280f-122c-462d-bff0-b4885183cdb9?size=784x588",
+    "timestamp": "2020-06-05T23:30:12.226Z"
   },
   "gear78": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1196,7 +1244,8 @@
     "weatherId": "weather4",
     "forEstablishedCampsite": false,
     "weightInGrams": 158,
-    "imageUrl": "https://www.rei.com/media/product/171819"
+    "imageUrl": "https://www.rei.com/media/product/171819",
+    "timestamp": "2020-06-07T23:30:12.226Z"
   },
   "gear79": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1211,7 +1260,8 @@
     "weatherId": "weather3",
     "forEstablishedCampsite": false,
     "weightInGrams": 2240,
-    "imageUrl": "https://www.rei.com/media/product/167518"
+    "imageUrl": "https://www.rei.com/media/product/167518",
+    "timestamp": "2020-06-07T23:30:12.226Z"
   },
   "gear80": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1226,7 +1276,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": true,
     "weightInGrams": 5046,
-    "imageUrl": "https://www.rei.com/media/product/168526"
+    "imageUrl": "https://www.rei.com/media/product/168526",
+    "timestamp": "2020-06-07T23:30:12.226Z"
   },
   "gear81": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1241,7 +1292,8 @@
     "weatherId": "weather4",
     "forEstablishedCampsite": false,
     "weightInGrams": 1900,
-    "imageUrl": "https://www.rei.com/media/product/170036"
+    "imageUrl": "https://www.rei.com/media/product/170036",
+    "timestamp": "2020-06-07T23:30:12.226Z"
   },
   "gear82": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1256,7 +1308,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": true,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/729798"
+    "imageUrl": "https://www.rei.com/media/product/729798",
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear83": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1271,7 +1324,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": true,
     "weightInGrams": 0,
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSvdp0nN4YcrKDu4NooUDjMYyFhGdYbUkF1pZkS9l5Q4wKKa4oOWaplvuFupm0h7fTEGYKFx_k&usqp=CAc"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSvdp0nN4YcrKDu4NooUDjMYyFhGdYbUkF1pZkS9l5Q4wKKa4oOWaplvuFupm0h7fTEGYKFx_k&usqp=CAc",
+    "timestamp": "2020-06-01T23:30:12.226Z"
   },
   "gear84": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1286,7 +1340,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": true,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/719843"
+    "imageUrl": "https://www.rei.com/media/product/719843",
+    "timestamp": "2020-06-05T23:30:12.226Z"
   },
   "gear85": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1301,7 +1356,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 470,
-    "imageUrl": "https://www.rei.com/media/product/895819"
+    "imageUrl": "https://www.rei.com/media/product/895819",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear86": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1316,7 +1372,8 @@
     "weatherId": "weather3",
     "forEstablishedCampsite": false,
     "weightInGrams": 1500,
-    "imageUrl": "https://www.rei.com/media/product/895823"
+    "imageUrl": "https://www.rei.com/media/product/895823",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear87": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1331,7 +1388,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": true,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/136333"
+    "imageUrl": "https://www.rei.com/media/product/136333",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear88": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1346,7 +1404,8 @@
     "weatherId": "weather4",
     "forEstablishedCampsite": false,
     "weightInGrams": 454,
-    "imageUrl": "https://www.rei.com/media/product/169934?size=280"
+    "imageUrl": "https://www.rei.com/media/product/169934?size=280",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear89": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1361,7 +1420,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 340,
-    "imageUrl": "https://www.rei.com/media/product/171691"
+    "imageUrl": "https://www.rei.com/media/product/171691",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear90": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1376,7 +1436,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 243,
-    "imageUrl": "https://www.rei.com/media/product/148200"
+    "imageUrl": "https://www.rei.com/media/product/148200",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear91": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1391,7 +1452,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 85,
-    "imageUrl": "https://www.rei.com/media/product/890900"
+    "imageUrl": "https://www.rei.com/media/product/890900",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear92": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1406,7 +1468,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/155918"
+    "imageUrl": "https://www.rei.com/media/product/155918",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear93": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1421,7 +1484,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": false,
     "weightInGrams": 311,
-    "imageUrl": "https://www.rei.com/media/product/830746"
+    "imageUrl": "https://www.rei.com/media/product/830746",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear94": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1436,7 +1500,8 @@
     "weatherId": "weather1",
     "forEstablishedCampsite": true,
     "weightInGrams": 0,
-    "imageUrl": "https://www.rei.com/media/product/135435"
+    "imageUrl": "https://www.rei.com/media/product/135435",
+    "timestamp": "2020-06-06T23:30:12.226Z"
   },
   "gear95": {
     "uid": "IqVVeEGkB4ZnAWVrrPZCXZbxf8c2", 
@@ -1451,6 +1516,7 @@
     "weatherId": "weather3",
     "forEstablishedCampsite": false,
     "weightInGrams": 808,
-    "imageUrl": "https://www.rei.com/media/product/798354"
+    "imageUrl": "https://www.rei.com/media/product/798354",
+    "timestamp": "2020-06-01T23:30:12.226Z"
     }
   }

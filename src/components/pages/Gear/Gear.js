@@ -117,9 +117,9 @@ class Gear extends React.Component {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
       .then((gear) => {
-        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true);
+        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => b.timestamp - a.timestamp);
         this.setState({ gear: availableGearItemsOnly });
-        // console.log('available gear only???', gear);
+        console.log('available gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -128,9 +128,9 @@ class Gear extends React.Component {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
       .then((gear) => {
-        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false);
+        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => b.timestamp - a.timestamp);
         this.setState({ gear: unavailableGearItems });
-        // console.log('UNavailable gear only???', gear);
+        console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
