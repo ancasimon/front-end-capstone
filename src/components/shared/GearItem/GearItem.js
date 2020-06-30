@@ -65,7 +65,7 @@ class GearItem extends React.Component {
   }
 
   render() {
-    const { gearItem, removeGearItem } = this.props;
+    const { gearItem } = this.props;
     const {
       gearFunction,
       gearWeather,
@@ -87,27 +87,27 @@ class GearItem extends React.Component {
       <tbody>
         <tr>
           <th scope="row">{gearItem.item}</th>
-          <td className="d-none d-sm-table-cell"><img className="gearPhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} /></td>
+          <td className="d-none d-md-table-cell"><img className="gearPhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} /></td>
           <td>{gearItem.brand}</td>
-          <td className="d-none d-sm-table-cell">{gearItem.model}</td>
-          <td className="d-none d-sm-table-cell"><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
+          <td className="d-none d-md-table-cell">{gearItem.model}</td>
+          <td className="d-none d-md-table-cell"><img className="gearIcon" src={gearFunction.imageUrl} alt={gearFunction.name} /></td>
           {/* { console.log('func value', gearFunction.id) } */}
 
           {
             gearSeasons
-              ? <td className="d-none d-sm-table-cell">{gearSeasons.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
-              : <td className="d-none d-sm-table-cell">N/A</td>
+              ? <td className="d-none d-md-table-cell">{gearSeasons.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              : <td className="d-none d-md-table-cell">N/A</td>
           }
 
-          <td className="d-none d-sm-table-cell"><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
+          <td className="d-none d-md-table-cell"><img className="gearIcon" src={gearWeather.imageUrl} alt={gearWeather.name} /></td>
           {
             gearParties
-              ? <td className="d-none d-sm-table-cell">{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
-              : <td className="d-none d-sm-table-cell">N/A</td>
+              ? <td className="d-none d-md-table-cell">{gearParties.map((item) => <img key={item.id} className="gearIcon" src={item.imageUrl} alt={item.name} />)}</td>
+              : <td className="d-none d-md-table-cell">N/A</td>
           }
           {/* <td>{gearItem.weightInGrams * 1 }</td> */}
 
-          { gearItem.isAvailable ? <td className="green d-none d-sm-table-cell"><i className="fas fa-check"></i></td> : <td className="red d-none d-sm-table-cell"><i className="fas fa-times"></i></td> }
+          { gearItem.isAvailable ? <td className="green d-none d-md-table-cell"><i className="fas fa-check"></i></td> : <td className="red d-none d-md-table-cell"><i className="fas fa-times"></i></td> }
 
           {/* <td>{gearItem.expirationYear}</td> */}
 

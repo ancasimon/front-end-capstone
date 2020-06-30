@@ -46,5 +46,9 @@
   "function12": {
     "name": "Water",
     "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/tint.svg"
-    }
-}
+    },
+    "function13": {
+      "name": "Other",
+      "imageUrl": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/info-circle.svg"
+      }
+} 

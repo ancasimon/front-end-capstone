@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 import {
@@ -45,7 +46,17 @@ class Gear extends React.Component {
   // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
 
   toggleAvailableSwitch = (e) => {
-    this.setState({ valueAvailable: e }, this.buildGearPage(e));
+    console.log('e when toggling', e);
+    this.setState({ valueAvailable: e });
+    this.getFunctionsList();
+    this.getWeatherList();
+    this.getPartyList();
+    this.getSeasonsList();
+    if (e === true) {
+      this.getAvailableGear();
+    } else {
+      this.getUnavailableGear();
+    }
   }
 
   toggleAccordion = () => {
@@ -107,9 +118,9 @@ class Gear extends React.Component {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
       .then((gear) => {
-        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true);
+        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: availableGearItemsOnly });
-        // console.log('available gear only???', gear);
+        console.log('available gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -118,20 +129,22 @@ class Gear extends React.Component {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
       .then((gear) => {
-        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false);
+        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: unavailableGearItems });
-        // console.log('UNavailable gear only???', gear);
+        console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
 
-  buildGearPage = (e) => {
-    // console.log('running buildGearPage');
+  buildGearPage = () => {
+    console.log('running buildGearPage');
+    const { valueAvailable } = this.state;
     this.getFunctionsList();
     this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
-    if (e === true) {
+    // console.log('e when calling gear data', e);
+    if (valueAvailable === true) {
       this.getAvailableGear();
     } else {
       this.getUnavailableGear();
@@ -139,7 +152,7 @@ class Gear extends React.Component {
   }
 
   componentDidMount() {
-    this.buildGearPage(this.state.valueAvailable);
+    this.buildGearPage();
   }
 
   removeGearItem = (gearId) => {
@@ -251,12 +264,12 @@ class Gear extends React.Component {
 
             <div className="row justify-content-center col-12">
                 <div>
-                  <p>Available gear only (by default):
+                  <div>Available gear only (by default):
                   <Switch
                   isOn={valueAvailable}
                   handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
                   />
-                  </p>
+                  </div>
                 </div>
             </div>
 
@@ -267,7 +280,7 @@ class Gear extends React.Component {
                     By Function
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
                   </DropdownMenu>
@@ -280,7 +293,7 @@ class Gear extends React.Component {
                     By Weather
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildWeatherList()}
                   </DropdownMenu>
@@ -294,7 +307,7 @@ class Gear extends React.Component {
                     By Expiration Year
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildYearsList()}
                   </DropdownMenu>
@@ -310,15 +323,15 @@ class Gear extends React.Component {
           <thead>
             <tr>
               <th>Item</th>
-              <th className="d-none d-sm-table-cell">Image</th>
+              <th className="d-none d-md-table-cell">Image</th>
               <th>Brand</th>
-              <th className="d-none d-sm-table-cell">Model</th>
-              <th className="d-none d-sm-table-cell">Function</th>
-              <th className="d-none d-sm-table-cell">Seasons</th>
-              <th className="d-none d-sm-table-cell">Weather</th>
-              <th className="d-none d-sm-table-cell">Party</th>
+              <th className="d-none d-md-table-cell">Model</th>
+              <th className="d-none d-md-table-cell">Function</th>
+              <th className="d-none d-md-table-cell">Seasons</th>
+              <th className="d-none d-md-table-cell">Weather</th>
+              <th className="d-none d-md-table-cell">Party</th>
               {/* <th>Weight (gr.)</th> */}
-              <th className="d-none d-sm-table-cell">Available?</th>
+              <th className="d-none d-md-table-cell">Available?</th>
               {/* <th>Exp. Yr.</th> */}
               <th>Actions</th>
             </tr>

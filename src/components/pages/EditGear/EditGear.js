@@ -21,18 +21,17 @@ class EditGear extends React.Component {
     gearModel: '',
     gearDetails: '',
     gearEstCampsite: false,
-    gearAvailable: false,
-    gearManYr: 2000,
-    gearExpYr: 2050,
+    gearAvailable: true,
+    gearManYr: 2020,
+    gearExpYr: 2030,
     gearWeight: 0,
-    gearFunction: '',
-    gearWeather: '',
+    gearFunction: 'function13',
+    gearWeather: 'weather1',
     gearImageUrl: '',
     functionsList: [],
     weatherList: [],
     allPartiesWithChecks: [],
     allSeasonsWithChecks: [],
-    // checkboxSeasonAll: false,
   }
 
   static propTypes = {
@@ -56,8 +55,6 @@ class EditGear extends React.Component {
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
         const currentGear = fbResponse;
-        // const allSeasonsOnEdit = fbResponse.allSeasonsWithChecks;
-        // console.log('new array all seasons on edit', allSeasonsOnEdit);
         console.log('curr gear in edit', currentGear);
         this.setState({
           gearItem: currentGear.item,
@@ -76,9 +73,7 @@ class EditGear extends React.Component {
           gearPartyList: currentGear.selectedParties,
           allPartiesWithChecks: currentGear.allPartiesWithChecks,
           allSeasonsWithChecks: currentGear.allSeasonsWithChecks,
-          // checkboxSeasonAll: this.allSeasonsOnEdit[0].isChecked,
         });
-        // console.log('value of All season checkbox', this.checkboxSeasonAll);
       })
       .catch((err) => console.error('could not get edit id', err));
   }
@@ -103,11 +98,9 @@ class EditGear extends React.Component {
     if (newGearSeasonCheckedValue === !true) {
       console.log('gearSeasonId to be deleted', currentGearSeasonId);
       this.deleteGearSeasonRecord(currentGearSeasonId);
-      this.buildEditPage();
     } else if (newGearSeasonCheckedValue === true) {
       console.log('gearId need to create NEW gear season', editId);
       this.createNewGearSeasonRecord(editId, currentSeasonId);
-      this.buildEditPage();
     }
   }
 
@@ -118,13 +111,19 @@ class EditGear extends React.Component {
     };
     console.log('new gearseason', newGearSeason);
     gearSeasonData.postGearSeason(newGearSeason)
-      .then(() => console.log('created new gearseason', newGearSeason))
+      .then(() => {
+        this.buildEditPage();
+        console.log('created new gearseason', newGearSeason);
+      })
       .catch((err) => console.error('could not create new gearSeason record'));
   };
 
   deleteGearSeasonRecord = (gearSeasonId) => {
     gearSeasonData.deleteGearSeason(gearSeasonId)
-      .then(() => console.log('deleted this gear season record', gearSeasonId))
+      .then(() => {
+        console.log('deleted this gear season record', gearSeasonId);
+        this.buildEditPage();
+      })
       .catch((err) => console.error('could not delete the gear season record', err));
   }
 
@@ -141,11 +140,9 @@ class EditGear extends React.Component {
     if (newGearPartyCheckedValue === !true) {
       console.log('gearPartyId to be deleted', currentGearPartyId);
       this.deleteGearPartyRecord(currentGearPartyId);
-      this.buildEditPage();
     } else if (newGearPartyCheckedValue === true) {
       console.log('gearId needed to create NEW gear party', editId);
       this.createNewGearPartyRecord(editId, currentPartyId);
-      this.buildEditPage();
     }
   }
 
@@ -156,13 +153,19 @@ class EditGear extends React.Component {
     };
     console.log('new gear party record', newGearParty);
     gearPartyData.postGearParty(newGearParty)
-      .then(() => console.log('created new gearParty', newGearParty))
+      .then(() => {
+        this.buildEditPage();
+        console.log('created new gearParty', newGearParty);
+      })
       .catch((err) => console.error('could not create new gearParty record'));
   }
 
   deleteGearPartyRecord = (gearPartyId) => {
     gearPartyData.deleteGearParty(gearPartyId)
-      .then(() => console.log('deleted this gear party record', gearPartyId))
+      .then(() => {
+        this.buildEditPage();
+        console.log('deleted this gear party record', gearPartyId);
+      })
       .catch((err) => console.error('could not delete the gear party record', err));
   }
 

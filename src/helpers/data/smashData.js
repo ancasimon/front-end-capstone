@@ -26,11 +26,11 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                       const selectedGearSeasons = [];
                       const allSeasonsWithChecks = [];
                       allSeasons.forEach((seasonValue) => {
-                        const newSeasonValue = { ...seasonValue };
+                        const newSeasonValue = { isChecked: false, ...seasonValue };
                         allSeasonsWithChecks.push(newSeasonValue);
                         // console.log('updated array w checks', allSeasonsWithChecks);
                         gearSeasons.forEach((gearSeasonObject) => {
-                          // NOTES: The 2 lines below show how I initiallycontrolled hte display of selected seasons for a gear completelyRemoveGearItemAndChildren. And this method was replaced by the push of seasons with a true isChecked property below.
+                          // NOTES: The 2 lines below show how I initiallycontrolled the display of selected seasons for a gear completelyRemoveGearItemAndChildren. And this method was replaced by the push of seasons with a true isChecked property below.
                           // const foundGearSeason = allSeasons.find((x) => x.id === gearSeasonObject.seasonId);
                           // selectedGearSeasons.push(foundGearSeason);
                           for (let i = 0; i < allSeasonsWithChecks.length; i += 1) {
@@ -60,7 +60,7 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                               const selectedGearParties = [];
                               const allPartiesWithChecks = [];
                               allPartyValues.forEach((partyValue) => {
-                                const newPartyValue = { ...partyValue };
+                                const newPartyValue = { isChecked: false, ...partyValue };
                                 allPartiesWithChecks.push(newPartyValue);
                                 gearParties.forEach((gearPartyObject) => {
                                   for (let i = 0; i < allPartiesWithChecks.length; i += 1) {
