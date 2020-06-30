@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 import smashData from '../../../helpers/data/smashData';
@@ -42,6 +43,28 @@ class SingleGear extends React.Component {
       .catch((err) => console.error('unable to delete this gear record', err));
   }
 
+  deleteConfirmationMessage = (gearId) => {
+    const { gearItemId } = this.props.match.params;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#32471E',
+      cancelButtonColor: '#8b0000',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success',
+        );
+        this.removeGearItem(gearItemId);
+      }
+    });
+  }
+
   render() {
     const {
       gearItem,
@@ -64,7 +87,7 @@ class SingleGear extends React.Component {
         <h1 className="heading textShadow">Details about your <span className="caps">{gearItem.item}</span> ( {gearItem.brand} - {gearItem.model} ) </h1>
 
         <div className="row justify-content-center">
-          <Link to='/gear' className="btn-lg blueButtons col-sm-4"><i className="fas fa-chevron-left"></i></Link>
+          <Link to='/gear' className="btn btn-lg blueButtons col-sm-2 p-1"><i className="fas fa-chevron-left"></i></Link>
         </div>
 
         <div className="container col-12">
@@ -133,9 +156,9 @@ class SingleGear extends React.Component {
           <h4>{gearItem.brand}</h4> - <h4>{gearItem.model}</h4>
         </div> */}
 
-          <div className="row justify-content-center">
-            <Link to={newRoute} className="btn btn-lg greenButtons col-sm-4 p-1"><i className="fas fa-pencil-alt"></i></Link>
-            <button className="btn btn-lg redButtons col-sm-4 pointerHand p-1" onClick={this.removeGearItem}><i className="fas fa-trash-alt"></i></button>
+          <div className="row col-12 justify-content-center">
+            <Link to={newRoute} className="btn btn-lg greenButtons col-sm-2 p-1"><i className="fas fa-pencil-alt"></i></Link>
+            <button className="btn btn-lg redButtons col-sm-2 pointerHand p-1" onClick={this.deleteConfirmationMessage}><i className="fas fa-trash-alt"></i></button>
           </div>
         </div>
       </div>

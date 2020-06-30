@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -39,6 +40,28 @@ class GearItem extends React.Component {
 
   componentDidMount() {
     this.getGearWithAdditionalProperties();
+  }
+
+  deleteConfirmationMessage = (gearId) => {
+    const { gearItem, removeGearItem } = this.props;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#32471E',
+      cancelButtonColor: '#8b0000',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success',
+        );
+        removeGearItem(gearItem.id);
+      }
+    });
   }
 
   render() {
@@ -91,7 +114,7 @@ class GearItem extends React.Component {
           <td className="row">
             <Link to={singleLink} className="btn p-1"><i className="fas fa-eye"></i></Link>
             <Link to={newRoute} className="btn p-1"><i className="fas fa-pencil-alt"></i></Link>
-            <button className="btn pointerHand p-1" onClick={() => removeGearItem(gearItem.id)}><i className="fas fa-trash-alt"></i></button>
+            <button className="btn pointerHand p-1" onClick={() => this.deleteConfirmationMessage(gearItem.id)}><i className="fas fa-trash-alt"></i></button>
           </td>
         </tr>
       </tbody>

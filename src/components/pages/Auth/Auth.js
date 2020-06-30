@@ -6,7 +6,7 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="Auth">
-        <h1>Auth Page!!!</h1>
+        <h1 className="heading">Welcome to GearUp, the online tool that helps you get offline!</h1>
       </div>
     );
   }
