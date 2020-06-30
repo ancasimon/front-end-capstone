@@ -51,7 +51,6 @@ class Gear extends React.Component {
     this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
-    // console.log('e when calling gear data', e);
     if (e === true) {
       this.getAvailableGear();
     } else {
@@ -264,12 +263,12 @@ class Gear extends React.Component {
 
             <div className="row justify-content-center col-12">
                 <div>
-                  <p>Available gear only (by default):
+                  <div>Available gear only (by default):
                   <Switch
                   isOn={valueAvailable}
                   handleToggle={() => this.toggleAvailableSwitch(!valueAvailable)}
                   />
-                  </p>
+                  </div>
                 </div>
             </div>
 
