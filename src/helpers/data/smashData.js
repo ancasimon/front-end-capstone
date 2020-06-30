@@ -60,7 +60,7 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                               const selectedGearParties = [];
                               const allPartiesWithChecks = [];
                               allPartyValues.forEach((partyValue) => {
-                                const newPartyValue = { ...partyValue };
+                                const newPartyValue = { isChecked: false, ...partyValue };
                                 allPartiesWithChecks.push(newPartyValue);
                                 gearParties.forEach((gearPartyObject) => {
                                   for (let i = 0; i < allPartiesWithChecks.length; i += 1) {

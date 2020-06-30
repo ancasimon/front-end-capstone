@@ -32,7 +32,6 @@ class EditGear extends React.Component {
     weatherList: [],
     allPartiesWithChecks: [],
     allSeasonsWithChecks: [],
-    // checkboxSeasonAll: false,
   }
 
   static propTypes = {
@@ -103,11 +102,9 @@ class EditGear extends React.Component {
     if (newGearSeasonCheckedValue === !true) {
       console.log('gearSeasonId to be deleted', currentGearSeasonId);
       this.deleteGearSeasonRecord(currentGearSeasonId);
-      this.buildEditPage();
     } else if (newGearSeasonCheckedValue === true) {
       console.log('gearId need to create NEW gear season', editId);
       this.createNewGearSeasonRecord(editId, currentSeasonId);
-      this.buildEditPage();
     }
   }
 
@@ -160,13 +157,19 @@ class EditGear extends React.Component {
     };
     console.log('new gear party record', newGearParty);
     gearPartyData.postGearParty(newGearParty)
-      .then(() => console.log('created new gearParty', newGearParty))
+      .then(() => {
+        this.buildEditPage();
+        console.log('created new gearParty', newGearParty);
+      })
       .catch((err) => console.error('could not create new gearParty record'));
   }
 
   deleteGearPartyRecord = (gearPartyId) => {
     gearPartyData.deleteGearParty(gearPartyId)
-      .then(() => console.log('deleted this gear party record', gearPartyId))
+      .then(() => {
+        this.buildEditPage();
+        console.log('deleted this gear party record', gearPartyId);
+      })
       .catch((err) => console.error('could not delete the gear party record', err));
   }
 

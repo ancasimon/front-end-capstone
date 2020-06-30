@@ -124,20 +124,24 @@ class Gear extends React.Component {
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
-// DELETED e as argument in buildGearPage function below to fix the memory leak issue ..-if that's what it was ...
+// TEMPORARY: DELETED e as argument in buildGearPage function below to fix the memory leak issue ..-if that's what it was ...
 
   buildGearPage = () => {
-    // console.log('running buildGearPage');
+    console.log('running buildGearPage');
     this.getFunctionsList();
     this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
+    this.getGear();
+    // console.log('e', e);
     // if (e === true) {
-      this.getAvailableGear();
+      // this.getAvailableGear();
     // } else {
     //   this.getUnavailableGear();
     // }
   }
+
+  // TEMPORARY: commented out code related to available items above and replaced it with getGear function to see if this fixes the API rate limit issue I am seeing!!!!
 
   componentDidMount() {
     this.buildGearPage();
