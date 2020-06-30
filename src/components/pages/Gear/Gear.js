@@ -157,7 +157,7 @@ class Gear extends React.Component {
 
   removeGearItem = (gearId) => {
     smashData.completelyRemoveGearItemAndChildren(gearId)
-      .then(() => this.getGear())
+      .then(() => this.buildGearPage())
       .catch((err) => console.error('could not delete this gear item', err));
   }
 
@@ -326,10 +326,10 @@ class Gear extends React.Component {
               <th className="d-none d-md-table-cell">Image</th>
               <th>Brand</th>
               <th className="d-none d-md-table-cell">Model</th>
-              <th className="d-none d-md-table-cell">Function</th>
-              <th className="d-none d-md-table-cell">Seasons</th>
-              <th className="d-none d-md-table-cell">Weather</th>
-              <th className="d-none d-md-table-cell">Party</th>
+              <th className="d-none d-sm-table-cell">Function</th>
+              <th className="d-none d-sm-table-cell">Seasons</th>
+              <th className="d-none d-sm-table-cell">Weather</th>
+              <th className="d-none d-sm-table-cell">Party</th>
               {/* <th>Weight (gr.)</th> */}
               <th className="d-none d-md-table-cell">Available?</th>
               {/* <th>Exp. Yr.</th> */}

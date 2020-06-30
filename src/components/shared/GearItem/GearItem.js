@@ -31,8 +31,8 @@ class GearItem extends React.Component {
         this.setState({
           gearFunction: gearWithProperties.selectedFunction,
           gearWeather: gearWithProperties.selectedWeather,
-          gearSeasons: gearWithProperties.selectedSeasons,
-          gearParties: gearWithProperties.selectedParties,
+          gearSeasons: gearWithProperties.selectedGearSeasons,
+          gearParties: gearWithProperties.selectedGearParties,
         });
       })
       .catch((err) => console.error('unable to get additional properties of gear item', err));

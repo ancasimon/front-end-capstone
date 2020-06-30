@@ -82,8 +82,8 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                               const gearWithMetadata = { ...singleGearResponse.data };
                               gearWithMetadata.selectedFunction = selectedFunction;
                               gearWithMetadata.selectedWeather = selectedWeather;
-                              gearWithMetadata.selectedSeasons = selectedGearSeasons;
-                              gearWithMetadata.selectedParties = selectedGearParties;
+                              gearWithMetadata.selectedGearSeasons = selectedGearSeasons;
+                              gearWithMetadata.selectedGearParties = selectedGearParties;
                               gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
                               gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
                               // console.log('gearmetadata', gearWithMetadata);
