@@ -44,9 +44,9 @@ class Gear extends React.Component {
   }
   // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
 
-  toggleAvailableSwitch = (e) => {
-    this.setState({ valueAvailable: e }, this.buildGearPage(e));
-  }
+  // toggleAvailableSwitch = (e) => {
+  //   this.setState({ valueAvailable: e }, this.buildGearPage(e));
+  // }
 
   toggleAccordion = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -124,22 +124,23 @@ class Gear extends React.Component {
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
+// DELETED e as argument in buildGearPage function below to fix the memory leak issue ..-if that's what it was ...
 
-  buildGearPage = (e) => {
+  buildGearPage = () => {
     // console.log('running buildGearPage');
     this.getFunctionsList();
     this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
-    if (e === true) {
+    // if (e === true) {
       this.getAvailableGear();
-    } else {
-      this.getUnavailableGear();
-    }
+    // } else {
+    //   this.getUnavailableGear();
+    // }
   }
 
   componentDidMount() {
-    this.buildGearPage(this.state.valueAvailable);
+    this.buildGearPage();
   }
 
   removeGearItem = (gearId) => {
