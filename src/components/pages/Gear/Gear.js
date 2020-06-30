@@ -129,7 +129,7 @@ class Gear extends React.Component {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
       .then((gear) => {
-        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => b.timestamp - a.timestamp);
+        const unavailableGearItems = gear.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: unavailableGearItems });
         console.log('UNavailable gear only???', gear);
       })
@@ -323,15 +323,15 @@ class Gear extends React.Component {
           <thead>
             <tr>
               <th>Item</th>
-              <th className="d-none d-sm-table-cell">Image</th>
+              <th className="d-none d-md-table-cell">Image</th>
               <th>Brand</th>
-              <th className="d-none d-sm-table-cell">Model</th>
-              <th className="d-none d-sm-table-cell">Function</th>
-              <th className="d-none d-sm-table-cell">Seasons</th>
-              <th className="d-none d-sm-table-cell">Weather</th>
-              <th className="d-none d-sm-table-cell">Party</th>
+              <th className="d-none d-md-table-cell">Model</th>
+              <th className="d-none d-md-table-cell">Function</th>
+              <th className="d-none d-md-table-cell">Seasons</th>
+              <th className="d-none d-md-table-cell">Weather</th>
+              <th className="d-none d-md-table-cell">Party</th>
               {/* <th>Weight (gr.)</th> */}
-              <th className="d-none d-sm-table-cell">Available?</th>
+              <th className="d-none d-md-table-cell">Available?</th>
               {/* <th>Exp. Yr.</th> */}
               <th>Actions</th>
             </tr>

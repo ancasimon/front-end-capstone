@@ -21,12 +21,12 @@ class NewGear extends React.Component {
     gearModel: '',
     gearDetails: '',
     gearEstCampsite: false,
-    gearAvailable: false,
-    gearManYr: 2000,
-    gearExpYr: 2050,
+    gearAvailable: true,
+    gearManYr: 2020,
+    gearExpYr: 2030,
     gearWeight: 0,
-    gearFunction: '',
-    gearWeather: '',
+    gearFunction: 'function13',
+    gearWeather: 'weather1',
     gearImageUrl: '',
     functionsList: [],
     weatherList: [],
@@ -187,7 +187,7 @@ class NewGear extends React.Component {
   }
 
   validationAlert = () => {
-    Swal.fire('You must specify required details Function, Item, and Brand to add this item to your list!');
+    Swal.fire('You must specify required details to add this item to your list: Item & Brand!');
   }
 
   saveNewGear = (e) => {
@@ -206,7 +206,7 @@ class NewGear extends React.Component {
       gearWeather,
       gearImageUrl,
     } = this.state;
-    if (gearItem === '' && gearFunction === '' && gearBrand === '') {
+    if (gearItem === '' && gearBrand === '') {
       this.validationAlert();
     } else {
       const newGear = {

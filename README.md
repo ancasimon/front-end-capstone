@@ -13,7 +13,7 @@ It doesn’t have to be! The GearUp app is here to help make your backpacking dr
 Coming soon
 
 ## Technologies & Tools
-Axios, Bootstrap, CSS, ES6 Modules, Firebase (for authentication and data management), Github (for version control and project management), Google login authentication, HTML5, JavaScript, JQuery, JSX, React, React Router, reactstrap, SASS, Webpack
+Axios, Bootstrap, CSS, ES6 Modules, Firebase (for authentication and data management), Github (for version control and project management), Google login authentication, HTML5, JavaScript, JQuery, JSX, moment.js, React, React Router, reactstrap, SASS, sweetalert2, Webpack
 
 ## How to Run
 1. Clone down this repo.
