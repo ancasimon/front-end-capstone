@@ -283,7 +283,9 @@ class NewGear extends React.Component {
       </div>
     ));
 
-    const buildPartyList = () => partyList.map((partyValue) => (
+    const buildPartyList = () => partyList.map((partyValue) => {
+      console.log('partyValue details', partyValue);
+      return (
       <div className="form-check col-2" key={partyValue.id}>
         <input
           className="form-check-input"
@@ -297,7 +299,8 @@ class NewGear extends React.Component {
           {partyValue.name}
         </label>
       </div>
-    ));
+      );
+    });
 
     return (
       <div className="NewGear col-12 pageDisplay">
