@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 import {
@@ -117,7 +118,7 @@ class Gear extends React.Component {
     const uid = authData.getUid();
     gearData.getGearByUid(uid)
       .then((gear) => {
-        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => b.timestamp - a.timestamp);
+        const availableGearItemsOnly = gear.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: availableGearItemsOnly });
         console.log('available gear only???', gear);
       })
