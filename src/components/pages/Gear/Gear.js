@@ -44,9 +44,20 @@ class Gear extends React.Component {
   }
   // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
 
-  // toggleAvailableSwitch = (e) => {
-  //   this.setState({ valueAvailable: e }, this.buildGearPage(e));
-  // }
+  toggleAvailableSwitch = (e) => {
+    console.log('e when toggling', e);
+    this.setState({ valueAvailable: e });
+    this.getFunctionsList();
+    this.getWeatherList();
+    this.getPartyList();
+    this.getSeasonsList();
+    // console.log('e when calling gear data', e);
+    if (e === true) {
+      this.getAvailableGear();
+    } else {
+      this.getUnavailableGear();
+    }
+  }
 
   toggleAccordion = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -124,24 +135,21 @@ class Gear extends React.Component {
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
-// TEMPORARY: DELETED e as argument in buildGearPage function below to fix the memory leak issue ..-if that's what it was ...
 
   buildGearPage = () => {
     console.log('running buildGearPage');
+    const { valueAvailable } = this.state;
     this.getFunctionsList();
     this.getWeatherList();
     this.getPartyList();
     this.getSeasonsList();
-    this.getGear();
-    // console.log('e', e);
-    // if (e === true) {
-      // this.getAvailableGear();
-    // } else {
-    //   this.getUnavailableGear();
-    // }
+    // console.log('e when calling gear data', e);
+    if (valueAvailable === true) {
+      this.getAvailableGear();
+    } else {
+      this.getUnavailableGear();
+    }
   }
-
-  // TEMPORARY: commented out code related to available items above and replaced it with getGear function to see if this fixes the API rate limit issue I am seeing!!!!
 
   componentDidMount() {
     this.buildGearPage();
@@ -272,7 +280,7 @@ class Gear extends React.Component {
                     By Function
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
                   </DropdownMenu>
@@ -285,7 +293,7 @@ class Gear extends React.Component {
                     By Weather
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildWeatherList()}
                   </DropdownMenu>
@@ -299,7 +307,7 @@ class Gear extends React.Component {
                     By Expiration Year
                     </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage(this.state.valueAvailable)}>Clear Filter</DropdownItem>
+                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildYearsList()}
                   </DropdownMenu>
