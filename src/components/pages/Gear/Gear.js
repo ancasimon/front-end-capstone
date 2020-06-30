@@ -178,6 +178,20 @@ class Gear extends React.Component {
       selectedExpYear,
     } = this.state;
 
+    const filterAllFunction = (functionId, weatherId, yearValue) => {
+      this.setState({ selectedFunction: functionId, selectedWeather: weatherId, selectedExpYear: yearValue });
+      const uid = authData.getUid();
+      gearData.getGearByUid(uid)
+        .then((fbData) => {
+          const filteredlist = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.weatherId === this.state.selectedWeather && gearItem.expirationYear === this.state.selectedExpYear);
+          this.setState({ gear: filteredlist });
+          gear.map((gearItem) => (
+        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+          ));
+        })
+        .catch((err) => console.error('could not get gear for filtering from firebase', err));
+    }
+
     const filterByFunction = (functionId) => {
       this.setState({ selectedFunction: functionId });
       const uid = authData.getUid();
