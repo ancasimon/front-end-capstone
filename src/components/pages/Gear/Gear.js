@@ -176,10 +176,17 @@ class Gear extends React.Component {
       seasonsList,
       valueAvailable,
       selectedExpYear,
+      selectedFunction,
+      selectedWeather,
     } = this.state;
 
     const filterAllFunction = (functionId, weatherId, yearValue) => {
       this.setState({ selectedFunction: functionId, selectedWeather: weatherId, selectedExpYear: yearValue });
+      console.log('running filter all function!!!!');
+      console.log('sel function in filter all', selectedFunction);
+      console.log('sel weather in filter all', selectedWeather);
+      console.log('sel exp year in filter all', selectedExpYear);
+      // console.log('e', e);
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
@@ -190,7 +197,7 @@ class Gear extends React.Component {
           ));
         })
         .catch((err) => console.error('could not get gear for filtering from firebase', err));
-    }
+    };
 
     const filterByFunction = (functionId) => {
       this.setState({ selectedFunction: functionId });
@@ -234,12 +241,20 @@ class Gear extends React.Component {
         .catch((err) => console.error('could not filter data by exp year', err));
     };
 
+    // const buildFunctionsList = () => functionsList.map((functionValue) => (
+    //   <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterByFunction(functionValue.id)}>{functionValue.name}</DropdownItem>
+    // ));
+
+    // const buildWeatherList = () => weatherList.map((weatherValue) => (
+    //   <DropdownItem key={weatherValue.id} value={weatherValue.id} onClick={() => filterByWeather(weatherValue.id)}>{weatherValue.name}</DropdownItem>
+    // ));
+
     const buildFunctionsList = () => functionsList.map((functionValue) => (
-      <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterByFunction(functionValue.id)}>{functionValue.name}</DropdownItem>
+      <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterAllFunction(selectedFunction, selectedWeather, selectedExpYear)}>{functionValue.name}</DropdownItem>
     ));
 
     const buildWeatherList = () => weatherList.map((weatherValue) => (
-      <DropdownItem key={weatherValue.id} value={weatherValue.id} onClick={() => filterByWeather(weatherValue.id)}>{weatherValue.name}</DropdownItem>
+      <DropdownItem key={weatherValue.id} value={weatherValue.id} onClick={() => filterAllFunction(selectedFunction, selectedWeather, selectedExpYear)}>{weatherValue.name}</DropdownItem>
     ));
 
     const buildPartyList = () => partyList.map((partyValue) => (
@@ -293,8 +308,8 @@ class Gear extends React.Component {
                   <DropdownToggle caret className="blueButtons p-1">
                     By Function
                     </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
+                  <DropdownMenu defaultValue={12345}>
+                    <DropdownItem key={12345} value={12345} onClick={() => filterAllFunction(selectedFunction, selectedWeather, selectedExpYear)} selected>All</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
                   </DropdownMenu>
@@ -313,7 +328,6 @@ class Gear extends React.Component {
                   </DropdownMenu>
                 </Dropdown>
               </div>
-
 
               <div className="col-sm-4">
                 <Dropdown isOpen={dropdownExpYearOpen} toggle={this.toggleDropdownExpYear}>
