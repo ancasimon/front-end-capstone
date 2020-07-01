@@ -14,7 +14,7 @@ class Home extends React.Component {
         <h1 className="heading">Welcome to GearUp, {userName}!</h1>
         <div className="col-12 pageDisplay">
           <div className="row col-12">
-            <div className="col-6">
+            <div className="col-4">
               <GearChartsCounts />
             </div>
           </div>
