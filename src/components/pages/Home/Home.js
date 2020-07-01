@@ -10,9 +10,15 @@ class Home extends React.Component {
   render() {
     const userName = authData.getName();
     return (
-      <div className="Home">
+      <div className="Home col-12">
         <h1 className="heading">Welcome to GearUp, {userName}!</h1>
-        <GearChartsCounts />
+        <div className="col-12 pageDisplay">
+          <div className="row col-12">
+            <div className="col-6">
+              <GearChartsCounts />
+            </div>
+          </div>
+          </div>
       </div>
     );
   }
