@@ -40,7 +40,7 @@ class GearExpiring extends React.Component {
 
     return (
       <div>
-        <h5>Gear to Replace This Year ({gearExpiringCount})</h5>
+        <p>({gearExpiringCount})</p>
         <Table dark>
           <thead>
             <tr>

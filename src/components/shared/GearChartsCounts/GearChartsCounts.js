@@ -53,8 +53,7 @@ class GearChartsCounts extends React.Component {
     ));
 
     return (
-      <div>
-        <h5>Your Gear Count by Category</h5>
+      <div className="mt-5">
         <Table dark>
           <thead>
             <tr>
