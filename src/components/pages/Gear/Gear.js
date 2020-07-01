@@ -38,8 +38,8 @@ class Gear extends React.Component {
     partyList: [],
     seasonsList: [],
     weatherList: [],
-    selectedFunction: '',
-    selectedWeather: '',
+    selectedFunction: 'all',
+    selectedWeather: 'all',
     selectedExpYear: 0,
     valueAvailable: true,
   }
@@ -309,7 +309,7 @@ class Gear extends React.Component {
                     By Function
                     </DropdownToggle>
                   <DropdownMenu defaultValue={12345}>
-                    <DropdownItem key={12345} value={12345} onClick={() => filterAllFunction(selectedFunction, selectedWeather, selectedExpYear)} selected>All</DropdownItem>
+                    <DropdownItem key={12345} value={12345} onClick={() => filterAllFunction(selectedFunction, selectedWeather, selectedExpYear)}>All</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
                   </DropdownMenu>
