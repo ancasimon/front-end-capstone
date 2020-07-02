@@ -164,6 +164,17 @@ class Gear extends React.Component {
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
 
+  filterAll = (gear) => {
+    let searchMatch = false;
+    let functionCheck = false;
+    let weatherCheck = false;
+    let expYearCheck = false;
+
+    const { selectedFunction, selectedWeather, selectedExpYear } = this.state;
+
+    if (selectedFunction.name !== "All") {}
+  }
+
   // filterAllFunction = (functionId, weatherId, yearValue) => {
   //   const { selectedFunction } = this.state;
   //   // this.setState({ selectedFunction: functionId, selectedWeather: weatherId, selectedExpYear: yearValue });
@@ -351,7 +362,7 @@ class Gear extends React.Component {
                   <DropdownToggle caret className="blueButtons p-1">
                     By Function
                     </DropdownToggle>
-                  <DropdownMenu defaultValue={12345}>
+                  <DropdownMenu>
                     {/* <DropdownItem key={12345} value={12345} onClick={() => this.setFunction(value)}>All</DropdownItem> */}
                     <DropdownItem divider />
                     {buildFunctionsList()}
