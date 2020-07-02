@@ -48,7 +48,7 @@ class GearChartsCounts extends React.Component {
 
   render() {
     const { gearFunctionCounts } = this.state;
-    const buildCountsList = () => gearFunctionCounts.map((item) => (
+    const buildCountsList = () => gearFunctionCounts.sort((a, b) => b.count - a.count).map((item) => (
         <GearChartsRow key={item.functionName} countObject={item} />
     ));
 
