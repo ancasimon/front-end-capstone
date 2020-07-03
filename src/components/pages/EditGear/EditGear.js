@@ -69,8 +69,8 @@ class EditGear extends React.Component {
           gearFunction: currentGear.functionId,
           gearWeather: currentGear.weatherId,
           gearImageUrl: currentGear.imageUrl,
-          gearSeasonsList: currentGear.selectedSeasons,
-          gearPartyList: currentGear.selectedParties,
+          gearSeasonsList: currentGear.selectedGearSeasons,
+          gearPartyList: currentGear.selectedGearParties,
           allPartiesWithChecks: currentGear.allPartiesWithChecks,
           allSeasonsWithChecks: currentGear.allSeasonsWithChecks,
         });
