@@ -24,8 +24,8 @@ class SingleGear extends React.Component {
         gearItem: response,
         gearFunction: response.selectedFunction,
         gearWeather: response.selectedWeather,
-        gearSeasons: response.selectedSeasons,
-        gearParties: response.selectedParties,
+        gearSeasons: response.selectedGearSeasons,
+        gearParties: response.selectedGearParties,
         currentpath: this.props.location.pathname,
       }))
       .catch((err) => console.error('unable to get gear record', err));
