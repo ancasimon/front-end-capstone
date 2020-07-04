@@ -266,7 +266,7 @@ class EditGear extends React.Component {
         const { previouspath } = this.props.location;
         previouspath === '/gear' ? this.props.history.push('/gear') : this.props.history.push(previouspath.currentpath);
       })
-      .catch((err) => console.error('unable to save new gear', err));
+      .catch((err) => console.error('unable to save changes to gear', err));
   }
 
   render() {
