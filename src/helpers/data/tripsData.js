@@ -19,4 +19,6 @@ const getTripsByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getTripsByUid };
+const getSingleTrip = (tripId) => axios.get(`${baseUrl}/trips/${tripId}.json`);
+
+export default { getTripsByUid, getSingleTrip };
