@@ -54,7 +54,6 @@ class Gear extends React.Component {
   }
 
   buildGearPage = () => {
-    console.log('running buildGearPage');
     const { valueAvailable } = this.state;
     this.getFunctionsList();
     this.getWeatherList();
@@ -81,7 +80,7 @@ class Gear extends React.Component {
       .then((fbData) => {
         const availableFilteredGearItemsOnly = fbData.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: availableFilteredGearItemsOnly });
-        console.log('available gear only???', gear);
+        // console.log('available gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -93,7 +92,7 @@ class Gear extends React.Component {
       .then((fbData) => {
         const unavailableFilteredGearItems = fbData.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: unavailableFilteredGearItems });
-        console.log('UNavailable gear only???', gear);
+        // console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -136,7 +135,6 @@ class Gear extends React.Component {
   // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
 
   toggleAvailableSwitch = (e) => {
-    console.log('e when toggling', e);
     this.setState({ valueAvailable: e });
     this.getFunctionsList();
     this.getWeatherList();

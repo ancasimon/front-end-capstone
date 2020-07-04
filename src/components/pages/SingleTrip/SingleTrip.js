@@ -72,7 +72,6 @@ class SingleTrip extends React.Component {
     } = this.state;
     const { tripId } = this.props.match.params;
     const editPath = `/trips/edit/${tripId}`;
-    console.log('trip when rendering the single view', trip);
     return (
       <div className="SingleTrip col-12 pageDisplay mt-5">
         <h1 className="heading textShadow">Details about your trip to {trip.destination}</h1>
@@ -82,15 +81,29 @@ class SingleTrip extends React.Component {
         <div className="container col-12">
 
           <div className="row col-12 justify-content-center">
-            <p className="question">How many people going:</p><img src={selectedParty.imageUrl} alt="icon" className="gearIcon mx-3" /><p>{selectedParty.name}</p>
+            <p className="question col-sm-4">How many people going:</p>
+            {
+              selectedParty
+                ? (<div className="row col-sm-4 justify-content-center"><img src={selectedParty.imageUrl} alt="icon" className="gearIcon mx-3" /><p>{selectedParty.name}</p></div>)
+                : (<p className="col-sm-4">N/A</p>)
+            }
+
+          <div className="row col-12 justify-content-center">
+            <p className="question col-sm-4">What kind of weather:</p>
+            {
+              selectedWeather
+                ? (<div className="row col-sm-4 justify-content-center"><img src={selectedWeather.imageUrl} alt="icon" className="gearIcon mx-3" /><p>{selectedWeather.name}</p></div>)
+                : (<p className="col-sm-4">N/A</p>)
+            }
           </div>
 
           <div className="row col-12 justify-content-center">
-            <p className="question">What kind of weather:</p><img src={selectedWeather.imageUrl} alt="icon" className="gearIcon mx-3" /><p>{selectedWeather.name}</p>
-          </div>
-
-          <div className="row col-12 justify-content-center">
-            <p className="question">Time of year:</p><img src={selectedSeason.imageUrl} alt="icon" className="gearIcon mx-3" /><p>{selectedSeason.name}</p>
+            <p className="question col-sm-4">Time of year:</p>
+            {
+              selectedSeason
+                ? (<div className="row col-sm-4 justify-content-center"><img src={selectedSeason.imageUrl} alt="icon" className="gearIcon mx-3" /><p>{selectedSeason.name}</p></div>)
+                : (<p className="col-sm-4">N/A</p>)
+            }
           </div>
 
           {
@@ -109,6 +122,7 @@ class SingleTrip extends React.Component {
           </div>
 
         </div>
+      </div>
       </div>
     );
   }

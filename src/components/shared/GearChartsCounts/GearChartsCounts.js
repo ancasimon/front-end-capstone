@@ -31,11 +31,9 @@ class GearChartsCounts extends React.Component {
                 functionName: functionValue.name,
                 count: gear.filter((gearItem) => gearItem.functionId === functionValue.id).length,
               };
-              console.log('countObject', count);
               counts.push(count);
               return (counts);
             });
-            console.log('counts list', counts);
             this.setState({ gearFunctionCounts: counts });
           });
       })
