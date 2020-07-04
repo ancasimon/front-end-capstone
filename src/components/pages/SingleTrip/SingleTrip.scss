@@ -2,6 +2,13 @@
   display: block;
 }
 
-.tripSinglePhoto:hover {
-  transform: scale(1.5);
+.tripSinglePhoto {
+  max-width: 500px;
+  max-height: 500px;
+  justify-content: center;
+  align-items: center;
 }
+
+// .tripSinglePhoto:hover {
+//   transform: scale(1.5);
+// }
