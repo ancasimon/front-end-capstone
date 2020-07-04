@@ -105,16 +105,18 @@ class SingleTrip extends React.Component {
                 : (<p className="col-sm-4">N/A</p>)
             }
           </div>
-
-          {
-            trip.isEstablishedCampsite ? (
-              <p className="question">This site is an established campsite.</p>
-            ) : (
-              <p className="question">Please note that this site is NOT an established campsite. You may want to take your hammock!</p>
-            )
-          }
-
-          <img src={trip.imageUrl} alt={trip.destination} className="photoBorder tripSinglePhoto" />
+          <div className="row col-12 justify-content-center">
+            {
+              trip.isEstablishedCampsite ? (
+                <p className="question">This site is an established campsite.</p>
+              ) : (
+                <p className="question">Please note that this site is NOT an established campsite. You may want to take your hammock!</p>
+              )
+            }
+          </div>
+          <div className="row col-12 justify-content-center">
+            <img src={trip.imageUrl} alt={trip.destination} className="photoBorder tripSinglePhoto" />
+          </div>
 
           <div className="row col-12 justify-content-center">
             <Link to={editPath} className="btn btn-lg greenButtons col-sm-2 p-1"><i className="fas fa-pencil-alt"></i></Link>
