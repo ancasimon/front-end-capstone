@@ -1,5 +1,6 @@
 import React from 'react';
-import moment from 'moment';
+// import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 import TripItem from '../../shared/TripItem/TripItem';
 
@@ -7,7 +8,6 @@ import authData from '../../../helpers/data/authData';
 import tripsData from '../../../helpers/data/tripsData';
 
 import './Trips.scss';
-import { database } from 'firebase';
 
 class Trips extends React.Component {
   state = {
@@ -69,6 +69,11 @@ class Trips extends React.Component {
     return (
       <div className="Trips col-12 pt-0 pageDisplay">
         <h1 className="heading textShadow">Your Past and Future Trips</h1>
+
+        <div className="p-1 mt-1 d-flex flex-wrap justify-content-center">
+          <Link to='trips/new' className="greenButtons mt-1"><i className="fas fa-plus"></i> Planning a new trip? Add it here!</Link>
+        </div>
+
         <div className="d-flex flex-wrap">
           {buildTrips()}
         </div>

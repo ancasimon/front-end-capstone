@@ -25,16 +25,16 @@ class TripItem extends React.Component {
       <div className="TripItem">
 
         <div
-          class="card"
+          className="card"
           onMouseEnter={() => this.setIsShown(true)}
           onMouseLeave={() => this.setIsShown(false)}
           >
             {
               isShown ? (
                 <div>
-                  <div class="card-img" style={{ backgroundImage: `url(${trip.imageUrl})` }}>
+                  <div className="card-img" style={{ backgroundImage: `url(${trip.imageUrl})` }}>
                   </div>
-                  <div class="card-content">
+                  <div className="card-content">
                   <Link to={singleLink}>
                     <h2>{trip.destination}</h2>
                     <p>{trip.startDate} - {trip.endDate}</p>
@@ -43,14 +43,14 @@ class TripItem extends React.Component {
                 </div>
               ) : (
                 <div>
-                  <div class="card-img hover" style={{ backgroundImage: `url(${trip.imageUrl})` }}>
-                    <div class="overlay hover">
-                      <div class="overlay-content hover">
+                  <div className="card-img hover" style={{ backgroundImage: `url(${trip.imageUrl})` }}>
+                    <div className="overlay hover">
+                      <div className="overlay-content hover">
                         <Link to={singleLink} className="hover">View Details</Link>
                     </div>
                   </div>
                 </div>
-                <div class="card-content">
+                <div className="card-content">
                   <Link to={singleLink}>
                     <h2>{trip.destination}</h2>
                     <p>{trip.startDate} - {trip.endDate}</p>
