@@ -30,9 +30,9 @@ class Home extends React.Component {
     const userName = authData.getName();
     return (
       <div className="Home col-12">
-        <h1 className="heading">Welcome to GearUp, {userName}!</h1>
+        <h1 className="heading textShadow">Welcome to GearUp, {userName}!</h1>
         <div className="col-12 pageDisplay mt-5">
-          <h4 className="heading m-3">Your Gear Dashboard</h4>
+          <h4 className="heading m-3 textShadow">Your Gear Dashboard</h4>
           <div className="row col-12">
             <div className="col-md-4">
               {/* COLLAPSE ACCORDION FOR Gear Counts Chart BELOW */}
