@@ -20,7 +20,7 @@ class TripItem extends React.Component {
 
   render() {
     const { trip, isShown } = this.props;
-    const { singleLink } = `/trips/${trip.id}`;
+    const singleLink = `/trips/${trip.id}`;
     return (
       <div className="TripItem">
 
@@ -46,7 +46,7 @@ class TripItem extends React.Component {
                   <div class="card-img hover" style={{ backgroundImage: `url(${trip.imageUrl})` }}>
                     <div class="overlay hover">
                       <div class="overlay-content hover">
-                        <Link class="hover" to={singleLink}>View Details</Link>
+                        <Link to={singleLink} className="hover">View Details</Link>
                     </div>
                   </div>
                 </div>
