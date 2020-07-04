@@ -22,7 +22,7 @@ class EditTrip extends React.Component {
     tripEndDate: '',
     tripStartDate: '',
     tripImageUrl: '',
-    tripEstablishedCampsite: true,
+    tripEstablishedCampsite: false,
     tripDestination: '',
   };
 
@@ -141,12 +141,12 @@ class EditTrip extends React.Component {
         isEstablishedCampsite: tripEstablishedCampsite,
         destination: tripDestination,
       };
-      tripsData.putTrip(updatedTrip)
+      tripsData.putTrip(editId, updatedTrip)
         .then(() => {
           console.log('posted updates to this trip');
           this.props.history.push(`/trips/${editId}`);
         })
-        .catch((err) => console.error('unable to create new trip record', err));
+        .catch((err) => console.error('unable to save changes to trip record', err));
     }
   }
 
@@ -231,7 +231,7 @@ class EditTrip extends React.Component {
                     className="form-check-input"
                     type="checkbox"
                     id="tripEstablishedCampsite"
-                    value={tripEstablishedCampsite}
+                    checked={tripEstablishedCampsite}
                     onChange={this.changeTripEstablishedCampsite}
                   />
                   <label className="form-check-label question" htmlFor="tripEstablishedCampsite">

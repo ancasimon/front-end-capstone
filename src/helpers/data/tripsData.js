@@ -23,4 +23,11 @@ const getSingleTrip = (tripId) => axios.get(`${baseUrl}/trips/${tripId}.json`);
 
 const postNewTrip = (newTrip) => axios.post(`${baseUrl}/trips.json`, newTrip);
 
-export default { getTripsByUid, getSingleTrip, postNewTrip };
+const putTrip = (tripId, updatedTrip) => axios.put(`${baseUrl}/trips/${tripId}.json`, updatedTrip);
+
+export default {
+  getTripsByUid,
+  getSingleTrip,
+  postNewTrip,
+  putTrip,
+};
