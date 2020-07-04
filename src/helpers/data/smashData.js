@@ -5,6 +5,31 @@ import gearSeasonData from './gearSeasonData';
 import partyData from './partyData';
 import seasonsData from './seasonsData';
 import weatherData from './weatherData';
+import tripsData from './tripsData';
+
+const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
+  tripsData.getSingleTrip(tripId)
+    .then((singleTripResponse) => {
+      partyData.getPartyValues()
+        .then((allPartyValues) => {
+          const selectedParty = allPartyValues.find((x) => x.id === singleTripResponse.data.partyId);
+          weatherData.getWeatherValues()
+            .then((allWeatherValues) => {
+              const selectedWeather = allWeatherValues.find((y) => y.id === singleTripResponse.data.weatherId);
+              seasonsData.getSeasons()
+                .then((allSeasons) => {
+                  const selectedSeason = allSeasons.find((z) => z.id === singleTripResponse.data.seasonId);
+                  const tripCopy = { ...singleTripResponse.data};
+                  tripCopy.selectedParty = selectedParty;
+                  tripCopy.selectedWeather = selectedWeather;
+                  tripCopy.selectedSeason = selectedSeason;
+                  resolve(tripCopy);
+                });
+            });
+        });
+    })
+    .catch((err) => reject(err));
+});
 
 // QUESTION: IS IT ok that this is a get single call?? Also ok that it is a new promise?
 // DO I NEED getGearSeasons instead of getGearSeasonsByGearId below??
@@ -114,4 +139,4 @@ const completelyRemoveGearItemAndChildren = (gearItemId) => new Promise((resolve
     .catch((err) => reject(err));
 });
 
-export default { getGearWithProperties, completelyRemoveGearItemAndChildren };
+export default { getGearWithProperties, completelyRemoveGearItemAndChildren, getTripWithDetails };
