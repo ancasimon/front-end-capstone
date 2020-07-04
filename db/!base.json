@@ -5,5 +5,7 @@
   "gearSeason": "val",
   "party": "val",
   "seasons": "val",
+  "trips": "val",
+  "tripGear": "val",
   "weather": "val"
 }
