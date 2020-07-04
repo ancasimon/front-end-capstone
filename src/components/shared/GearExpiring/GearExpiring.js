@@ -22,8 +22,6 @@ class GearExpiring extends React.Component {
         this.setState({ gear: gearExpiringThisYear });
         const count = gearExpiringThisYear.length;
         this.setState({ gearExpiringCount: count });
-        console.log('count', this.state.gearExpiringCount);
-        console.log('gear exp', gearExpiringThisYear);
       })
       .catch((err) => console.error('unable to get list of gear expiring this year', err));
   }

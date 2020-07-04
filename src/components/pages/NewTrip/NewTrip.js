@@ -16,9 +16,9 @@ class NewTrip extends React.Component {
     weatherList: [],
     seasonsList: [],
     partyList: [],
-    tripParty: '',
-    tripSeason: '',
-    tripWeather: '',
+    tripParty: 'party1',
+    tripSeason: 'season1',
+    tripWeather: 'weather1',
     tripEndDate: '',
     tripStartDate: '',
     tripImageUrl: '',
@@ -121,7 +121,6 @@ class NewTrip extends React.Component {
       };
       tripsData.postNewTrip(newTrip)
         .then(() => {
-          console.log('posted new trip');
           this.props.history.push('/trips');
         })
         .catch((err) => console.error('unable to create new trip record', err));

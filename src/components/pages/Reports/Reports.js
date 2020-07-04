@@ -12,11 +12,11 @@ class Reports extends React.Component {
         <h1 className="heading textShadow">Stats and More</h1>
         <div className="row col-12">
           <div className="col-md-6">
-            <h3>Gear Counts by Category</h3>
+            <h5>Gear Counts by Category</h5>
             <GearChartsCounts />
           </div>
           <div className="col-md-6">
-            <h3>Gear to Replace This Year</h3>
+            <h5>Gear to Replace This Year</h5>
             <GearExpiring />
           </div>
         </div>

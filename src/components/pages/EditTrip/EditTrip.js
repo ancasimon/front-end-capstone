@@ -53,7 +53,6 @@ class EditTrip extends React.Component {
 
   buildEditTripPage = () => {
     const editId = this.props.match.params.tripId;
-    console.log('tripId in edit', editId);
     smashData.getTripWithDetails(editId)
       .then((fbResponse) => {
         const currentTrip = fbResponse;
@@ -143,7 +142,6 @@ class EditTrip extends React.Component {
       };
       tripsData.putTrip(editId, updatedTrip)
         .then(() => {
-          console.log('posted updates to this trip');
           this.props.history.push(`/trips/${editId}`);
         })
         .catch((err) => console.error('unable to save changes to trip record', err));
