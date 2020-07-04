@@ -320,8 +320,12 @@ class Gear extends React.Component {
       gearData.getGearByUid(uid)
         .then((fbData) => {
           if (functionFilter === true && weatherFilter === false && expYearFilter === false) {
-            fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-            this.setState({ filteredList });
+            const newFilteredList = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
+            this.setState({ gear: newFilteredList });
+            // buildGearGrid();
+            gear.map((gearItem) => (
+                  <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+            ));
           } else if (functionFilter === true && weatherFilter === true && expYearFilter === false) {
             fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.weatherId === this.state.selectedWeather);
             this.setState({ filteredList });
@@ -339,7 +343,7 @@ class Gear extends React.Component {
           } else if (functionFilter === false && weatherFilter === true && expYearFilter === false) {
             console.log('func false, weather true, exp year false');
           }
-          this.setState({ filteredList });
+          // this.setState({ filteredList });
           this.setState({ gear: fbData });
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
