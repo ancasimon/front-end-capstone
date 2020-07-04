@@ -11,11 +11,16 @@ import {
 
 import Auth from '../components/pages/Auth/Auth';
 import EditGear from '../components/pages/EditGear/EditGear';
+import EditTrip from '../components/pages/EditTrip/EditTrip';
 import Footer from '../components/shared/Footer/Footer';
 import Gear from '../components/pages/Gear/Gear';
 import Home from '../components/pages/Home/Home';
 import NewGear from '../components/pages/NewGear/NewGear';
+import NewTrip from '../components/pages/NewTrip/NewTrip';
+import Reports from '../components/pages/Reports/Reports';
 import SingleGear from '../components/pages/SingleGear/SingleGear';
+import SingleTrip from '../components/pages/SingleTrip/SingleTrip';
+import Trips from '../components/pages/Trips/Trips';
 
 import MyNavbar from '../components/shared/MyNavbar/MyNavbar';
 
@@ -70,10 +75,18 @@ class App extends React.Component {
                 <div className="row">
                   <Switch>
                     <PrivateRoute path='/home' component={Home} authed={authed} />
+
                     <PrivateRoute path='/gear/edit/:gearItemId' component={EditGear} authed={authed} />
                     <PrivateRoute path='/gear/new' component={NewGear} authed={authed} />
                     <PrivateRoute path='/gear/:gearItemId' component={SingleGear} authed={authed} />
                     <PrivateRoute path='/gear' component={Gear} authed={authed} />
+
+                    <PrivateRoute path='/reports' component={Reports} authed={authed} />
+
+                    <PrivateRoute path='/trips/edit/:tripId' component={EditTrip} authed={authed} />
+                    <PrivateRoute path='/trips/new' component={NewTrip} authed={authed} />
+                    <PrivateRoute path='/trips/:tripId' component={SingleTrip} authed={authed} />
+                    <PrivateRoute path='/trips' component={Trips} authed={authed} />
 
                     <PublicRoute path='/auth' component={Auth} authed={authed} />
 
