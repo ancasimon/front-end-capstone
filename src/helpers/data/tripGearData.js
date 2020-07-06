@@ -20,4 +20,8 @@ const getTripGearByTrip = (tripId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getTripGearByTrip };
+const postTripGear = (newTripGear) => axios.post(`${baseUrl}/tripGear.json`, newTripGear);
+
+const deleteTripGear = (tripGearId) => axios.delete(`${baseUrl}/tripGear/${tripGearId}.json`);
+
+export default { getTripGearByTrip, postTripGear, deleteTripGear };

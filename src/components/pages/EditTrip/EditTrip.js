@@ -11,6 +11,7 @@ import partyData from '../../../helpers/data/partyData';
 
 import './EditTrip.scss';
 import smashData from '../../../helpers/data/smashData';
+import tripGearData from '../../../helpers/data/tripGearData';
 
 class EditTrip extends React.Component {
   state = {
@@ -112,6 +113,43 @@ class EditTrip extends React.Component {
     this.setState({ tripParty: e.target.value });
   }
 
+  changeTripGearSelection = (e) => {
+    const editTripId = this.props.match.params.tripId;
+    console.log('etarget', e.target);
+    const newTripGearCheckedValue = e.target.checked;
+    // const currentGearId = e.target.getAttribute('parentgear');
+    const currentGearId = e.target.id;
+    console.log('gear id for new trip gear', currentGearId);
+    const currentTripGearId = e.target.getAttribute('parenttripgear');
+    if (newTripGearCheckedValue !== true) {
+      this.deleteTripGearRecord(currentTripGearId);
+    } else if (newTripGearCheckedValue === true) {
+      this.createNewTripGearRecord(editTripId, currentGearId);
+    }
+  }
+
+  createNewTripGearRecord = (tripId, gearId) => {
+    const newTripGearRecord = {
+      tripId,
+      gearId,
+    };
+    tripGearData.postTripGear(newTripGearRecord)
+      .then(() => {
+        this.buildEditTripPage();
+        console.log('new trip gear', newTripGearRecord);
+      })
+      .catch((err) => console.error('could not create a new trip gear record for this trip', err));
+  };
+
+  deleteTripGearRecord = (tripGearId) => {
+    tripGearData.deleteTripGear(tripGearId)
+      .then(() => {
+        this.buildEditTripPage();
+        console.log('deleted trip gear', tripGearId);
+      })
+      .catch((err) => console.error('could not delete this trip gear record', err));
+  }
+
   validationAlert = () => {
     Swal.fire('You must specify required details to add this item to your list: Destination & Start/End Dates!');
   }
@@ -184,14 +222,18 @@ class EditTrip extends React.Component {
     const buildGearList = () => tripGear.map((gearObject) => (
       <tbody key={gearObject.id}>
         <tr>
-          <td class="form-check">
+          <td className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
-              value=""
-              id="defaultCheck1"
+              checked={gearObject.isChecked}
+              id={gearObject.id}
+              value={gearObject.id}
+              parentgear={gearObject.parentGear}
+              parenttripgear={gearObject.parentTripGear}
+              onChange={this.changeTripGearSelection}
             />
-            <label class="form-check-label" for="defaultCheck1">
+            <label className="form-check-label" htmlFor={gearObject.id}>
               {gearObject.item}
               </label>
           </td>

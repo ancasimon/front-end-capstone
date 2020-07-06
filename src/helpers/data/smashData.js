@@ -38,7 +38,7 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
                             for (let i = 0; i < allGearWithChecks.length; i += 1) {
                               if (allGearWithChecks[i].id === gearThingTakenOnTrip.gearId) {
                                 allGearWithChecks[i].isChecked = true;
-                                allGearWithChecks[i].parentTrip = gearThingTakenOnTrip.tripId;
+                                allGearWithChecks[i].parentGear = gearThingTakenOnTrip.gearId;
                                 allGearWithChecks[i].parentTripGear = gearThingTakenOnTrip.id;
                               }
                             }
