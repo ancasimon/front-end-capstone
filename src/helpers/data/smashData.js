@@ -1,3 +1,4 @@
+import authData from './authData';
 import functionsData from './functionsData';
 import gearData from './gearData';
 import gearPartyData from './gearPartyData';
@@ -5,6 +6,7 @@ import gearSeasonData from './gearSeasonData';
 import partyData from './partyData';
 import seasonsData from './seasonsData';
 import weatherData from './weatherData';
+import tripGearData from './tripGearData';
 import tripsData from './tripsData';
 
 const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
@@ -19,11 +21,24 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
               seasonsData.getSeasons()
                 .then((allSeasons) => {
                   const selectedSeason = allSeasons.find((z) => z.id === singleTripResponse.data.seasonId);
-                  const tripCopy = { ...singleTripResponse.data};
-                  tripCopy.selectedParty = selectedParty;
-                  tripCopy.selectedWeather = selectedWeather;
-                  tripCopy.selectedSeason = selectedSeason;
-                  resolve(tripCopy);
+                  tripGearData.getTripGearByTrip(tripId)
+                    .then((allTripGearItems) => {
+                      const uid = authData.getUid();
+                      gearData.getGearByUid(uid)
+                        .then((allGearItems) => {
+                          const selectedTripGearItems = [];
+                          allTripGearItems.forEach((gearThingTakenOnTrip) => {
+                            const foundGearThingInTripList = allGearItems.find((x) => x.id === gearThingTakenOnTrip.gearId);
+                            selectedTripGearItems.push(foundGearThingInTripList);
+                            const tripCopy = { ...singleTripResponse.data};
+                            tripCopy.selectedParty = selectedParty;
+                            tripCopy.selectedWeather = selectedWeather;
+                            tripCopy.selectedSeason = selectedSeason;
+                            tripCopy.selectedTripGearObjects = selectedTripGearItems;
+                            resolve(tripCopy);
+                          });
+                        });
+                    });
                 });
             });
         });
