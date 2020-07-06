@@ -90,7 +90,7 @@ class SingleTrip extends React.Component {
 
     return (
       <div className="SingleTrip col-12 pageDisplay mt-5">
-        <h1 className="heading textShadow">Details about your trip to {trip.destination}</h1>
+        <h1 className="heading textShadow">Details about Your Trip to {trip.destination}</h1>
         <h6>{trip.startDate} - {trip.endDate}</h6>
         <Link to='/trips' className="btn btn-lg blueButtons col-sm-2 p-1"><i className="fas fa-chevron-left"></i></Link>
 
@@ -135,7 +135,7 @@ class SingleTrip extends React.Component {
           </div>
 
           <div>
-            <h3 className="heading textShadow pt-5">Here's your packing list:</h3>
+            <h3 className="heading textShadow pt-5">Your Packing List for This Trip</h3>
             <Table hover className="inputBorder">
               <thead>
                 <tr>

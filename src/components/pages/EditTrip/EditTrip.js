@@ -362,6 +362,7 @@ class EditTrip extends React.Component {
           </div>
 
           <div>
+            <h3 className="heading textShadow">Update Your Packing List for This Trip</h3>
             <Table hover className="inputBorder">
               <thead>
                 <tr>
