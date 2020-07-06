@@ -498,5 +498,105 @@
     "tripId": "trip3",
     "gearId": "gear76",
     "notes": "val"
+  },
+    "tripGear401": {
+      "tripId": "trip1",
+      "gearId": "gea80",
+      "notes": "val"
+    },
+    "tripGear402": {
+      "tripId": "trip1",
+      "gearId": "gear82",
+      "notes": "val"
+    },
+   "tripGear403": {
+      "tripId": "trip1",
+      "gearId": "gear83",
+      "notes": "val"
+    },
+   "tripGear404": {
+      "tripId": "trip1",
+      "gearId": "gear87",
+      "notes": "val"
+    },
+   "tripGear405": {
+      "tripId": "trip1",
+      "gearId": "gear92",
+      "notes": "val"
+    },
+   "tripGear406": {
+      "tripId": "trip1",
+      "gearId": "gear76",
+      "notes": "val"
+    },
+   "tripGear407": {
+      "tripId": "trip1",
+      "gearId": "gear88",
+      "notes": "val"
+    },
+   "tripGear408": {
+      "tripId": "trip1",
+      "gearId": "gear59",
+      "notes": "val"
+    },
+   "tripGear409": {
+      "tripId": "trip1",
+      "gearId": "gear60",
+      "notes": "val"
+    },
+   "tripGear410": {
+      "tripId": "trip1",
+      "gearId": "gear61",
+      "notes": "val"
+    },
+    "tripGear301": {
+      "tripId": "trip4",
+      "gearId": "gear3",
+      "notes": "val"
+    },
+    "tripGear302": {
+      "tripId": "trip4",
+      "gearId": "gear8",
+      "notes": "val"
+    },
+   "tripGear303": {
+      "tripId": "trip4",
+      "gearId": "gear11",
+      "notes": "val"
+    },
+   "tripGear304": {
+      "tripId": "trip4",
+      "gearId": "gear13",
+      "notes": "val"
+    },
+   "tripGear305": {
+      "tripId": "trip4",
+      "gearId": "gear14",
+      "notes": "val"
+    },
+   "tripGear306": {
+      "tripId": "trip4",
+      "gearId": "gear91",
+      "notes": "val"
+    },
+   "tripGear307": {
+      "tripId": "trip4",
+      "gearId": "gear88",
+      "notes": "val"
+    },
+   "tripGear308": {
+      "tripId": "trip4",
+      "gearId": "gear81",
+      "notes": "val"
+    },
+   "tripGear309": {
+      "tripId": "trip4",
+      "gearId": "gear77",
+      "notes": "val"
+    },
+   "tripGear310": {
+      "tripId": "trip4",
+      "gearId": "gear76",
+      "notes": "val"
+    }
   }
-}
