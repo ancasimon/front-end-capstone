@@ -1,6 +1,8 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { Table } from 'reactstrap';
 
 import smashData from '../../../helpers/data/smashData';
 import tripsData from '../../../helpers/data/tripsData';
@@ -13,20 +15,20 @@ class SingleTrip extends React.Component {
     selectedParty: '',
     selectedWeather: '',
     selectedSeason: '',
-
+    selectedGear: [],
   }
 
   buildSingleTripView = () => {
     const { tripId } = this.props.match.params;
     smashData.getTripWithDetails(tripId)
-      .then((fbData) => this.setState({ 
+      .then((fbData) => this.setState({
         trip: fbData,
         selectedParty: fbData.selectedParty,
         selectedWeather: fbData.selectedWeather,
         selectedSeason: fbData.selectedSeason,
+        selectedGear: fbData.selectedTripGearObjects,
       }))
       .catch((err) => console.error('could not get trip details from firebase', err));
-
   }
 
   componentDidMount() {
@@ -69,9 +71,22 @@ class SingleTrip extends React.Component {
       selectedParty,
       selectedWeather,
       selectedSeason,
+      selectedGear,
     } = this.state;
     const { tripId } = this.props.match.params;
     const editPath = `/trips/edit/${tripId}`;
+
+    const buildGearGrid = () => selectedGear.sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD')).map((gearItem) => (
+      <tbody>
+        <tr>
+            <th scope="row">{gearItem.item}</th>
+            <td className="d-none d-md-table-cell"><img className="gearPhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} /></td>
+            <td>{gearItem.brand}</td>
+            <td className="d-none d-md-table-cell">{gearItem.model}</td>
+          </tr>
+        </tbody>
+    ));
+
     return (
       <div className="SingleTrip col-12 pageDisplay mt-5">
         <h1 className="heading textShadow">Details about your trip to {trip.destination}</h1>
@@ -116,6 +131,29 @@ class SingleTrip extends React.Component {
           </div>
           <div className="row col-12 justify-content-center">
             <img src={trip.imageUrl} alt={trip.destination} className="photoBorder tripSinglePhoto" />
+          </div>
+
+          <div>
+            <h3 className="heading textShadow pt-5">Here's your packing list:</h3>
+            <Table hover className="inputBorder">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th className="d-none d-md-table-cell">Image</th>
+                  <th>Brand</th>
+                  <th className="d-none d-md-table-cell">Model</th>
+                  {/* <th className="d-none d-sm-table-cell">Function</th>
+                  <th className="d-none d-sm-table-cell">Seasons</th>
+                  <th className="d-none d-sm-table-cell">Weather</th>
+                  <th className="d-none d-sm-table-cell">Party</th>
+                  {/* <th>Weight (gr.)</th> */}
+                  {/* <th className="d-none d-md-table-cell">Available?</th> */}
+                  {/* <th>Exp. Yr.</th> */}
+                  {/* <th>Actions</th> */}
+                </tr>
+              </thead>
+                {buildGearGrid()}
+            </Table>
           </div>
 
           <div className="row col-12 justify-content-center">
