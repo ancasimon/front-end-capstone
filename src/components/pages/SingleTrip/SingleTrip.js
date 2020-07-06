@@ -77,7 +77,7 @@ class SingleTrip extends React.Component {
     const editPath = `/trips/edit/${tripId}`;
 
     const buildGearGrid = () => selectedGear.sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD')).map((gearItem) => (
-      <tbody>
+      <tbody key={gearItem.id}>
         <tr>
             <th scope="row">{gearItem.item}</th>
             <td className="d-none d-md-table-cell"><img className="gearPhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} /></td>

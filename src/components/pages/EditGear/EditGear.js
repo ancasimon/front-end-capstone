@@ -343,7 +343,7 @@ class EditGear extends React.Component {
         </div>
 
         <form>
-{/* This is the row of radio buttons for the Seasons collection. */}
+{/* This is the row of checkboxes for the Seasons collection. */}
           <div className="container col-12 inputBorder">
             <p className="question">Season: Will you use this item all the time or only during a specific season?</p>
             <div
@@ -353,7 +353,7 @@ class EditGear extends React.Component {
             </div>
           </div>
 
-{/* This is the row of radio buttons for the Party collection. */}
+{/* This is the row of checkboxes for the Party collection. */}
           <div className="container col-12 inputBorder">
             <p className="question">Party: Will you use this item all the time or only when going as a couple, with the family, or solo?</p>
             <div className="row justify-content-center p-3">

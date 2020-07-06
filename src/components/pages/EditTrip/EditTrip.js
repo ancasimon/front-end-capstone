@@ -1,6 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Table } from 'reactstrap';
 
 import authData from '../../../helpers/data/authData';
 import tripsData from '../../../helpers/data/tripsData';
@@ -10,6 +11,7 @@ import partyData from '../../../helpers/data/partyData';
 
 import './EditTrip.scss';
 import smashData from '../../../helpers/data/smashData';
+import tripGearData from '../../../helpers/data/tripGearData';
 
 class EditTrip extends React.Component {
   state = {
@@ -24,6 +26,7 @@ class EditTrip extends React.Component {
     tripImageUrl: '',
     tripEstablishedCampsite: false,
     tripDestination: '',
+    tripGear: [],
   };
 
   componentDidMount() {
@@ -65,6 +68,7 @@ class EditTrip extends React.Component {
           tripImageUrl: currentTrip.imageUrl,
           tripEstablishedCampsite: currentTrip.isEstablishedCampsite,
           tripDestination: currentTrip.destination,
+          tripGear: currentTrip.allGearWithChecks,
         });
       })
       .catch((err) => console.error('could not update trip info', err));
@@ -107,6 +111,43 @@ class EditTrip extends React.Component {
   changeTripParty = (e) => {
     e.preventDefault();
     this.setState({ tripParty: e.target.value });
+  }
+
+  changeTripGearSelection = (e) => {
+    const editTripId = this.props.match.params.tripId;
+    console.log('etarget', e.target);
+    const newTripGearCheckedValue = e.target.checked;
+    // const currentGearId = e.target.getAttribute('parentgear');
+    const currentGearId = e.target.id;
+    console.log('gear id for new trip gear', currentGearId);
+    const currentTripGearId = e.target.getAttribute('parenttripgear');
+    if (newTripGearCheckedValue !== true) {
+      this.deleteTripGearRecord(currentTripGearId);
+    } else if (newTripGearCheckedValue === true) {
+      this.createNewTripGearRecord(editTripId, currentGearId);
+    }
+  }
+
+  createNewTripGearRecord = (tripId, gearId) => {
+    const newTripGearRecord = {
+      tripId,
+      gearId,
+    };
+    tripGearData.postTripGear(newTripGearRecord)
+      .then(() => {
+        this.buildEditTripPage();
+        console.log('new trip gear', newTripGearRecord);
+      })
+      .catch((err) => console.error('could not create a new trip gear record for this trip', err));
+  };
+
+  deleteTripGearRecord = (tripGearId) => {
+    tripGearData.deleteTripGear(tripGearId)
+      .then(() => {
+        this.buildEditTripPage();
+        console.log('deleted trip gear', tripGearId);
+      })
+      .catch((err) => console.error('could not delete this trip gear record', err));
   }
 
   validationAlert = () => {
@@ -163,6 +204,7 @@ class EditTrip extends React.Component {
       tripImageUrl,
       tripEstablishedCampsite,
       tripDestination,
+      tripGear,
     } = this.state;
 
     const buildWeatherList = () => weatherList.map((weatherValue) => (
@@ -175,6 +217,31 @@ class EditTrip extends React.Component {
 
     const buildPartyList = () => partyList.map((partyValue) => (
       <option key={partyValue.id} value={partyValue.id}>{partyValue.name}</option>
+    ));
+
+    const buildGearList = () => tripGear.map((gearObject) => (
+      <tbody key={gearObject.id}>
+        <tr>
+          <td className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              checked={gearObject.isChecked}
+              id={gearObject.id}
+              value={gearObject.id}
+              parentgear={gearObject.parentGear}
+              parenttripgear={gearObject.parentTripGear}
+              onChange={this.changeTripGearSelection}
+            />
+            <label className="form-check-label" htmlFor={gearObject.id}>
+              {gearObject.item}
+              </label>
+          </td>
+          <td className="d-none d-md-table-cell"><img className="gearPhoto photoBorder" src={gearObject.imageUrl} alt={gearObject.item} /></td>
+          <td>{gearObject.brand}</td>
+          <td className="d-none d-md-table-cell">{gearObject.model}</td>
+        </tr>
+      </tbody>
     ));
 
     return (
@@ -290,6 +357,28 @@ class EditTrip extends React.Component {
               </select>
             </div>
 
+          </div>
+
+          <div>
+            <Table hover className="inputBorder">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th className="d-none d-md-table-cell">Image</th>
+                  <th>Brand</th>
+                  <th className="d-none d-md-table-cell">Model</th>
+                  {/* <th className="d-none d-sm-table-cell">Function</th>
+                  <th className="d-none d-sm-table-cell">Seasons</th>
+                  <th className="d-none d-sm-table-cell">Weather</th>
+                  <th className="d-none d-sm-table-cell">Party</th>
+                  {/* <th>Weight (gr.)</th> */}
+                  {/* <th className="d-none d-md-table-cell">Available?</th> */}
+                  {/* <th>Exp. Yr.</th> */}
+                  {/* <th>Actions</th> */}
+                </tr>
+              </thead>
+              {buildGearList()}
+            </Table>
           </div>
 
           <button type="submit" className="btn greenButtons" onClick={this.updateTrip}>Save Your Changes</button>
