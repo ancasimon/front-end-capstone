@@ -2,6 +2,9 @@ import React from 'react';
 import Swal from 'sweetalert2';
 
 import { Link } from 'react-router-dom';
+import { Table } from 'reactstrap';
+
+import GearItem from '../../shared/GearItem/GearItem';
 
 import authData from '../../../helpers/data/authData';
 import tripsData from '../../../helpers/data/tripsData';
@@ -154,6 +157,10 @@ class NewTrip extends React.Component {
       <option key={partyValue.id} value={partyValue.id}>{partyValue.name}</option>
     ));
 
+    const buildGearList = () => gear.map((gearItem) => (
+      <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+    ));
+
     return (
       <div className="NewTrip col-12 pageDisplay">
         <h1 className="heading textShadow">Plan a New Trip</h1>
@@ -267,6 +274,29 @@ class NewTrip extends React.Component {
               </select>
             </div>
 
+          </div>
+
+          <div>
+            <h3 className="heading textShadow">Create Your Packing List for This Trip</h3>
+            <Table hover className="inputBorder">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th className="d-none d-md-table-cell">Image</th>
+                  <th>Brand</th>
+                  <th className="d-none d-md-table-cell">Model</th>
+                  <th className="d-none d-sm-table-cell">Function</th>
+                  <th className="d-none d-sm-table-cell">Seasons</th>
+                  <th className="d-none d-sm-table-cell">Weather</th>
+                  <th className="d-none d-sm-table-cell">Party</th>
+                  <th>Weight (gr.)</th>
+                  <th className="d-none d-md-table-cell">Available?</th>
+                  <th>Exp. Yr.</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              {buildGearList()}
+            </Table>
           </div>
 
           <button type="submit" className="btn greenButtons" onClick={this.saveNewTrip}>Save New Trip</button>
