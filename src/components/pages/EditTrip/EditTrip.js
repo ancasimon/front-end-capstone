@@ -56,9 +56,11 @@ class EditTrip extends React.Component {
 
   buildEditTripPage = () => {
     const editId = this.props.match.params.tripId;
+    console.log('trip id form params', editId);
     smashData.getTripWithDetails(editId)
       .then((fbResponse) => {
         const currentTrip = fbResponse;
+        console.log('fb response in edit page', fbResponse);
         this.setState({
           tripParty: currentTrip.selectedParty.id,
           tripSeason: currentTrip.selectedSeason.id,
@@ -360,6 +362,7 @@ class EditTrip extends React.Component {
           </div>
 
           <div>
+            <h3 className="heading textShadow">Update Your Packing List for This Trip</h3>
             <Table hover className="inputBorder">
               <thead>
                 <tr>
