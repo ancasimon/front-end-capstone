@@ -23,37 +23,35 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
                   const selectedSeason = allSeasons.find((z) => z.id === singleTripResponse.data.seasonId);
                   tripGearData.getTripGearByTrip(tripId)
                     .then((allTripGearItems) => {
-                      if (allTripGearItems !== null) {
-                        const uid = authData.getUid();
-                        gearData.getGearByUid(uid)
-                          .then((allGearItems) => {
-                            const selectedTripGearItems = [];
-                            const allGearWithChecks = [];
-                            allGearItems.forEach((gearThing) => {
-                              const gearThingCopy = { isChecked: false, ...gearThing };
-                              allGearWithChecks.push(gearThingCopy);
-                            });
-                            allTripGearItems.forEach((gearThingTakenOnTrip) => {
-                              const foundGearThingInTripList = allGearItems.find((x) => x.id === gearThingTakenOnTrip.gearId);
-                              selectedTripGearItems.push(foundGearThingInTripList);
-                              for (let i = 0; i < allGearWithChecks.length; i += 1) {
-                                if (allGearWithChecks[i].id === gearThingTakenOnTrip.gearId) {
-                                  allGearWithChecks[i].isChecked = true;
-                                  allGearWithChecks[i].parentGear = gearThingTakenOnTrip.gearId;
-                                  allGearWithChecks[i].parentTripGear = gearThingTakenOnTrip.id;
-                                }
-                              }
-                              const tripCopy = { ...singleTripResponse.data };
-                              tripCopy.selectedParty = selectedParty;
-                              tripCopy.selectedWeather = selectedWeather;
-                              tripCopy.selectedSeason = selectedSeason;
-                              tripCopy.selectedTripGearObjects = selectedTripGearItems;
-                              tripCopy.allGearWithChecks = allGearWithChecks;
-                              resolve(tripCopy);
-                              console.log('trip copy', tripCopy);
-                            });
+                      const uid = authData.getUid();
+                      gearData.getGearByUid(uid)
+                        .then((allGearItems) => {
+                          const selectedTripGearItems = [];
+                          const allGearWithChecks = [];
+                          allGearItems.forEach((gearThing) => {
+                            const gearThingCopy = { isChecked: false, ...gearThing };
+                            allGearWithChecks.push(gearThingCopy);
                           });
-                      }
+                          allTripGearItems.forEach((gearThingTakenOnTrip) => {
+                            const foundGearThingInTripList = allGearItems.find((x) => x.id === gearThingTakenOnTrip.gearId);
+                            selectedTripGearItems.push(foundGearThingInTripList);
+                            for (let i = 0; i < allGearWithChecks.length; i += 1) {
+                              if (allGearWithChecks[i].id === gearThingTakenOnTrip.gearId) {
+                                allGearWithChecks[i].isChecked = true;
+                                allGearWithChecks[i].parentGear = gearThingTakenOnTrip.gearId;
+                                allGearWithChecks[i].parentTripGear = gearThingTakenOnTrip.id;
+                              }
+                            }
+                            const tripCopy = { ...singleTripResponse.data };
+                            tripCopy.selectedParty = selectedParty;
+                            tripCopy.selectedWeather = selectedWeather;
+                            tripCopy.selectedSeason = selectedSeason;
+                            tripCopy.selectedTripGearObjects = selectedTripGearItems;
+                            tripCopy.allGearWithChecks = allGearWithChecks;
+                            resolve(tripCopy);
+                            console.log('trip copy', tripCopy);
+                          });
+                        });
                     });
                 });
             });
