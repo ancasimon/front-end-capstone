@@ -55,7 +55,7 @@ class Gear extends React.Component {
   }
 
   buildGearPage = () => {
-    console.log('running buildGearPage');
+    // console.log('running buildGearPage');
     const { valueAvailable } = this.state;
     this.getFunctionsList();
     this.getWeatherList();
@@ -94,7 +94,7 @@ class Gear extends React.Component {
         const unavailableFilteredGearItems = fbData.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: unavailableFilteredGearItems });
         // this.setState({ filteredList: unavailableFilteredGearItems });
-        console.log('UNavailable gear only???', gear);
+        // console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -263,8 +263,8 @@ class Gear extends React.Component {
     } = this.state;
 
     // ANCA: CROSS-FILTERS attempt:
-    const setFunctionFilterValue = (value, ff) => {
-      this.setState({ functionFilter: ff, selectedFunction: value }, (() => {
+    const setFunctionFilterValue = (value) => {
+      this.setState({ functionFilter: true, selectedFunction: value }, (() => {
         filterAll();
         console.log('filt list  in function filter call', filteredList);
       }));
@@ -272,8 +272,8 @@ class Gear extends React.Component {
     // The function above will do 3 things: 1 - set the state for the boolean for this filter check 2 - set the state for selected function value chosen in the Function filter; ; 3 - run filterAll big function. (AND - in the filterAll: I will reset `gear` to state and then refilter it based on the boolean checks for each filter and then set the state for the `filteredList` array again and display that.
 
     // ANCA: CROSS-FILTERS attempt:
-    const setWeatherFilterValue = (value, wf) => {
-      this.setState({ weatherFilter: wf, selectedWeather: value }, (() => {
+    const setWeatherFilterValue = (value) => {
+      this.setState({ weatherFilter: true, selectedWeather: value }, (() => {
         filterAll();
         console.log('filt list  in weather filter call', filteredList);
       }));
@@ -281,13 +281,10 @@ class Gear extends React.Component {
 
     // ANCA: CROSS-FILTERS attempt:
     const setExpYearFilterValue = (value) => {
-      this.setState({ expYearFilter: true });
-      console.log('exp year filter check after selecting a value', this.state.expYearFilter);
-      console.log('weather filter check after selecting a value', this.state.weatherFilter);
-      console.log('fun filter check after selecting a value', this.state.functionFilter);
-      this.setState({ selectedExpYear: value });
-      console.log('exp year after selecting a value', this.state.selectedExpYear);
-      filterAll();
+      this.setState({ expYearFilter: true, selectedExpYear: value }, (() => {
+        filterAll();
+        console.log('filt list  in exp year filter call', filteredList);
+      }));
     };
 
     // ANCA: CROSS-FILTERS attempt:
@@ -323,11 +320,15 @@ class Gear extends React.Component {
       // ));
       if (this.state.functionFilter === true) {
         const filter1 = this.state.filteredList.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-        this.setState({ filteredList: filter1 }, (() => console.log('filt 1 list', this.state.filteredList)));
+        this.setState({ filteredList: filter1 }, (() => console.log('filt 1 list by function', this.state.filteredList)));
       }
       if (this.state.weatherFilter === true) {
         const filter2 = this.state.filteredList.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
-        this.setState({ filteredList: filter2 }, (() => console.log('filt 2 list', this.state.filteredList)));
+        this.setState({ filteredList: filter2 }, (() => console.log('filt 2 list by weather', this.state.filteredList)));
+      }
+      if (this.state.expYearFilter === true) {
+        const filter3 = this.state.filteredList.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
+        this.setState({ filteredList: filter3 }, (() => console.log('filt 3 list by exp year', this.state.filteredList)));
       }
       // } else if (functionFilter === true && weatherFilter === true && expYearFilter === false) {
       //   fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.weatherId === this.state.selectedWeather);
@@ -389,19 +390,20 @@ class Gear extends React.Component {
     //     .catch((err) => console.error('could not get gear for filtering by weather from firebase', err));
     // };
 
-    const filterByYear = (yearValue) => {
-      this.setState({ selectedExpYear: yearValue });
-      const uid = authData.getUid();
-      gearData.getGearByUid(uid)
-        .then((fbData) => {
-          const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
-          this.setState({ gear: filteredlist });
-          gear.map((gearItem) => (
-            <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
-          ));
-        })
-        .catch((err) => console.error('could not filter data by exp year', err));
-    };
+    // INITIAL FUNCTION TO FILTER BY YEAR!!!! BEFORE CROSS-FILTERS ATTEMPT
+    // const filterByYear = (yearValue) => {
+    //   this.setState({ selectedExpYear: yearValue });
+    //   const uid = authData.getUid();
+    //   gearData.getGearByUid(uid)
+    //     .then((fbData) => {
+    //       const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
+    //       this.setState({ gear: filteredlist });
+    //       gear.map((gearItem) => (
+    //         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+    //       ));
+    //     })
+    //     .catch((err) => console.error('could not filter data by exp year', err));
+    // };
 
     // const buildFunctionsList = () => functionsList.map((functionValue) => (
     //   <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => filterByFunction(functionValue.id)}>{functionValue.name}</DropdownItem>
