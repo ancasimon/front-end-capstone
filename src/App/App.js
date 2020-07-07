@@ -9,6 +9,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import About from '../components/pages/About/About';
 import Auth from '../components/pages/Auth/Auth';
 import EditGear from '../components/pages/EditGear/EditGear';
 import EditTrip from '../components/pages/EditTrip/EditTrip';
@@ -88,6 +89,7 @@ class App extends React.Component {
                     <PrivateRoute path='/trips/:tripId' component={SingleTrip} authed={authed} />
                     <PrivateRoute path='/trips' component={Trips} authed={authed} />
 
+                    <Route path='/about' component={About} authed={authed} />
                     <PublicRoute path='/auth' component={Auth} authed={authed} />
 
                     <Redirect from="*" to='/home' />
