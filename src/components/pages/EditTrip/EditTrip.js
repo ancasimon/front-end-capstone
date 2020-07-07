@@ -235,6 +235,8 @@ class EditTrip extends React.Component {
               parenttripgear={gearObject.parentTripGear}
               onChange={this.changeTripGearSelection}
             />
+            </td>
+            <td>
             <label className="form-check-label" htmlFor={gearObject.id}>
               {gearObject.item}
               </label>
@@ -366,6 +368,7 @@ class EditTrip extends React.Component {
             <Table hover className="inputBorder">
               <thead>
                 <tr>
+                  <th>Select</th>
                   <th>Item</th>
                   <th className="d-none d-md-table-cell">Image</th>
                   <th>Brand</th>
