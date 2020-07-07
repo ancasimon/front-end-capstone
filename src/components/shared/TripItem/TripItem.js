@@ -22,7 +22,7 @@ class TripItem extends React.Component {
     const { trip, isShown } = this.props;
     const singleLink = `/trips/${trip.id}`;
     return (
-      <div className="TripItem">
+      <div className="TripItem col-sm-4">
 
         <div
           className="card"

@@ -1,5 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 
@@ -221,7 +222,7 @@ class EditTrip extends React.Component {
       <option key={partyValue.id} value={partyValue.id}>{partyValue.name}</option>
     ));
 
-    const buildGearList = () => tripGear.map((gearObject) => (
+    const buildGearList = () => tripGear.sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD')).map((gearObject) => (
       <tbody key={gearObject.id}>
         <tr>
           <td className="form-check">
@@ -235,6 +236,8 @@ class EditTrip extends React.Component {
               parenttripgear={gearObject.parentTripGear}
               onChange={this.changeTripGearSelection}
             />
+            </td>
+            <td>
             <label className="form-check-label" htmlFor={gearObject.id}>
               {gearObject.item}
               </label>
@@ -366,6 +369,7 @@ class EditTrip extends React.Component {
             <Table hover className="inputBorder">
               <thead>
                 <tr>
+                  <th>Select</th>
                   <th>Item</th>
                   <th className="d-none d-md-table-cell">Image</th>
                   <th>Brand</th>

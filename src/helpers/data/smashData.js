@@ -66,7 +66,7 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
 const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
   gearData.getSingleGear(gearId)
     .then((singleGearResponse) => {
-      // console.log('single gear resp', singleGearResponse);
+      console.log('single gear resp', singleGearResponse);
       functionsData.getFunctions()
         .then((allFunctions) => {
           const selectedFunction = allFunctions.find((x) => x.id === singleGearResponse.data.functionId);
