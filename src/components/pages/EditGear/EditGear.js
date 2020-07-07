@@ -8,7 +8,7 @@ import functionsData from '../../../helpers/data/functionsData';
 import gearData from '../../../helpers/data/gearData';
 import gearPartyData from '../../../helpers/data/gearPartyData';
 import gearSeasonData from '../../../helpers/data/gearSeasonData';
-import smashData from  '../../../helpers/data/smashData';
+import smashData from '../../../helpers/data/smashData';
 import weatherData from '../../../helpers/data/weatherData';
 
 import '../../../styles/index.scss';

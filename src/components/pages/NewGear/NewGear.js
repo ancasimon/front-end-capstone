@@ -94,7 +94,8 @@ class NewGear extends React.Component {
       };
       // console.log('new gearseason', newGearSeason);
       gearSeasonData.postGearSeason(newGearSeason)
-        .then(() => console.log('created new gearseason'))
+        // .then(() => console.log('created new gearseason'))
+        .then()
         .catch((err) => console.error('could not create new gearSeason record'));
     });
   }
@@ -123,7 +124,8 @@ class NewGear extends React.Component {
       };
       // console.log('new gear party record', newGearParty);
       gearPartyData.postGearParty(newGearParty)
-        .then(() => console.log('created new gearParty'))
+        // .then(() => console.log('created new gearParty'))
+        .then()
         .catch((err) => console.error('could not create new gearParty record'));
     });
   }
@@ -283,9 +285,7 @@ class NewGear extends React.Component {
       </div>
     ));
 
-    const buildPartyList = () => partyList.map((partyValue) => {
-      // console.log('partyValue details', partyValue);
-      return (
+    const buildPartyList = () => partyList.map((partyValue) => (
       <div className="form-check col-2" key={partyValue.id}>
         <input
           className="form-check-input"
@@ -299,8 +299,7 @@ class NewGear extends React.Component {
           {partyValue.name}
         </label>
       </div>
-      );
-    });
+    ));
 
     return (
       <div className="NewGear col-12 pageDisplay">

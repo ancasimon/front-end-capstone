@@ -53,28 +53,34 @@ class MyNavbar extends React.Component {
       if (authed) {
         return (
           <Nav className="ml-auto" navbar>
-            <NavItem>
+            <NavItem className="NavItem">
               <NavLink tag={RRNavLink} to="/home">Home</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="NavItem">
               <NavLink tag={RRNavLink} to="/gear">Gear</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="NavItem">
               <NavLink tag={RRNavLink} to="/trips">Trips</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="NavItem">
               <NavLink tag={RRNavLink} to="/reports">Reports</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="NavItem">
+              <NavLink tag={RRNavLink} to="/about">About Us</NavLink>
+            </NavItem>
+            <NavItem className="NavItem">
               <NavLink className="pointerHand" onClick={this.logoutClickEvent}>Log Out</NavLink>
             </NavItem>
           </Nav>
         );
       }
       return <Nav className="ml-auto" navbar>
-        <NavItem>
-              <NavLink className="pointerHand" onClick={this.loginClickEvent}>Log In</NavLink>
-            </NavItem>
+        <NavItem className="NavItem">
+          <NavLink className="pointerHand" onClick={this.loginClickEvent}>Log In</NavLink>
+        </NavItem>
+        <NavItem className="NavItem">
+          <NavLink tag={RRNavLink} to="/about">About Us</NavLink>
+        </NavItem>
       </Nav>;
     };
 
