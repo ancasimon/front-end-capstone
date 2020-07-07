@@ -1,5 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 
@@ -221,7 +222,7 @@ class EditTrip extends React.Component {
       <option key={partyValue.id} value={partyValue.id}>{partyValue.name}</option>
     ));
 
-    const buildGearList = () => tripGear.map((gearObject) => (
+    const buildGearList = () => tripGear.sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD')).map((gearObject) => (
       <tbody key={gearObject.id}>
         <tr>
           <td className="form-check">
