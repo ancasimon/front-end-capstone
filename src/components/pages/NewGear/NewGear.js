@@ -270,7 +270,7 @@ class NewGear extends React.Component {
     ));
 
     const buildSeasonsList = () => seasonsList.map((seasonValue) => (
-      <div className="form-check col-2" key={seasonValue.id}>
+      <div className="form-check col-md-2" key={seasonValue.id}>
         <input
           className="form-check-input gearSeasonCheckbox"
           type="checkbox"
@@ -286,7 +286,7 @@ class NewGear extends React.Component {
     ));
 
     const buildPartyList = () => partyList.map((partyValue) => (
-      <div className="form-check col-2" key={partyValue.id}>
+      <div className="form-check col-md-2" key={partyValue.id}>
         <input
           className="form-check-input"
           type="checkbox"
@@ -311,7 +311,7 @@ class NewGear extends React.Component {
             <div
               className="row justify-content-around"
             >
-              <div className="form-group col-4">
+              <div className="form-group col-md-4">
                 <label htmlFor="gear-function" className="question">Function</label>
                 <select
                   className="form-control"
@@ -323,7 +323,7 @@ class NewGear extends React.Component {
                   { buildFunctionsList() }
                 </select>
               </div>
-              <div className="form-group col-4">
+              <div className="form-group col-md-4">
                 <label htmlFor="gear-item" className="question">Item</label>
                 <input
                   type="text"
@@ -334,7 +334,7 @@ class NewGear extends React.Component {
                   onChange={this.changeGearItem}
                 />
               </div>
-              <div className="form-group col-4">
+              <div className="form-group col-md-4">
                 <label htmlFor="gear-brand" className="question">Brand</label>
                 <input
                 type="text"
@@ -348,7 +348,7 @@ class NewGear extends React.Component {
             </div>
           </div>
           <div className="row justify-content-center">
-            <div className="col-4">
+            <div className="col-md-4">
             <div className="form-group form-check">
                 <input
                   type="checkbox"
@@ -404,7 +404,7 @@ class NewGear extends React.Component {
               </div>
             </div>
 
-            <div className="col-4">
+            <div className="col-md-4">
               <div className="form-group">
                 <label htmlFor="gear-manYr" className="question">Manufacture Year</label>
                 <input

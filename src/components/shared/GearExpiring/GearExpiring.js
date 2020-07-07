@@ -45,7 +45,7 @@ class GearExpiring extends React.Component {
               <th>Item</th>
               <th>Brand</th>
               <th>Model</th>
-              <th>Manufacture Year</th>
+              <th className="d-none d-md-table-cell">Manufacture Year</th>
             </tr>
           </thead>
             {buildGearExpiringList()}
