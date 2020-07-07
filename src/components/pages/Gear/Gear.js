@@ -330,6 +330,9 @@ class Gear extends React.Component {
         const filter3 = this.state.filteredList.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
         this.setState({ filteredList: filter3 }, (() => console.log('filt 3 list by exp year', this.state.filteredList)));
       }
+
+      // GREG SUGGESTION!!: every time this runs: get all the arrays and then check for duplicates - > if the object ID matches > return an array of duplicates!
+
       // } else if (functionFilter === true && weatherFilter === true && expYearFilter === false) {
       //   fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.weatherId === this.state.selectedWeather);
       //   this.setState({ filteredList });
