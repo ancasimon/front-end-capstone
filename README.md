@@ -1,8 +1,8 @@
 # GearUp
-[Check it out!]([https://frontendcapstone-ae7be.web.app/auth])
+[Check it out!](https://frontendcapstone-ae7be.web.app/auth)
 
 ## Description
-Never let the stress of packing prevent you from making great camping and backpacking memories ever again!
+Never let the stress of packing prevent you from making great camping and backpacking memories again!
 GearUp helps you manage your camping gear, create packing lists for new trips in seconds, and keep track of your trips and gear over time. 
 It is a single-page React application with CRUD functionality and uses Firebase for database management, Google Sign-in authentication, and hosting. 
 
@@ -81,7 +81,7 @@ Axios, Bootstrap, CSS, ES6 Modules, Firebase (for authentication, data managemen
 
 ## Firebase Deployment
 This project has been deployed with Firebase. 
-You can access it [here]([https://frontendcapstone-ae7be.web.app/auth]). 
+You can access it [here](https://frontendcapstone-ae7be.web.app/auth). 
 
 
 
