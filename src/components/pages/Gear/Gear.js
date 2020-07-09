@@ -30,6 +30,9 @@ class Gear extends React.Component {
   state = {
     gear: [],
     filteredList: [],
+    filteredListByFunction: [],
+    filteredListByWeather: [],
+    filteredListByYear: [],
     // ANCA: CROSS-FILTERS attempt:
     functionFilter: false,
     weatherFilter: false,
@@ -92,49 +95,13 @@ class Gear extends React.Component {
     gearData.getGearByUid(uid)
       .then((fbData) => {
         const unavailableFilteredGearItems = fbData.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
-        this.setState({ gear: unavailableFilteredGearItems });
-        // this.setState({ filteredList: unavailableFilteredGearItems });
+        this.setState({ gear: unavailableFilteredGearItems, filteredList: unavailableFilteredGearItems });
         // console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
-  // ANCA: CROSS-FILTERS attempt: This was something else I tried - putting the conditions inside the availabel data get call-didn't work...
-  // getAvailableGear = () => {
-  //   const uid = authData.getUid();
-  //   const {
-  //     gear,
-  //     selectedFunction,
-  //     selectedWeather,
-  //     selectedExpYear,
-  //     functionFilter,
-  //     weatherFilter,
-  //     expYearFilter,
-  //   } = this.state;
-  //   gearData.getGearByUid(uid)
-  //     .then((fbData) => {
-  //       const availableFilteredGearItemsOnly = () => {
-  //         fbData.filter((gearItem) => gearItem.isAvailable === true);
-  //         if (functionFilter === true) {
-  //           fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-  //         }
-  //         if (weatherFilter === true) {
-  //           fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
-  //         }
-  //         if (expYearFilter === true) {
-  //           fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
-  //         }
-  //         return availableFilteredGearItemsOnly;
-  //       };
-  //       this.setState({ gear: availableFilteredGearItemsOnly });
-  //       gear.sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
-  //       console.log('available gear only???', gear);
-  //     })
-  //     .catch((err) => console.error('could not get only available gear from firebase', err));
-  // }
 
   // > All the toggle change functions called by changes in the filters' selections are below:
-
-  // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
 
   toggleAvailableSwitch = (e) => {
     console.log('e when toggling', e);
@@ -173,7 +140,7 @@ class Gear extends React.Component {
   toggleDropdownExpYear = () => {
     this.setState({ dropdownExpYearOpen: !this.state.dropdownExpYearOpen });
   }
-  // >This is where the toggle functions for the filters extends.
+  // >This is where the toggle functions for the filters ends.
 
   // ANCA: CROSS-FILTERS attempt:  - FROM SAMUEL'S EX: ADDED A NEW OBJECT FOR ALL
   // getFunctionsList = () => {
@@ -246,6 +213,9 @@ class Gear extends React.Component {
       functionFilter,
       weatherFilter,
       expYearFilter,
+      filteredListByFunction,
+      filteredListByWeather,
+      filteredListByYear,
       isOpen,
       dropdownFunctionOpen,
       dropdownWeatherOpen,
@@ -264,7 +234,7 @@ class Gear extends React.Component {
 
     // ANCA: CROSS-FILTERS attempt:
     const setFunctionFilterValue = (value) => {
-      this.setState({ functionFilter: true, selectedFunction: value }, (() => {
+      this.setState({ selectedFunction: value, functionFilter: true }, (() => {
         filterAll();
         console.log('filt list  in function filter call', filteredList);
       }));
@@ -305,10 +275,43 @@ class Gear extends React.Component {
       filterAll();
     };
 
+    const findCommonArray = () => {
+      console.log('running commonArray check');
+      const commonArray = [];
+      for (let x = 0; x < filteredListByFunction.length; x += 1) {
+        for (let y = 0; y < filteredListByWeather.length; y += 1) {
+          for (let z = 0; z < filteredListByYear.length; z += 1) {
+            if ((filteredListByFunction[x] === filteredListByWeather[y]) && (filteredListByFunction[x] === filteredListByYear[z])) {
+              // if (filteredListByWeather[y].id === filteredListByFunction[x].id) {
+              commonArray.push(filteredListByFunction[x]);
+              console.log(filteredListByFunction[x]);
+              console.log('common array', commonArray);
+              this.setState({ filteredList: commonArray }, (() => console.log('filt list at the end of findcommonarray', filteredList)));
+            }
+            // } else {
+            //   console.log('no filter results!!!!');
+            // }
+          }
+        }
+      }
+      this.state.filteredList.map((gearItem) => (
+        <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+      ));
+    };
+
+    // ANCA - CROSS-Filteres plan as of July 9:
+    // 1. When user clicks on a filter, we run the setXFilter funciton - which sets the appropriate boolean to true and grabs the selected value. And then runs the filterAll() function.
+    // 2. filterAll() function sets the state of 3 new arrays I have declared in state to the filtered list array as it si currentrly - so that each of these arrays has all the items in them from the beginnign and hten get filtered if that specific boolean check is set to true; otherwise, each of these arrays should stay with all the gear data from filtered list.
+    // 3. filterAll() checks if each of those filter booleans are true and for each one that is true,it runs a filter according to selected value and resets the filteredListByX array to the refiltered list!
+    // 4. filtereAll() then runs the findCommonArray()funciton which goes through all  those 3 arrays and finds the commong gear objects and pushes  them into the commonArray list.
+    // 5. Last - findCommonArray() resets filteredList from state to the  commonArray it found and  maps over the updated filteredList array in order to reprint the gear grid.
+    // ISSUES!!!!!!!!!:
+    // I cannot seem to be able to trigger a refresh of the UI after I reset a filter - for ex form weather2 to weather3 - the selected weather value changes in the components, but the UI does not get refreshed (this is even before I apply cross-filtering / just when I try to apply only one filter - like weather - and change values within it).
+
+
     // ANCA: CROSS-FILTERS attempt:
     const filterAll = () => {
-      this.getAvailableGear();
-      console.log('filt list at top of filterAll', filteredList);
+      this.setState({ filteredListByFunction: filteredList, filteredListByWeather: filteredList, filteredListByYear: filteredList }, (() => console.log('filteredListByFunction', this.state.filteredListByFunction, 'filteredListByWeather', this.state.filteredListByWeather, 'filteredListByYear', this.state.filteredListByYear)));
       // gearData.getGearByUid(uid)
       //   .then((fbData) => {
       // if (functionFilter === true && weatherFilter === false && expYearFilter === false) {
@@ -320,46 +323,53 @@ class Gear extends React.Component {
       // ));
       if (this.state.functionFilter === true) {
         const filter1 = this.state.filteredList.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-        this.setState({ filteredList: filter1 }, (() => console.log('filt 1 list by function', this.state.filteredList)));
+        this.setState({ filteredListByFunction: filter1 }, (() => console.log('filt 1 list by function', this.state.filteredListByFunction)));
+        findCommonArray();
       }
+
       if (this.state.weatherFilter === true) {
-        const filter2 = this.state.filteredList.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
-        this.setState({ filteredList: filter2 }, (() => console.log('filt 2 list by weather', this.state.filteredList)));
+        const filter2 = this.state.filteredList.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather || gearItem.weatherId === 'weather1');
+        this.setState({ filteredListByWeather: filter2 }, (() => console.log('filt 2 list by weather', this.state.filteredListByWeather)));
+        findCommonArray();
       }
       if (this.state.expYearFilter === true) {
         const filter3 = this.state.filteredList.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
-        this.setState({ filteredList: filter3 }, (() => console.log('filt 3 list by exp year', this.state.filteredList)));
+        this.setState({ filteredListByYear: filter3 }, (() => console.log('filt 3 list by exp year', this.state.filteredListByYear)));
+        findCommonArray();
       }
+      // findCommonArray();
+      // const commonArray = [];
+      // for (let x = 0; x < filteredListByFunction.length; x += 1) {
+      //   for (let y = 0; y < filteredListByWeather.length; y += 1) {
+      //     for (let z = 0; z < filteredListByYear.length; z += 1) {
+      //       if ((filteredListByFunction[x] === filteredListByWeather[y]) && (filteredListByFunction[x] === filteredListByYear[z])) {
+      //         // if (filteredListByWeather[y].id === filteredListByFunction[x].id) {
+      //         commonArray.push(filteredListByFunction[x]);
+      //         console.log(filteredListByFunction[x]);
+      //         console.log('common array', commonArray);
+      //         this.setState({ filteredList: commonArray }, ((
+      //           console.log('filt list at the end of filterall', filteredList),
+      //           this.state.filteredList.map((gearItem) => (
+      //             <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+      //           ))
+      //         )));
+      //         console.log('ran commonArray check');
+      //       }
+      //     }
+      //   }
+      // }
+
+      // this.setState({ filteredList });
+      // console.log('filt list at the end of filterall', filteredList);
+      // filteredList.map((gearItem) => (
+      //   <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
+      // ));
+      // this.setState({ filteredList: commonArray });
+      // console.log('common array', commonArray);
+      // console.log('filteredlist after duplicates check', filteredList);
 
       // GREG SUGGESTION!!: every time this runs: get all the arrays and then check for duplicates - > if the object ID matches > return an array of duplicates!
 
-      // } else if (functionFilter === true && weatherFilter === true && expYearFilter === false) {
-      //   fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.weatherId === this.state.selectedWeather);
-      //   this.setState({ filteredList });
-      // } else if (functionFilter === true && weatherFilter === true && expYearFilter === true) {
-      //   fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.weatherId === this.state.selectedWeather && gearItem.expirationYear === this.state.selectedExpYear);
-      //   this.setState({ filteredList });
-      // } else if (functionFilter === false && weatherFilter === true && expYearFilter === true) {
-      //   console.log('func false, weather true, exp year true');
-      // } else if (functionFilter === false && weatherFilter === false && expYearFilter === true) {
-      //   console.log('func false, weather false, exp year true');
-      // } else if (functionFilter === false && weatherFilter === false && expYearFilter === false) {
-      //   console.log('func false, weather false, exp year false');
-      // } else if (functionFilter === true && weatherFilter === false && expYearFilter === true) {
-      //   console.log('func true, weather false, exp year true');
-      // } else if (functionFilter === false && weatherFilter === true && expYearFilter === false) {
-      //   console.log('func false, weather true, exp year false');
-      // }
-      // this.setState({ filteredList });
-      //   this.setState({ gear: fbData });
-      //   gear.map((gearItem) => (
-      // <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
-      //   ));
-      // })
-      // .catch((err) => console.error('could not get gear for filtering from firebase', err));
-      // this.setState({ filteredList });
-
-      // this.buildGearPage();
       // this.state.filteredList.map((gearItem) => (
       //   <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
       // ));
@@ -453,7 +463,7 @@ class Gear extends React.Component {
     //   );
     // };
 
-    const buildGearGrid = () => filteredList.map((gearItem) => (
+    const buildGearGrid = () => this.state.filteredList.map((gearItem) => (
       <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
     ));
 
