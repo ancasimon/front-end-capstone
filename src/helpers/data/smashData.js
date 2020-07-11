@@ -168,4 +168,21 @@ const completelyRemoveGearItemAndChildren = (gearItemId) => new Promise((resolve
     .catch((err) => reject(err));
 });
 
-export default { getGearWithProperties, completelyRemoveGearItemAndChildren, getTripWithDetails };
+const completelyRemoveTripAndTripGear = (tripId) => new Promise((resolve, reject) => {
+  tripsData.deleteTrip(tripId)
+    .then(() => {
+      tripGearData.getTripGearByTrip(tripId)
+        .then((tripGearForThisTrip) => {
+          tripGearForThisTrip.forEach((tripGearItem) => tripGearData.deleteTripGear(tripGearItem.id));
+          resolve();
+        });
+    })
+    .catch((err) => reject(err));
+});
+
+export default {
+  getGearWithProperties,
+  completelyRemoveGearItemAndChildren,
+  getTripWithDetails,
+  completelyRemoveTripAndTripGear,
+};
