@@ -39,7 +39,7 @@ class SingleTrip extends React.Component {
 
   removeTrip = () => {
     const { tripId } = this.props.match.params;
-    tripsData.deleteTrip(tripId)
+    smashData.completelyRemoveTripAndTripGear(tripId)
       .then(() => this.props.history.push('/trips'))
       .catch((err) => console.error('could not delete trip', err));
   }
