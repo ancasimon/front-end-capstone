@@ -333,8 +333,16 @@ class Gear extends React.Component {
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
-          const filteredlist = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-          this.setState({ gear: filteredlist });
+          if (this.state.valueAvailable === true) {
+            const filteredlist = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
+            this.setState({ gear: filteredlist });
+          } else {
+            const filteredlist = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction && gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
+            this.setState({ gear: filteredlist });
+          }
+          // INITIAL CODE for the function filter - before I added the availability check into the mix - is below:
+          // const filteredlist = fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
+          // this.setState({ gear: filteredlist });
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
@@ -347,8 +355,16 @@ class Gear extends React.Component {
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
-          const filteredlist = fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
-          this.setState({ gear: filteredlist });
+          if (this.state.valueAvailable === true) {
+            const filteredlist = fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather && gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
+            this.setState({ gear: filteredlist });
+          } else {
+            const filteredlist = fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather && gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
+            this.setState({ gear: filteredlist });
+          }
+          // INITIAL CODE for the weather filter - before I added the availability check into the mix - is below:
+          // const filteredlist = fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
+          // this.setState({ gear: filteredlist });
           gear.map((gearItem) => (
         <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
@@ -361,8 +377,16 @@ class Gear extends React.Component {
       const uid = authData.getUid();
       gearData.getGearByUid(uid)
         .then((fbData) => {
-          const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
-          this.setState({ gear: filteredlist });
+          if (this.state.valueAvailable === true) {
+            const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear && gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
+            this.setState({ gear: filteredlist });
+          } else {
+            const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear && gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
+            this.setState({ gear: filteredlist });
+          }
+          // INITIAL CODE for the year filter - before I added the availability check into the mix - is below:
+          // const filteredlist = fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
+          // this.setState({ gear: filteredlist });
           gear.map((gearItem) => (
             <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
           ));
