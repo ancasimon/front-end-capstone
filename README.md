@@ -13,7 +13,7 @@ It doesn’t have to be! The GearUp app is here to help make your backpacking dr
 
 It was exciting to work with a topic I loved and to have the real-life need of a problem I was trying to solve drive the development decisions and choices I was making. It was amazing to be able to complete in a couple of hours pieces of CRUD functionality that at one point had taken me days. It was amazing to pull data from multiple Firebase data collections simultaneously more effortlessly than my first similar attempts during earlier projects. It was amazing to try new techniques and find out how much more sense stackoverflow.com makes now that my foundational development knowledge has grown significantly. Yes, there were hurdles. Managing the multiple Firebase collections my project required in order to track gear data was still difficult. Filtering data in React helped me further practice and understand how to manipulate the DOM via variables in state. And yes, there are several features I did not get to complete in this round. With its challenges and accomplishments, my frontend capstone experience truly felt like reaching the McAfee Knob peak you can see in the app’s background. 
 
-## Technologies & Tools
+## Tools & Technologies
 Axios, Bootstrap, CSS, ES6 Modules, Firebase (for authentication, data management, and hosting), FreeLogoDesign, Github (for version control and project management), Google login authentication, HTML5, JavaScript, jQuery, JSX, Lucidchart, moment.js, moqups, React, React Router, reactstrap, REST API,  Sass, sweetalert2, Webpack
 
 ## Features
