@@ -121,6 +121,11 @@ class SingleTrip extends React.Component {
                 : (<p className="col-sm-4">N/A</p>)
             }
           </div>
+
+          <div className="row col-12 justify-content-center">
+            <h5 className="question">Total Weight: {trip.totalTripWeight} grams</h5>
+          </div>
+
           <div className="row col-12 justify-content-center">
             {
               trip.isEstablishedCampsite ? (
