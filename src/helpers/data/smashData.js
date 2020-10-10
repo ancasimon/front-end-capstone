@@ -42,15 +42,20 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
                                 allGearWithChecks[i].parentTripGear = gearThingTakenOnTrip.id;
                               }
                             }
-                            const tripCopy = { ...singleTripResponse.data };
-                            tripCopy.selectedParty = selectedParty;
-                            tripCopy.selectedWeather = selectedWeather;
-                            tripCopy.selectedSeason = selectedSeason;
-                            tripCopy.selectedTripGearObjects = selectedTripGearItems;
-                            tripCopy.allGearWithChecks = allGearWithChecks;
-                            resolve(tripCopy);
-                            // console.log('trip copy', tripCopy);
                           });
+                          let totalWeight = 0;
+                          for (let i = 0; i < selectedTripGearItems.length; i += 1) {
+                            totalWeight += selectedTripGearItems[i].weightInGrams;
+                          }
+                          const tripCopy = { ...singleTripResponse.data };
+                          tripCopy.selectedParty = selectedParty;
+                          tripCopy.selectedWeather = selectedWeather;
+                          tripCopy.selectedSeason = selectedSeason;
+                          tripCopy.selectedTripGearObjects = selectedTripGearItems;
+                          tripCopy.allGearWithChecks = allGearWithChecks;
+                          tripCopy.totalTripWeight = totalWeight;
+                          resolve(tripCopy);
+                          // console.log('trip copy', tripCopy);
                         });
                     });
                 });
