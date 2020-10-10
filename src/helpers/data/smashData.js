@@ -135,11 +135,17 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                               tripGearData.getTripGearByGearItemId(gearId)
                                 .then((allTripGearRecords) => {
                                   const tripsList = [];
-                                  console.log('running tripGearData function');
-                                  console.log('all trip gear records for this gear item:', allTripGearRecords);
+                                  // console.log('running tripGearData function');
+                                  // console.log('all trip gear records for this gear item:', allTripGearRecords);
                                   for (let i = 0; i < allTripGearRecords.length; i += 1) {
-                                    const priorTrip = allTripGearRecords[i].tripId;
-                                    tripsList.push(priorTrip);
+                                    const priorTripId = allTripGearRecords[i].tripId;
+                                    tripsData.getSingleTrip(priorTripId)
+                                      .then((singleTrip) => {
+                                        // console.log('single trip:', singleTrip);
+                                        const foundTrip = { ...singleTrip.data };
+                                        foundTrip.id = priorTripId;
+                                        tripsList.push(foundTrip);
+                                      });
                                   }
 
                                   const gearWithMetadata = { ...singleGearResponse.data };

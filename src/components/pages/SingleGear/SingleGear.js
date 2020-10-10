@@ -98,9 +98,9 @@ class SingleGear extends React.Component {
               <img className="gearSinglePhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} />
               <h5 className="mt-5 question">Trips it's been on:</h5>
               {
-                gearTrips.length != 0
-                  ? <div>{gearTrips.map((trip) => <div key={trip}>{ trip }</div>)}</div>
-                  : <p>None yet!</p>
+                gearTrips.length == 0
+                  ? <p>None yet!</p>
+                  : <div className="col-sm align-middle">{gearTrips.map((trip) => <div className="row justify-content-center" key={trip.id}>{trip.destination}</div>)}</div>
               }
             </div>
 
