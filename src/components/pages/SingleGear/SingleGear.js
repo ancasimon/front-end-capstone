@@ -14,6 +14,7 @@ class SingleGear extends React.Component {
     gearSeasons: [],
     gearParties: [],
     currentpath: '',
+    gearTrips: [],
   }
 
   buildSingleView = () => {
@@ -26,6 +27,7 @@ class SingleGear extends React.Component {
         gearSeasons: response.selectedGearSeasons,
         gearParties: response.selectedGearParties,
         currentpath: this.props.location.pathname,
+        gearTrips: response.priorTrips,
       }))
       .catch((err) => console.error('unable to get gear record', err));
   }
@@ -72,6 +74,7 @@ class SingleGear extends React.Component {
       gearSeasons,
       gearParties,
       currentpath,
+      gearTrips,
     } = this.state;
 
     const { gearItemId } = this.props.match.params;
@@ -93,7 +96,14 @@ class SingleGear extends React.Component {
           <div className="row">
             <div className="col-sm">
               <img className="gearSinglePhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} />
+              <h5 className="mt-5 question">Trips it's been on:</h5>
+              {
+                gearTrips.length != 0
+                  ? <div>{gearTrips.map((trip) => <div key={trip}>{ trip }</div>)}</div>
+                  : <p>None yet!</p>
+              }
             </div>
+
             <div className="col-sm">
               <div className="row p-2">
                 <h6 className="col-sm align-middle question">Function: </h6>

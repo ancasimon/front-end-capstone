@@ -132,16 +132,28 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                                   selectedGearParties.push(allPartiesWithChecks[i]);
                                 }
                               }
+                              tripGearData.getTripGearByGearItemId(gearId)
+                                .then((allTripGearRecords) => {
+                                  const tripsList = [];
+                                  console.log('running tripGearData function');
+                                  console.log('all trip gear records for this gear item:', allTripGearRecords);
+                                  for (let i = 0; i < allTripGearRecords.length; i += 1) {
+                                    const priorTrip = allTripGearRecords[i].tripId;
+                                    tripsList.push(priorTrip);
+                                  }
+
+                                  const gearWithMetadata = { ...singleGearResponse.data };
+                                  gearWithMetadata.selectedFunction = selectedFunction;
+                                  gearWithMetadata.selectedWeather = selectedWeather;
+                                  gearWithMetadata.selectedGearSeasons = selectedGearSeasons;
+                                  gearWithMetadata.selectedGearParties = selectedGearParties;
+                                  gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
+                                  gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
+                                  gearWithMetadata.priorTrips = tripsList;
+                                  console.log('gearmetadata', gearWithMetadata);
+                                  resolve(gearWithMetadata);
+                                });
                               // Note for selectedGearParties array defined above: I am using this array to control the display of selected parties (couple/solo/family) for a gear item on the view pages - both the list of gear and the single gear view page.
-                              const gearWithMetadata = { ...singleGearResponse.data };
-                              gearWithMetadata.selectedFunction = selectedFunction;
-                              gearWithMetadata.selectedWeather = selectedWeather;
-                              gearWithMetadata.selectedGearSeasons = selectedGearSeasons;
-                              gearWithMetadata.selectedGearParties = selectedGearParties;
-                              gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
-                              gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
-                              // console.log('gearmetadata', gearWithMetadata);
-                              resolve(gearWithMetadata);
                             });
                         });
                     });
