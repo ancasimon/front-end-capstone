@@ -128,7 +128,7 @@ class SingleTrip extends React.Component {
           </div>
 
           <div className="row col-12 justify-content-center">
-            <p className="question">Total Weight: {trip.totalTripWeight} grams / {totalWeightInLb} lb.</p>
+            <p className="question">Pack weight: {trip.totalTripWeight} grams / {totalWeightInLb} lb.</p>
           </div>
 
           <div className="row col-12 justify-content-center">
