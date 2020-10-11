@@ -6,6 +6,7 @@ import { Table } from 'reactstrap';
 
 import smashData from '../../../helpers/data/smashData';
 import tripsData from '../../../helpers/data/tripsData';
+import gramsToLb from '../../../helpers/gramsToLb';
 
 import './SingleTrip.scss';
 
@@ -16,6 +17,7 @@ class SingleTrip extends React.Component {
     selectedWeather: '',
     selectedSeason: '',
     selectedGear: [],
+    totalWeightInLb: 0,
   }
 
   buildSingleTripView = () => {
@@ -28,6 +30,7 @@ class SingleTrip extends React.Component {
         selectedWeather: fbData.selectedWeather,
         selectedSeason: fbData.selectedSeason,
         selectedGear: fbData.selectedTripGearObjects,
+        totalWeightInLb: gramsToLb.getWeightInLb(fbData.totalTripWeight),
       }))
       .catch((err) => console.error('could not get trip details from firebase', err));
   }
@@ -73,6 +76,7 @@ class SingleTrip extends React.Component {
       selectedWeather,
       selectedSeason,
       selectedGear,
+      totalWeightInLb,
     } = this.state;
     const { tripId } = this.props.match.params;
     const editPath = `/trips/edit/${tripId}`;
@@ -84,6 +88,7 @@ class SingleTrip extends React.Component {
             <td className="d-none d-md-table-cell"><img className="gearPhoto photoBorder" src={gearItem.imageUrl} alt={gearItem.item} /></td>
             <td>{gearItem.brand}</td>
             <td className="d-none d-md-table-cell">{gearItem.model}</td>
+            <td className="d-none d-md-table-cell">{gearItem.weightInGrams}</td>
           </tr>
         </tbody>
     ));
@@ -123,7 +128,7 @@ class SingleTrip extends React.Component {
           </div>
 
           <div className="row col-12 justify-content-center">
-            <h5 className="question">Total Weight: {trip.totalTripWeight} grams</h5>
+            <p className="question">Total Weight: {trip.totalTripWeight} grams / {totalWeightInLb} lb.</p>
           </div>
 
           <div className="row col-12 justify-content-center">
@@ -148,11 +153,11 @@ class SingleTrip extends React.Component {
                   <th className="d-none d-md-table-cell">Image</th>
                   <th>Brand</th>
                   <th className="d-none d-md-table-cell">Model</th>
+                  <th className="d-none d-md-table-cell">Weight (gr.)</th>
                   {/* <th className="d-none d-sm-table-cell">Function</th>
                   <th className="d-none d-sm-table-cell">Seasons</th>
                   <th className="d-none d-sm-table-cell">Weather</th>
                   <th className="d-none d-sm-table-cell">Party</th>
-                  {/* <th>Weight (gr.)</th> */}
                   {/* <th className="d-none d-md-table-cell">Available?</th> */}
                   {/* <th>Exp. Yr.</th> */}
                   {/* <th>Actions</th> */}
