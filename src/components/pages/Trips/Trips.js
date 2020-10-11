@@ -14,6 +14,8 @@ class Trips extends React.Component {
     trips: [],
     pastTrips: [],
     futureTrips: [],
+    pastTripsExist: false,
+    futureTripsExist: false,
   }
   // Initial function to get all trips below:
   // getTrips = () => {
@@ -30,6 +32,9 @@ class Trips extends React.Component {
       .then((fbTrips) => {
         const future = fbTrips.filter((trip) => moment(trip.startDate).format('YYYMMDD') >= moment(currentDate).format('YYYMMDD')).sort((a, b) => moment(b.startDate).format('YYYMMDD') - moment(a.startDate).format('YYYYMMDD'));
         this.setState({ futureTrips: future });
+        if (this.state.futureTrips.length > 0) {
+          this.setState({ futureTripsExist: true });
+        }
       })
       .catch((err) => console.error('unable to get list of future trips', err));
   }
@@ -41,6 +46,9 @@ class Trips extends React.Component {
       .then((fbTrips) => {
         const past = fbTrips.filter((trip) => moment(trip.startDate).format('YYYMMDD') < moment(currentDate).format('YYYMMDD')).sort((a, b) => moment(b.startDate).format('YYYMMDD') - moment(a.startDate).format('YYYYMMDD'));
         this.setState({ pastTrips: past });
+        if (this.state.pastTrips.length > 0) {
+          this.setState({ pastTripsExist: true });
+        }
       })
       .catch((err) => console.error('unable to get list of past trips', err));
   }
@@ -52,7 +60,12 @@ class Trips extends React.Component {
   }
 
   render() {
-    const { futureTrips, pastTrips } = this.state;
+    const {
+      futureTrips,
+      pastTrips,
+      futureTripsExist,
+      pastTripsExist,
+    } = this.state;
 
     const buildFutureTrips = () => futureTrips.map((trip) => (
       <TripItem key={trip.id} trip={trip} />
@@ -71,17 +84,29 @@ class Trips extends React.Component {
         </div>
 
         <div>
-          <h2 className="heading textShadow">Future Trips</h2>
-          <div className="d-flex flex-wrap">
-            {buildFutureTrips()}
-          </div>
+          <h2 className="heading textShadow p-3">Future Trips</h2>
+          {
+            futureTripsExist ? (
+              <div className="d-flex flex-wrap">
+                {buildFutureTrips()}
+              </div>
+            ) : (
+              <h4>You have no upcoming trips planned yet.</h4>
+            )
+          }
         </div>
 
         <div>
-          <h2 className="heading textShadow">Past Trips</h2>
-          <div className="d-flex flex-wrap">
-            {buildPastTrips()}
-          </div>
+          <h2 className="heading textShadow p-3">Past Trips</h2>
+          {
+            pastTripsExist ? (
+              <div className="d-flex flex-wrap">
+                {buildPastTrips()}
+              </div>
+            ) : (
+              <h4>You have no recorded past trips.</h4>
+            )
+          }
         </div>
 
       </div>
