@@ -104,7 +104,7 @@ class Trips extends React.Component {
                 {buildPastTrips()}
               </div>
             ) : (
-              <h4>You have no recorded past trips.</h4>
+              <h4>You have not recorded any previous trips.</h4>
             )
           }
         </div>
