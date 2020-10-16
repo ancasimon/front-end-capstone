@@ -25,8 +25,8 @@ Axios, Bootstrap, CSS, ES6 Modules, Firebase (for authentication, data managemen
 1. Users can delete gear items and have to confirm their action before the item is deleted. 
 1. Users can plan a new trip and record details such as destination, dates, whether they are going to an established campsite or not, photo, weather expected, season, and party going. The Destination, Start Date, and End Date fields are required to ensure accurate data is recorded.
 1. When planning a new trip, users can also select the gear they want to take along to make the easiest and quickest packing list they have ever made for any trip in their lifetime!
-1. Users can view all their trips on the Trips page.
-1. Users can view all the details of a trip, including their packing list, on the single trip page. 
+1. Users can view all their trips on the Trips page, organized by date into Future Trips and Past Trips sections.
+1. Users can view all the details of a trip, including their packing list and their total pack weight, on the single trip page. 
 1. Users can edit trip data. 
 1. Users can delete trips and have to confirm their action before the trip is deleted. 
 1. Users have access to a Reports page with statistics about their gear.
@@ -42,8 +42,10 @@ Axios, Bootstrap, CSS, ES6 Modules, Firebase (for authentication, data managemen
 ![Home Page](./frontend-capstone-screenshots/home.png)
 #### Gear Page
 ![Gear Page](./frontend-capstone-screenshots/gear.png)
-#### Trips Page
-![Trips Page](./frontend-capstone-screenshots/trips.png)
+#### Future Trips on the Trips Page
+![Future Trips](./frontend-capstone-screenshots/future_trips.png)
+#### Past Trips on the Trips Page
+![Past Trips](./frontend-capstone-screenshots/past_trips.png)
 #### Reports Page
 ![Reports Page](./frontend-capstone-screenshots/reports.png)
 #### Creating a New Gear Item
