@@ -69,20 +69,13 @@ class NewGear extends React.Component {
 
   changeGearSeason = (e) => {
     const gearSeasonsArr = this.state.gearSeasonsList;
-    // console.log('target', e.target.checked);
-    // console.log('whole e', e);
     if (e.target.checked) {
       gearSeasonsArr.push(e.target.value);
     } else {
-      // console.log('unchecked', e.target.value);
-      // console.log('current array', gearSeasonsArr);
       const selSeasonIndex = gearSeasonsArr.indexOf(e.target.value);
-      // console.log('index', selSeasonIndex);
       gearSeasonsArr.splice(selSeasonIndex, 1);
-      // console.log('updated array', gearSeasonsArr);
     }
     this.setState({ gearSeasonsList: gearSeasonsArr });
-    // console.log('state', this.state);
   }
 
   createNewGearSeasonRecord = (gearId) => {
@@ -92,9 +85,7 @@ class NewGear extends React.Component {
         gearId,
         seasonId,
       };
-      // console.log('new gearseason', newGearSeason);
       gearSeasonData.postGearSeason(newGearSeason)
-        // .then(() => console.log('created new gearseason'))
         .then()
         .catch((err) => console.error('could not create new gearSeason record'));
     });
@@ -105,14 +96,10 @@ class NewGear extends React.Component {
     if (e.target.checked) {
       gearPartyArr.push(e.target.value);
     } else {
-      // console.log('unchecked', e.target.value);
       const selPartyIndex = gearPartyArr.indexOf(e.target.value);
-      // console.log('index', selPartyIndex);
       gearPartyArr.splice(selPartyIndex, 1);
-      // console.log('updated party list', gearPartyArr);
     }
     this.setState({ gearPartyList: gearPartyArr });
-    // console.log('state', this.state);
   }
 
   createNewGearPartyRecord = (gearId) => {
@@ -122,9 +109,7 @@ class NewGear extends React.Component {
         gearId,
         partyId,
       };
-      // console.log('new gear party record', newGearParty);
       gearPartyData.postGearParty(newGearParty)
-        // .then(() => console.log('created new gearParty'))
         .then()
         .catch((err) => console.error('could not create new gearParty record'));
     });
@@ -231,8 +216,6 @@ class NewGear extends React.Component {
       gearData.postGear(newGear)
         .then((fbResponse) => {
           const newGearId = fbResponse.data.name;
-          // console.log('new gearid', newGearId);
-          // console.log('new gear timestamp!!!', fbResponse.data.timestamp);
           this.createNewGearSeasonRecord(newGearId);
           this.createNewGearPartyRecord(newGearId);
           this.props.history.push('/gear');
@@ -319,7 +302,7 @@ class NewGear extends React.Component {
                   value={gearFunction}
                   onChange={this.changeGearFunction}
                 >
-                  {/* This is the list of function values from Firebase that gets displayed here! */}
+                  {/* This is the list of function values from Firebase: */}
                   { buildFunctionsList() }
                 </select>
               </div>

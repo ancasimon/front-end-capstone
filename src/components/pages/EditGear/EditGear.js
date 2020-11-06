@@ -55,7 +55,6 @@ class EditGear extends React.Component {
     smashData.getGearWithProperties(editId)
       .then((fbResponse) => {
         const currentGear = fbResponse;
-        // console.log('curr gear in edit', currentGear);
         this.setState({
           gearItem: currentGear.item,
           gearBrand: currentGear.brand,
@@ -87,19 +86,12 @@ class EditGear extends React.Component {
   changeGearSeason = (event) => {
     const editId = this.props.match.params.gearItemId;
     const newGearSeasonCheckedValue = event.target.checked;
-    // Zoe had said to use the previous checked value - I assume it does not matter?...
     const currentSeasonId = event.target.id;
     const currentGearSeasonId = event.target.getAttribute('relatedgearseasonid');
     const currentGearId = event.target.getAttribute('relatedgearid');
-    // console.log('new checked value of target - after clicking it', newGearSeasonCheckedValue);
-    // console.log('gearid', currentGearId);
-    // console.log('gearseasonid', currentGearSeasonId);
-    // console.log('seasonid', currentSeasonId);
     if (newGearSeasonCheckedValue === !true) {
-      // console.log('gearSeasonId to be deleted', currentGearSeasonId);
       this.deleteGearSeasonRecord(currentGearSeasonId);
     } else if (newGearSeasonCheckedValue === true) {
-      // console.log('gearId need to create NEW gear season', editId);
       this.createNewGearSeasonRecord(editId, currentSeasonId);
     }
   }
@@ -109,11 +101,9 @@ class EditGear extends React.Component {
       gearId,
       seasonId,
     };
-    // console.log('new gearseason', newGearSeason);
     gearSeasonData.postGearSeason(newGearSeason)
       .then(() => {
         this.buildEditPage();
-        // console.log('created new gearseason', newGearSeason);
       })
       .catch((err) => console.error('could not create new gearSeason record'));
   };
@@ -121,7 +111,6 @@ class EditGear extends React.Component {
   deleteGearSeasonRecord = (gearSeasonId) => {
     gearSeasonData.deleteGearSeason(gearSeasonId)
       .then(() => {
-        // console.log('deleted this gear season record', gearSeasonId);
         this.buildEditPage();
       })
       .catch((err) => console.error('could not delete the gear season record', err));
@@ -133,15 +122,9 @@ class EditGear extends React.Component {
     const currentPartyId = event.target.id;
     const currentGearPartyId = event.target.getAttribute('relatedgearpartyid');
     const currentGearId = event.target.getAttribute('relatedgearid');
-    // console.log('new checked value of target - after clicking it', newGearPartyCheckedValue);
-    // console.log('gearid', currentGearId);
-    // console.log('gearseasonid', currentGearPartyId);
-    // console.log('seasonid', currentPartyId);
     if (newGearPartyCheckedValue === !true) {
-      // console.log('gearPartyId to be deleted', currentGearPartyId);
       this.deleteGearPartyRecord(currentGearPartyId);
     } else if (newGearPartyCheckedValue === true) {
-      // console.log('gearId needed to create NEW gear party', editId);
       this.createNewGearPartyRecord(editId, currentPartyId);
     }
   }
@@ -151,11 +134,9 @@ class EditGear extends React.Component {
       gearId,
       partyId,
     };
-    // console.log('new gear party record', newGearParty);
     gearPartyData.postGearParty(newGearParty)
       .then(() => {
         this.buildEditPage();
-        // console.log('created new gearParty', newGearParty);
       })
       .catch((err) => console.error('could not create new gearParty record'));
   }
@@ -164,7 +145,6 @@ class EditGear extends React.Component {
     gearPartyData.deleteGearParty(gearPartyId)
       .then(() => {
         this.buildEditPage();
-        // console.log('deleted this gear party record', gearPartyId);
       })
       .catch((err) => console.error('could not delete the gear party record', err));
   }
@@ -412,7 +392,6 @@ class EditGear extends React.Component {
               type="checkbox"
               className="form-check-input"
               id="gear-estCampsite"
-              // value={gearEstCampsite}
               checked={gearEstCampsite}
               onChange={this.changeGearEstCampsite}
             />
@@ -471,7 +450,7 @@ class EditGear extends React.Component {
               value={gearFunction}
               onChange={this.changeGearFunction}
             >
-              {/* NEED to get the list of function values from Firebase to display here! */}
+              {/* The list of function values from Firebase: */}
               { buildFunctionsList() }
             </select>
           </div>
@@ -483,7 +462,7 @@ class EditGear extends React.Component {
               value={gearWeather}
               onChange={this.changeGearWeather}
             >
-              {/* NEED to get the list of weather values from Firebase to display here! */}
+              {/* The list of weather values from Firebase: */}
               {buildWeatherList()}
             </select>
           </div>

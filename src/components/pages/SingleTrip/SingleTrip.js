@@ -22,7 +22,6 @@ class SingleTrip extends React.Component {
 
   buildSingleTripView = () => {
     const { tripId } = this.props.match.params;
-    console.log('trip id in single view', tripId);
     smashData.getTripWithDetails(tripId)
       .then((fbData) => this.setState({
         trip: fbData,

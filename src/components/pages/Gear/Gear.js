@@ -29,10 +29,6 @@ import './Gear.scss';
 class Gear extends React.Component {
   state = {
     gear: [],
-    // filteredList: [],ANCA: CROSS-FILTERS attempt
-    // functionFilter: false, ANCA: CROSS-FILTERS attempt
-    // weatherFilter: false, ANCA: CROSS-FILTERS attempt
-    // expYearFilter: false, ANCA: CROSS-FILTERS attempt
     isOpen: false,
     dropdownFunctionOpen: false,
     dropdownPartyOpen: false,
@@ -80,7 +76,6 @@ class Gear extends React.Component {
       .then((fbData) => {
         const availableFilteredGearItemsOnly = fbData.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: availableFilteredGearItemsOnly });
-        // console.log('available gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
@@ -92,47 +87,11 @@ class Gear extends React.Component {
       .then((fbData) => {
         const unavailableFilteredGearItems = fbData.filter((gearItem) => gearItem.isAvailable === false).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
         this.setState({ gear: unavailableFilteredGearItems });
-        // console.log('UNavailable gear only???', gear);
       })
       .catch((err) => console.error('could not get only available gear from firebase', err));
   }
-  // ANCA: CROSS-FILTERS attempt: This was something else I tried - putting the conditions inside the availabel data get call-didn't work...
-  // getAvailableGear = () => {
-  //   const uid = authData.getUid();
-  //   const {
-  //     gear,
-  //     selectedFunction,
-  //     selectedWeather,
-  //     selectedExpYear,
-  //     functionFilter,
-  //     weatherFilter,
-  //     expYearFilter,
-  //   } = this.state;
-  //   gearData.getGearByUid(uid)
-  //     .then((fbData) => {
-  //       const availableFilteredGearItemsOnly = () => {
-  //         fbData.filter((gearItem) => gearItem.isAvailable === true);
-  //         if (functionFilter === true) {
-  //           fbData.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-  //         }
-  //         if (weatherFilter === true) {
-  //           fbData.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
-  //         }
-  //         if (expYearFilter === true) {
-  //           fbData.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
-  //         }
-  //         return availableFilteredGearItemsOnly;
-  //       };
-  //       this.setState({ gear: availableFilteredGearItemsOnly });
-  //       gear.sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
-  //       console.log('available gear only???', gear);
-  //     })
-  //     .catch((err) => console.error('could not get only available gear from firebase', err));
-  // }
 
-  // > All the toggle change functions called by changes in the filters' selections are below:
-
-  // Added a callback in toggle below so that the page loads only after and as soon as we get the new toggle value.
+  // All the toggle change functions called by changes in the filters' selections are below:
 
   toggleAvailableSwitch = (e) => {
     this.setState({ valueAvailable: e });
@@ -170,46 +129,12 @@ class Gear extends React.Component {
   toggleDropdownExpYear = () => {
     this.setState({ dropdownExpYearOpen: !this.state.dropdownExpYearOpen });
   }
-  // >This is where the toggle functions for the filters extends. 
-
-  // ANCA: CROSS-FILTERS attempt:  - FROM SAMUEL'S EX: ADDED A NEW OBJECT FOR ALL
-  // getFunctionsList = () => {
-  //   functionsData.getFunctions()
-  //     .then((functionsList) => {
-  //       const allFunctionsValue = {
-  //         id: functionsList.length + 1,
-  //         name: 'All',
-  //         imageUrl: 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/universal-access.svg',
-  //       };
-  //       functionsList.push(allFunctionsValue);
-  //       this.setState({ functionsList });
-  //       console.log('func list with new ALL value');
-  //     })
-  //     .catch((err) => console.error('unable to get list of function values', err));
-  // }
 
   getFunctionsList = () => {
     functionsData.getFunctions()
       .then((functionsList) => this.setState({ functionsList }))
       .catch((err) => console.error('unable to get list of function values', err));
   }
-
-  // ANCA: CROSS-FILTERS attempt: - FROM SAMUEL'S EX: set the value for the selected function;
-
-  // getWeatherList = () => {
-  //   weatherData.getWeatherValues()
-  //     .then((weatherList) => {
-  //       const allWeatherValue = {
-  //         id: weatherList.length + 1,
-  //         name: 'All',
-  //         imageUrl: 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/universal-access.svg',
-  //       };
-  //       weatherList.push(allWeatherValue);
-  //       this.setState({ weatherList });
-  //       console.log('weather list with new ALL value');
-  //     })
-  //     .catch((err) => console.error('unable to get list of weather values', err));
-  // }
 
   getWeatherList = () => {
     weatherData.getWeatherValues()
@@ -238,10 +163,6 @@ class Gear extends React.Component {
   render() {
     const {
       gear,
-      // filteredList, ANCA: CROSS-FILTERS attempt:
-      // functionFilter, ANCA: CROSS-FILTERS attempt:
-      // weatherFilter, ANCA: CROSS-FILTERS attempt:
-      // expYearFilter, ANCA: CROSS-FILTERS attempt:
       isOpen,
       dropdownFunctionOpen,
       dropdownWeatherOpen,
@@ -257,76 +178,6 @@ class Gear extends React.Component {
       selectedFunction,
       selectedWeather,
     } = this.state;
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const setFunctionFilterValue = (value) => {
-    //   this.setState({ functionFilter: true });
-    //   console.log('fun filter check after selecting a value', this.state.functionFilter);
-    //   this.setState({ selectedFunction: value });
-    //   console.log('exp year after selecting a value', this.state.selectedFunction);
-    //   filterAll();
-    // };
-    // The function above will do 3 things: 1 - set the state for the boolean for this filter check 2 - set the state for selected function value chosen in the Function filter; ; 3 - run filterAll big function. (AND - in the filterAll: I will reset `gear` to state and then refilter it based on the boolean checks for each filter and then set the state for the `filteredList` array again and display that.
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const setWeatherFilterValue = (value) => {
-    //   this.setState({ weatherFilter: true });
-    //   console.log('weather filter check after selecting a value', this.state.weatherFilter);
-    //   console.log('fun filter check after selecting a value', this.state.functionFilter);
-    //   this.setState({ selectedWeather: value });
-    //   console.log('exp year after selecting a value', this.state.selectedWeather);
-    //   filterAll();
-    // };
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const setExpYearFilterValue = (value) => {
-    //   this.setState({ expYearFilter: true });
-    //   console.log('exp year filter check after selecting a value', this.state.expYearFilter);
-    //   console.log('weather filter check after selecting a value', this.state.weatherFilter);
-    //   console.log('fun filter check after selecting a value', this.state.functionFilter);
-    //   this.setState({ selectedExpYear: value });
-    //   console.log('exp year after selecting a value', this.state.selectedExpYear);
-    //   filterAll();
-    // };
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const clearFunctionFilter = () => {
-    //   this.setState({ functionFilter: false });
-    //   filterAll();
-    // };
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const clearWeatherFilter = () => {
-    //   this.setState({ weatherFilter: false });
-    //   filterAll();
-    // };
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const clearExpYearFilter = () => {
-    //   this.setState({ expYearFilter: false });
-    //   filterAll();
-    // };
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const filterAll = () => {
-    //   console.log('running filterAll function!!!!');
-    //   if (functionFilter === true) {
-    //     filteredList = gear.filter((gearItem) => gearItem.functionId === this.state.selectedFunction);
-    //   } else if (weatherFilter === true) {
-    //     filteredList = gear.filter((gearItem) => gearItem.weatherId === this.state.selectedWeather);
-    //   } else if (expYearFilter === true) {
-    //     filteredList = gear.filter((gearItem) => gearItem.expirationYear === this.state.selectedExpYear);
-    //   }
-    //   this.setState({ gear: filteredList });
-    //   console.log('sel function in filter all', this.state.selectedFunction);
-    //   console.log('sel weather in filter all', this.state.selectedWeather);
-    //   console.log('sel exp year in filter all', this.state.selectedExpYear);
-    //   console.log('filteredList after filterAll function', this.state.filteredList);
-    //   // this.buildGearPage();
-    //   this.state.gear.map((gearItem) => (
-    //     <GearItem key={gearItem.id} gearItem={gearItem} removeGearItem={this.removeGearItem} />
-    //   ));
-    // };
 
     const filterByFunction = (functionId) => {
       this.setState({ selectedFunction: functionId });
@@ -401,17 +252,6 @@ class Gear extends React.Component {
     const buildWeatherList = () => weatherList.map((weatherValue) => (
       <DropdownItem key={weatherValue.id} value={weatherValue.id} onClick={() => filterByWeather(weatherValue.id)}>{weatherValue.name}</DropdownItem>
     ));
-
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const buildFunctionsList = () => functionsList.map((functionValue) => (
-    //   <DropdownItem key={functionValue.id} value={functionValue.id} onClick={() => setFunctionFilterValue(functionValue.id)}>{functionValue.name}</DropdownItem>
-    // ));
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const buildWeatherList = () => weatherList.map((weatherValue) => (
-    //   <DropdownItem key={weatherValue.id} value={weatherValue.id} onClick={() => setWeatherFilterValue(weatherValue.id)}>{weatherValue.name}</DropdownItem>
-    // ));
   
     const buildPartyList = () => partyList.map((partyValue) => (
       <DropdownItem key={partyValue.id} value={partyValue.id}>{partyValue.name}</DropdownItem>
@@ -420,16 +260,6 @@ class Gear extends React.Component {
     const buildSeasonsList = () => seasonsList.map((seasonValue) => (
       <DropdownItem key={seasonValue.id} value={seasonValue.id}>{seasonValue.name}</DropdownItem>
     ));
-
-    // ANCA: CROSS-FILTERS attempt:
-    // const buildYearsList = () => {
-    //   const year = 2010;
-    //   return (
-    //     Array.from(new Array(40), (v, i) => (
-    //       <DropdownItem key={i} value={year + i} onClick={() => setExpYearFilterValue(year + i)}>{year + i}</DropdownItem>
-    //     ))
-    //   );
-    // };
 
     const buildYearsList = () => {
       const year = 2010;
@@ -475,7 +305,6 @@ class Gear extends React.Component {
                     By Function
                     </DropdownToggle>
                   <DropdownMenu>
-                    {/* <DropdownItem onClick={this.clearFunctionFilter}>All</DropdownItem>ANCA: CROSS-FILTERS attempt! */}
                     <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildFunctionsList()}
@@ -489,7 +318,6 @@ class Gear extends React.Component {
                     By Weather
                     </DropdownToggle>
                   <DropdownMenu>
-                    {/* <DropdownItem onClick={this.clearWeatherFilter}>Clear Filter</DropdownItem>ANCA: CROSS-FILTERS attempt! */}
                     <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildWeatherList()}
@@ -503,7 +331,6 @@ class Gear extends React.Component {
                     By Expiration Year
                     </DropdownToggle>
                   <DropdownMenu>
-                    {/* <DropdownItem onClick={this.clearExpYearFilter}>Clear Filter</DropdownItem>ANCA: CROSS-FILTERS attempt! */}
                     <DropdownItem onClick={this.buildGearPage}>Clear Filter</DropdownItem>
                     <DropdownItem divider />
                     {buildYearsList()}

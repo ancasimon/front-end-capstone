@@ -55,7 +55,6 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
                           tripCopy.allGearWithChecks = allGearWithChecks;
                           tripCopy.totalTripWeight = totalWeight;
                           resolve(tripCopy);
-                          // console.log('trip copy', tripCopy);
                         });
                     });
                 });
@@ -65,13 +64,9 @@ const getTripWithDetails = (tripId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-// QUESTION: IS IT ok that this is a get single call?? Also ok that it is a new promise?
-// DO I NEED getGearSeasons instead of getGearSeasonsByGearId below??
-// Is it ok that I used the find method below for seasons and parties?? or should I use filter on gearSeasons instead??
 const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
   gearData.getSingleGear(gearId)
     .then((singleGearResponse) => {
-      // console.log('single gear resp', singleGearResponse);
       functionsData.getFunctions()
         .then((allFunctions) => {
           const selectedFunction = allFunctions.find((x) => x.id === singleGearResponse.data.functionId);
@@ -87,9 +82,8 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                       allSeasons.forEach((seasonValue) => {
                         const newSeasonValue = { isChecked: false, ...seasonValue };
                         allSeasonsWithChecks.push(newSeasonValue);
-                        // console.log('updated array w checks', allSeasonsWithChecks);
                         gearSeasons.forEach((gearSeasonObject) => {
-                          // NOTES: The 2 lines below show how I initiallycontrolled the display of selected seasons for a gear completelyRemoveGearItemAndChildren. And this method was replaced by the push of seasons with a true isChecked property below.
+                          // NOTES: The 2 lines below show how I initially controlled the display of selected seasons for a gear. This method was replaced by the push of seasons with a true isChecked property below.
                           // const foundGearSeason = allSeasons.find((x) => x.id === gearSeasonObject.seasonId);
                           // selectedGearSeasons.push(foundGearSeason);
                           for (let i = 0; i < allSeasonsWithChecks.length; i += 1) {
@@ -97,11 +91,8 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                               allSeasonsWithChecks[i].isChecked = true;
                               allSeasonsWithChecks[i].relatedGearId = gearSeasonObject.gearId;
                               allSeasonsWithChecks[i].relatedGearSeasonId = gearSeasonObject.id;
-                              // console.log('running new FOR loop');
-                              // console.log('updated selected seasons', selectedGearSeasons);
                             }
                           }
-                          // console.log('updated array w checks AFTER new FOR loop', allSeasonsWithChecks);
                           // Note for allSeasonsWithChecks array defined above: I am using this array to control the display of CHECKBOXES for the seasons selected for a gear item on the EDIT gear page (both pre-populated and as the user makes changes).
                         });
                       });
@@ -109,7 +100,6 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                         if (allSeasonsWithChecks[i].isChecked === true) {
                           selectedGearSeasons.push(allSeasonsWithChecks[i]);
                           // Note for selectedGearSeasons array defined above: I am using this array to control the display of selected seasons for a gear item on the view pages - both the list of gear and the single gear view page.
-                          // console.log('updated selected seasons', selectedGearSeasons);
                         }
                       }
                       gearPartyData.getGearPartiesByGearId(gearId)
@@ -145,7 +135,6 @@ const getGearWithProperties = (gearId) => new Promise((resolve, reject) => {
                               gearWithMetadata.selectedGearParties = selectedGearParties;
                               gearWithMetadata.allPartiesWithChecks = allPartiesWithChecks;
                               gearWithMetadata.allSeasonsWithChecks = allSeasonsWithChecks;
-                              // console.log('gearmetadata', gearWithMetadata);
                               resolve(gearWithMetadata);
                             });
                         });
