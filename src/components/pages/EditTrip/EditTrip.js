@@ -118,11 +118,8 @@ class EditTrip extends React.Component {
 
   changeTripGearSelection = (e) => {
     const editTripId = this.props.match.params.tripId;
-    console.log('etarget', e.target);
     const newTripGearCheckedValue = e.target.checked;
-    // const currentGearId = e.target.getAttribute('parentgear');
     const currentGearId = e.target.id;
-    console.log('gear id for new trip gear', currentGearId);
     const currentTripGearId = e.target.getAttribute('parenttripgear');
     if (newTripGearCheckedValue !== true) {
       this.deleteTripGearRecord(currentTripGearId);
@@ -139,7 +136,6 @@ class EditTrip extends React.Component {
     tripGearData.postTripGear(newTripGearRecord)
       .then(() => {
         this.buildEditTripPage();
-        console.log('new trip gear', newTripGearRecord);
       })
       .catch((err) => console.error('could not create a new trip gear record for this trip', err));
   };
@@ -148,7 +144,6 @@ class EditTrip extends React.Component {
     tripGearData.deleteTripGear(tripGearId)
       .then(() => {
         this.buildEditTripPage();
-        console.log('deleted trip gear', tripGearId);
       })
       .catch((err) => console.error('could not delete this trip gear record', err));
   }

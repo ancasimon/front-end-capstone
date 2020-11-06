@@ -76,7 +76,7 @@ class SingleGear extends React.Component {
 
     const { gearItemId } = this.props.match.params;
 
-    // Note: I used the editLink variable below initially when this is all I had to pass down to the Edit Page component. Once I wantted to make changes to return the user to the exact page that he left when he staretd editing, then I had to pass 2 pieces of info - this route as well as the path they came from - so newroute replaced and included the edit path - hence the variable below was no longer needed.
+    // Note: I used the editLink variable below initially when this is all I had to pass down to the Edit Page component. Once I decided to make changes to return the user to the exact page that he left when he started editing, then I had to pass 2 pieces of info - this route as well as the path they came from - so newroute replaced and included the edit path - hence the variable below was no longer needed.
     // const editLink = `/gear/edit/${gearItemId}`;
 
     const newRoute = { pathname: `/gear/edit/${gearItemId}`, previouspath: { currentpath } };

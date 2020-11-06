@@ -32,10 +32,6 @@ class NewTrip extends React.Component {
     tripDestination: '',
     gear: [],
     tripGearList: [],
-    // gearFunction: {},
-    // gearWeather: {},
-    // gearSeasons: [],
-    // gearParties: [],
   };
 
   componentDidMount() {
@@ -62,32 +58,6 @@ class NewTrip extends React.Component {
       .then((partyList) => this.setState({ partyList }))
       .catch((err) => console.error('unabel to get list of parties', err));
   }
-
-  // ANCA note: I was trying to get the full object with all the properties formt he smash file but can't quite finish it ... so for now, I will just use the simple object from gearData.getGearByUid.
-  // getAvailableGear = () => {
-  //   const uid = authData.getUid();
-  //   gearData.getGearByUid(uid)
-  //     .then((allGear) => {
-  //       allGear.forEach((eachPiece) => {
-  //         smashData.getGearWithProperties(eachPiece.id)
-  //           .then((fbData) => {
-  //             this.setState({
-  //               gearFunction: fbData.selectedFunction,
-  //               gearWeather: fbData.selectedWeather,
-  //               gearSeasons: fbData.selectedGearSeasons,
-  //               gearParties: fbData.selectedGearParties,
-  //             });
-  //           });
-  //       });
-  //       const availableFilteredGearItemsOnly = [];
-  //       availableFilteredGearItemsOnly.push(fbData);
-  //       availableFilteredGearItemsOnly.filter((gearItem) => gearItem.isAvailable === true).sort((a, b) => moment(b.timestamp).format('YYYYMMDD') - moment(a.timestamp).format('YYYYMMDD'));
-  //       this.setState({ gear: availableFilteredGearItemsOnly });
-  //       console.log('single gear', fbData);
-  //       console.log('gear array', availableFilteredGearItemsOnly);
-  //     })
-  //     .catch((err) => console.error('could not get only available gear from firebase', err));
-  // }
 
   getAvailableGear = () => {
     const uid = authData.getUid();
@@ -141,20 +111,13 @@ class NewTrip extends React.Component {
   changeTripGearSelection = (e) => {
     const tripGearArr = this.state.tripGearList;
     const gearId = e.target.id;
-    // console.log('target', e.target.id);
-    // console.log('whole e', e);
     if (e.target.checked) {
       tripGearArr.push(e.target.value);
     } else {
-      // console.log('unchecked', e.target.value);
-      console.log('current array', tripGearArr);
       const selTripGearIndex = tripGearArr.indexOf(e.target.value);
-      // console.log('index', selTripGearIndex);
       tripGearArr.splice(selTripGearIndex, 1);
-      console.log('updated array', tripGearArr);
     }
     this.setState({ tripGearList: tripGearArr });
-    console.log('state', this.state);
   }
 
   createNewTripGearRecord = (tripId) => {
@@ -165,7 +128,6 @@ class NewTrip extends React.Component {
         gearId: tripGearPieceId,
         notes: '',
       };
-      console.log('new tripGear', newTripGearObject);
       tripGearData.postTripGear(newTripGearObject)
         .then(() => console.log('created new tripGear'))
         .catch((err) => console.error('could not create new tripGear record'));
@@ -226,10 +188,6 @@ class NewTrip extends React.Component {
       tripImageUrl,
       tripEstablishedCampsite,
       tripDestination,
-      gearFunction,
-      gearWeather,
-      gearSeasons,
-      gearParties,
     } = this.state;
 
     const buildWeatherList = () => weatherList.map((weatherValue) => (
